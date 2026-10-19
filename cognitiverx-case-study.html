@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>CognitiveRx — Case Study</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Streamlining Premier's AI-powered pharmacy analytics platform, reducing cognitive load and aligning it to the Premier Design System.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#0B2530;
+    --navy:#003B49;
+    --teal:#007994;
+    --teal-light:#8DC7D8;
+    --sky:#D3E8EF;
+    --rust:#E24301;
+    --rust-light:#FEA682;
+    --paper:#F7F5F0;
+    --paper-dim:#EFECE4;
+    --white:#FFFFFF;
+    --line: rgba(11,37,48,0.12);
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{margin:0; background:var(--paper); color:var(--ink); font-family:'Inter',sans-serif; line-height:1.6; -webkit-font-smoothing:antialiased;}
+  h1,h2,h3{font-family:'Inter',sans-serif; font-weight:500; margin:0; letter-spacing:-0.01em;}
+  .eyebrow{font-family:'IBM Plex Mono',monospace; font-size:0.72rem; letter-spacing:0.14em; text-transform:uppercase; color:var(--teal); display:flex; align-items:center; gap:0.6em;}
+  .eyebrow::before{content:""; width:22px; height:1px; background:var(--teal);}
+  a{color:inherit;}
+  img{max-width:100%; display:block;}
+
+  .hero{background: linear-gradient(180deg, var(--navy) 0%, #052A34 100%); color:var(--white); padding: 5.5rem max(16px, 6vw) 4.5rem; position:relative; overflow:hidden;}
+  .hero::after{content:""; position:absolute; right:-8%; top:-20%; width:520px; height:520px; background: radial-gradient(circle, rgba(0,121,148,0.55) 0%, rgba(0,121,148,0) 70%);}
+  .hero-inner{max-width:1180px; margin:0 auto; position:relative;}
+  .hero .eyebrow{color:var(--rust-light); margin-bottom:1.6rem;}
+  .hero .eyebrow::before{background:var(--rust-light);}
+  .hero h1{font-size:clamp(2.4rem, 5vw, 4rem); max-width:17ch; line-height:1.04; color:var(--white);}
+  .hero .sub{max-width:52ch; font-size:1.15rem; color:var(--sky); margin-top:1.4rem; font-weight:400;}
+  .status-pill{display:inline-flex; align-items:center; gap:0.5rem; margin-top:1.8rem; font-family:'IBM Plex Mono',monospace; font-size:0.7rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--white); border:1px solid rgba(255,255,255,0.3); padding:0.45rem 0.9rem; border-radius:100px;}
+  .status-pill::before{content:""; width:8px; height:8px; border-radius:50%; background:var(--rust-light);}
+  .meta-row{display:flex; flex-wrap:wrap; gap:2.6rem; margin-top:3rem; padding-top:2rem; border-top:1px solid rgba(255,255,255,0.16);}
+  .meta-item .label{font-family:'IBM Plex Mono',monospace; font-size:0.68rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--teal-light); margin-bottom:0.4rem;}
+  .meta-item .val{font-size:0.98rem; color:var(--white); max-width:28ch;}
+
+  .stat-strip{background:var(--rust); color:var(--white);}
+  .stat-strip-inner{max-width:1180px; margin:0 auto; display:grid; grid-template-columns:repeat(3,1fr); padding: 2.6rem max(16px, 6vw); gap:1.5rem;}
+  .stat{border-left:1px solid rgba(255,255,255,0.35); padding-left:1.6rem;}
+  .stat:first-child{border-left:none; padding-left:0;}
+  .stat .num{font-family:'Inter',sans-serif; font-size:2.6rem; font-weight:500; line-height:1;}
+  .stat .desc{font-size:0.88rem; margin-top:0.5rem; color:#FFE3D6; max-width:24ch;}
+
+  section{max-width:1180px; margin:0 auto; padding: 5.5rem max(16px, 6vw);}
+  section.tight{padding-top:0;}
+  .section-head{display:grid; grid-template-columns: 1fr 2fr; gap:3rem; margin-bottom:2.6rem;}
+  .section-head h2{font-size:clamp(1.7rem,2.6vw,2.3rem); max-width:13ch;}
+  .lede{font-size:1.05rem; color:#2C4C56; max-width:56ch;}
+  .prose{font-size:1.02rem; color:#28444D; max-width:68ch;}
+  .prose + .prose{margin-top:1.1rem;}
+
+  .quote{border-left:3px solid var(--rust); padding: 0.3rem 0 0.3rem 1.6rem; margin: 2.4rem 0; max-width:60ch;}
+  .quote p{font-family:'Inter',sans-serif; font-style:italic; font-weight:400; font-size:1.3rem; color:var(--navy); line-height:1.45; margin:0;}
+
+  figure{margin:2.6rem 0 0;}
+  figure img{border-radius:6px; border:1px solid var(--line); box-shadow: 0 24px 48px -24px rgba(0,59,73,0.35); width:100%; height:auto;}
+  figcaption{font-family:'IBM Plex Mono',monospace; font-size:0.75rem; color:var(--teal); margin-top:0.9rem; letter-spacing:0.02em; max-width:80ch;}
+
+  .stripe{height:8px; width:100%; background: repeating-linear-gradient(90deg, var(--navy) 0 8%, var(--teal) 8% 16%, var(--teal-light) 16% 24%, var(--sky) 24% 32%, var(--rust) 32% 40%, var(--rust-light) 40% 48%, #FFDB96 48% 56%, var(--paper-dim) 56% 64%, var(--navy) 64% 72%, var(--teal) 72% 80%, var(--rust) 80% 88%, var(--rust-light) 88% 100%);}
+
+  .constraint-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:var(--line); margin-top:2.6rem; border:1px solid var(--line);}
+  .constraint-grid .c{background:var(--white); padding:2rem 1.8rem;}
+  .constraint-grid .c .tag{font-family:'IBM Plex Mono',monospace; font-size:0.68rem; letter-spacing:0.08em; text-transform:uppercase; color:var(--rust); display:block; margin-bottom:0.9rem;}
+  .constraint-grid .c h3{font-size:1.05rem; color:var(--navy); margin-bottom:0.5rem; font-weight:600;}
+  .constraint-grid .c p{font-size:0.95rem; color:#2C4C56; margin:0;}
+
+  .people-band{background:var(--navy); color:var(--white);}
+  .people-band .inner{max-width:1180px; margin:0 auto; padding:4.5rem max(16px, 6vw);}
+  .people-band .section-head h2{color:var(--white);}
+  .people-band .lede{color:var(--sky);}
+
+  .process{display:grid; grid-template-columns:repeat(3,1fr); gap:2rem; margin-top:1rem;}
+  .process .step{border-top:2px solid var(--rust-light); padding-top:1.4rem;}
+  .process .step .n{font-family:'IBM Plex Mono',monospace; font-size:0.7rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--teal-light); margin-bottom:0.6rem;}
+  .process .step h3{font-size:1.15rem; color:var(--white); margin-bottom:0.5rem;}
+  .process .step p{font-size:0.94rem; color:var(--sky); margin:0;}
+
+  .principles{display:grid; grid-template-columns:repeat(2,1fr); gap:2px; background:var(--line); margin-top:2.6rem; border:1px solid var(--line);}
+  .principles .p{background:var(--white); padding:2.2rem;}
+  .principles .p .idx{font-family:'Inter',sans-serif; font-size:1.6rem; color:var(--sky); margin-bottom:0.6rem;}
+  .principles .p h4{font-family:'Inter',sans-serif; font-size:1.1rem; color:var(--navy); margin:0 0 0.5rem; font-weight:600;}
+  .principles .p p{font-size:0.92rem; color:#3B5A63; margin:0;}
+
+  .workflow-head{display:flex; align-items:baseline; gap:1rem; margin-top:4rem; padding-top:2rem; border-top:1px solid var(--line);}
+  .workflow-head:first-of-type{margin-top:1rem;}
+  .workflow-head .tag{font-family:'IBM Plex Mono',monospace; font-size:0.7rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--rust);}
+  .workflow-head h3{font-size:1.4rem; color:var(--navy);}
+  .workflow-copy{font-size:0.98rem; color:#3B5A63; max-width:66ch; margin-top:0.8rem;}
+
+  .pair{display:grid; grid-template-columns:1fr 1fr; gap:2rem; margin-top:2.6rem; align-items:start;}
+  .pair figure{margin-top:0;}
+
+  .pharma-band{background:var(--sky);}
+  .pharma-band .inner{max-width:1180px; margin:0 auto; padding:5.5rem max(16px, 6vw);}
+  .pharma-list{display:grid; grid-template-columns:repeat(3,1fr); gap:2rem; margin-top:2.4rem;}
+  .pharma-list .item{background:var(--white); border-radius:6px; padding:1.8rem; border:1px solid var(--line);}
+  .pharma-list .item .tag{font-family:'IBM Plex Mono',monospace; font-size:0.68rem; letter-spacing:0.08em; text-transform:uppercase; color:var(--teal); display:block; margin-bottom:0.7rem;}
+  .pharma-list .item h4{font-size:1.05rem; color:var(--navy); margin:0 0 0.4rem; font-weight:600;}
+  .pharma-list .item p{font-size:0.92rem; color:#3B5A63; margin:0;}
+
+  .takeaways{display:grid; grid-template-columns:repeat(2,1fr); gap:2.2rem 3rem; margin-top:2.6rem;}
+  .takeaways .item{padding-top:1.4rem; border-top:2px solid var(--rust);}
+  .takeaways .item h4{font-family:'Inter',sans-serif; font-size:1.05rem; color:var(--navy); font-weight:600; margin:0 0 0.5rem;}
+  .takeaways .item p{font-size:0.93rem; color:#3B5A63; margin:0;}
+
+  .outcome-table{width:100%; border-collapse:collapse; margin-top:2.4rem;}
+  .outcome-table th{text-align:left; font-family:'IBM Plex Mono',monospace; font-size:0.68rem; letter-spacing:0.08em; text-transform:uppercase; color:var(--teal); padding:0.8rem 1rem 0.8rem 0; border-bottom:1px solid var(--line);}
+  .outcome-table td{padding:1.1rem 1rem 1.1rem 0; border-bottom:1px solid var(--line); font-size:0.98rem; color:#2C4C56; vertical-align:top;}
+  .outcome-table td.result{font-family:'Inter',sans-serif; font-weight:500; color:var(--rust);}
+
+  footer{background:var(--ink); color:var(--sky); text-align:center; padding:3.5rem max(16px, 6vw); font-size:0.85rem;}
+  footer .back{font-family:'IBM Plex Mono',monospace; font-size:0.75rem; letter-spacing:0.08em; text-transform:uppercase; color:var(--white); text-decoration:none; border:1px solid rgba(255,255,255,0.3); padding:0.7rem 1.4rem; border-radius:100px; display:inline-block; margin-bottom:1.6rem;}
+
+  
+  .hero a, .prose a{color:inherit; text-decoration-color:var(--teal); text-underline-offset:3px;}
+  .prose a{color:var(--teal);}
+  .ba{display:grid; grid-template-columns:1fr 1fr; gap:2rem; margin-top:2.2rem; align-items:start;}
+  .ba figure{margin:0; position:relative; min-width:0;}
+  .ba a{display:block;}
+  .ba-label{position:absolute; top:12px; left:12px; z-index:1; font-family:'IBM Plex Mono',monospace; font-size:0.66rem; letter-spacing:0.12em; text-transform:uppercase; background:var(--ink); color:var(--white); padding:0.3rem 0.65rem; border-radius:100px;}
+  .ba-label.after{background:var(--rust);}
+  .ba img{transition:transform .2s ease;}
+  .ba a:hover img{transform:translateY(-2px);}
+  .changes{list-style:none; padding:0; margin:1.8rem 0 0; display:grid; grid-template-columns:repeat(3,1fr); gap:1.6rem;}
+  .changes li{border-top:2px solid var(--teal-light); padding-top:1rem; font-size:0.93rem; color:#3B5A63;}
+  .changes b{color:var(--navy); font-weight:600;}
+  a:focus-visible{outline:2px solid var(--rust); outline-offset:3px;}
+  @media (prefers-reduced-motion: reduce){ .ba img{transition:none;} html{scroll-behavior:auto;} }
+  @media (max-width:820px){ .ba, .changes{grid-template-columns:1fr;} }
+
+  @media (max-width:820px){
+    .section-head{grid-template-columns:1fr; gap:1rem;}
+    .stat-strip-inner{grid-template-columns:1fr; gap:2rem;}
+    .stat{border-left:none; padding-left:0; border-top:1px solid rgba(255,255,255,0.35); padding-top:1.5rem;}
+    .stat:first-child{border-top:none; padding-top:0;}
+    .constraint-grid, .principles, .process, .pair, .pharma-list, .takeaways{grid-template-columns:1fr;}
+    .meta-row{gap:1.6rem;}
+    .workflow-head{flex-direction:column; gap:0.3rem;}
+    .outcome-table{font-size:0.88rem;}
+  }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="hero-inner">
+    <div class="eyebrow">AI-Powered Analytics · Healthcare Pharmacy</div>
+    <h1>Making AI pharmacy intelligence easier to act on</h1>
+    <p class="sub">CognitiveRx predicts drug price increases and flags shortages before they hit. I worked with end users and pharmacy SMEs to streamline its screens, reduce cognitive load, and bring the whole product onto the Premier Design System.</p>
+    <div class="meta-row">
+      <div class="meta-item"><div class="label">Role</div><div class="val">Principal Product Designer</div></div>
+      <div class="meta-item"><div class="label">Scope</div><div class="val">Buy-ins, Margin, Signals &amp; Shortages, Reports, Accounts, Preferences</div></div>
+      <div class="meta-item"><div class="label">Partners</div><div class="val">Pharmacy end users · Subject matter experts · Product &amp; engineering</div></div>
+      <div class="meta-item"><div class="label">Deliverables</div><div class="val">Screen audit · High-fidelity redesigns · Design System alignment</div></div>
+    </div>
+  </div>
+</header>
+
+<div class="stat-strip">
+  <div class="stat-strip-inner">
+    <div class="stat"><div class="num">36</div><div class="desc">screens redesigned on the Premier Design System</div></div>
+    <div class="stat"><div class="num">10</div><div class="desc">product areas brought under one navigation and page model</div></div>
+    <div class="stat"><div class="num">1</div><div class="desc">consistent set of patterns for filters, grids, KPIs and charts</div></div>
+  </div>
+</div>
+
+<section>
+  <div class="section-head">
+    <h2>Context</h2>
+    <div class="lede">CognitiveRx is Premier's AI-powered pharmacy analytics platform. It automates the intake of wholesaler purchasing data and uses machine learning to tell pharmacy leaders what is coming next.</div>
+  </div>
+  <div class="prose">The product does four jobs. It predicts upcoming price increases so teams can buy ahead. It detects early signals of drug shortages. It tracks margins by comparing cost savings with reimbursement. And it helps health systems plan medication strategy with their caregivers in advance.</div>
+  <div class="prose">The intelligence works. Premier reports that one large Midwestern health system <a href="https://premierinc.com/newsroom/success-stories/insight-into-the-future-how-pharmacy-teams-are-leveraging-predictive-technology-to-boost-efficiencies-and-savings">saved more than $450,000 in a single month</a> by buying ahead of predicted price increases. <a href="https://premierinc.com/newsroom/blog/how-st-lukes-university-health-network-is-using-technology-for-drug-shortage-preparedness-and-response">St. Luke's University Health Network</a>, a 13-hospital system, uses it as one place to see its supply chain, from purchasing to price changes.</div>
+  <div class="prose">The interface had not kept pace with the intelligence behind it. Each module had grown on its own, and the result was dense, inconsistent and visually out of step with the rest of Premier's products.</div>
+</section>
+
+<section class="tight">
+  <div class="section-head">
+    <h2>The challenge</h2>
+    <div class="lede">Pharmacy buyers make high-dollar decisions from these screens. Every extra panel, label style and control competes with the one number they actually need.</div>
+  </div>
+  <div class="constraint-grid">
+    <div class="c"><span class="tag">Goal 01</span><h3>Streamline</h3><p>Simplify each screen so the predictions and signals lead, and supporting controls step back.</p></div>
+    <div class="c"><span class="tag">Goal 02</span><h3>Reduce cognitive load</h3><p>Remove competing styles, always-open panels and noise so users can scan, compare and decide faster.</p></div>
+    <div class="c"><span class="tag">Goal 03</span><h3>Align to the system</h3><p>Rebuild every screen from Premier Design System components so CognitiveRx looks and behaves like the rest of the portfolio.</p></div>
+  </div>
+  <div class="quote" style="margin-top:2.8rem;"><p>How might we let pharmacy teams act on an AI prediction in seconds, without losing any of the data depth they rely on?</p></div>
+</section>
+
+<div class="stripe"></div>
+
+<div class="people-band">
+  <div class="inner">
+    <div class="section-head">
+      <h2>My role</h2>
+      <div class="lede">I led the redesign from audit to high-fidelity screens, grounding each decision in conversations with the people who use and support the product.</div>
+    </div>
+    <div class="process">
+      <div class="step"><div class="n">Step 01</div><h3>Audit</h3><p>Captured every legacy screen and mapped where patterns, type styles and controls diverged across modules.</p></div>
+      <div class="step"><div class="n">Step 02</div><h3>Consult</h3><p>Worked with end users and pharmacy SMEs to learn which data drives decisions and which elements could move out of the way.</p></div>
+      <div class="step"><div class="n">Step 03</div><h3>Redesign</h3><p>Rebuilt 36 screens from Premier Design System components, side by side with the legacy versions for review.</p></div>
+    </div>
+  </div>
+</div>
+
+<section>
+  <div class="section-head">
+    <h2>Design principles</h2>
+    <div class="lede">Four principles turned "reduce cognitive load" into decisions we could apply to every screen.</div>
+  </div>
+  <div class="principles">
+    <div class="p"><div class="idx">01</div><h4>Data first, controls on demand</h4><p>Filters and settings appear when someone asks for them. The rest of the time, the data gets the full width of the page.</p></div>
+    <div class="p"><div class="idx">02</div><h4>Lead with the answer</h4><p>Each page opens with a short row of KPIs, so the headline is clear before anyone reads a table.</p></div>
+    <div class="p"><div class="idx">03</div><h4>One voice, one style</h4><p>One typeface, sentence case and a single link style replace serif titles, all-caps labels and underlined blue links.</p></div>
+    <div class="p"><div class="idx">04</div><h4>Build from the system</h4><p>Grids, steppers, tabs, cards and buttons come from the Premier Design System, so a pattern learned once works everywhere.</p></div>
+  </div>
+</section>
+
+<div class="stripe"></div>
+
+<section>
+  <div class="section-head">
+    <h2>Before and after</h2>
+    <div class="lede">Every redesigned screen was set beside its legacy version. Four of them show the changes that mattered most.</div>
+  </div>
+
+  <div class="workflow-head"><span class="tag">Buy-ins</span><h3>My Predictions</h3></div>
+  <p class="workflow-copy">This is where teams act on predicted price increases. The legacy screen kept 13 filter groups open on the left at all times and pushed range filters into the header, leaving the predictions table squeezed in between.</p>
+  <div class="ba">
+    <figure><span class="ba-label">Before</span><a href="images/cognitiverx-my-predictions-before.png"><img src="images/cognitiverx-my-predictions-before.png" alt="Legacy My Predictions screen with a dark header, an always-open filter panel listing NDC, facility, wholesaler, account type and GPI drug group checkboxes, range inputs in the header, two KPI cards and a dense predictions table." loading="lazy"></a></figure>
+    <figure><span class="ba-label after">After</span><a href="images/cognitiverx-my-predictions-after.png"><img src="images/cognitiverx-my-predictions-after.png" alt="Redesigned My Predictions screen with the Premier header, a page title and Filters button, a four-metric KPI strip, and a full-width predictions grid with expandable rows and an actions menu." loading="lazy"></a></figure>
+  </div>
+  <ul class="changes">
+    <li>Filters moved behind a single <b>Filters</b> button, giving the table the full page width.</li>
+    <li>Two floating KPI cards became one strip of four: buy-in NDCs, impacted facilities, total impact and prediction accuracy.</li>
+    <li>Rows now expand in place, and bulk actions and export sit together above the grid.</li>
+  </ul>
+  <figure>
+    <img src="images/cognitiverx-my-predictions-filters-open.png" alt="My Predictions with the filter panel open as a tinted grid of dropdowns and range inputs, with Clear and Apply Filters buttons, above the KPI strip and table." loading="lazy">
+    <figcaption>01 — Filters on demand: every filter in one scannable grid, applied in a single step</figcaption>
+  </figure>
+
+  <div class="workflow-head"><span class="tag">Signals &amp; Shortages</span><h3>National Shortages</h3></div>
+  <p class="workflow-copy">A ranked list of problem drugs drives a detail view of fill rate and supply impact. The legacy version mixed serif and sans-serif type, tab styles and all-caps legends, and its charts used inconsistent color.</p>
+  <div class="ba">
+    <figure><span class="ba-label">Before</span><a href="images/cognitiverx-national-shortages-before.png"><img src="images/cognitiverx-national-shortages-before.png" alt="Legacy National Shortages screen with a problem drugs bar chart, serif headings, a daily fill rate line chart, and pie charts with all-caps legends and Top 5 and See All tabs." loading="lazy"></a></figure>
+    <figure><span class="ba-label after">After</span><a href="images/cognitiverx-national-shortages-after.png"><img src="images/cognitiverx-national-shortages-after.png" alt="Redesigned National Shortages screen with a problem drugs list and chart/table toggle on the left, a KPI strip for the selected drug, a daily fill rate chart, and impact cards using the design system palette." loading="lazy"></a></figure>
+  </div>
+  <ul class="changes">
+    <li>A chart/table toggle and a clear selected state make the problem-drug list easy to scan and switch.</li>
+    <li>Every impact card follows one template, with a chart or list toggle in the same place.</li>
+    <li>Charts use the Premier Design System data palette, with consistent legends in sentence case.</li>
+  </ul>
+
+  <div class="workflow-head"><span class="tag">Margin</span><h3>Margin Modeler</h3></div>
+  <p class="workflow-copy">A five-step wizard compares a drug's margin against alternatives. In the legacy form, labels drifted out of line with their inputs, so it was hard to tell which value belonged to which account type.</p>
+  <div class="ba">
+    <figure><span class="ba-label">Before</span><a href="images/cognitiverx-margin-modeler-before.png"><img src="images/cognitiverx-margin-modeler-before.png" alt="Legacy Margin Modeler step two with a stepper, two drug columns of input boxes, and account type labels that sit out of line with their inputs." loading="lazy"></a></figure>
+    <figure><span class="ba-label after">After</span><a href="images/cognitiverx-margin-modeler-after.png"><img src="images/cognitiverx-margin-modeler-after.png" alt="Redesigned Margin Modeler step two with a design system stepper and two bordered comparison tables, one row per account type and one column each for a primary drug and two comparison drugs." loading="lazy"></a></figure>
+  </div>
+  <ul class="changes">
+    <li>Inputs sit in a true comparison table: one row per account type, one column per drug.</li>
+    <li>Column headers name the primary and comparison drugs and show each one's payment status.</li>
+    <li>Navigation and Cancel, Save &amp; Exit and Next follow the standard design system action bar.</li>
+  </ul>
+
+  <div class="workflow-head"><span class="tag">Signals &amp; Shortages</span><h3>Drug Shortage Alerts</h3></div>
+  <p class="workflow-copy">Alerts rank the drugs most at risk. The redesign keeps every data point but trades the side filter panel, mixed card headers and underlined links for a calmer layout.</p>
+  <div class="ba">
+    <figure><span class="ba-label">Before</span><a href="images/cognitiverx-shortage-alerts-before.png"><img src="images/cognitiverx-shortage-alerts-before.png" alt="Legacy Drug Shortage Alerts screen with a left filter panel, serif card titles, pie charts with all-caps legends, and a table of underlined blue drug names with rank change arrows." loading="lazy"></a></figure>
+    <figure><span class="ba-label after">After</span><a href="images/cognitiverx-shortage-alerts-after.png"><img src="images/cognitiverx-shortage-alerts-after.png" alt="Redesigned Drug Shortage Alerts screen with tabs, two shortage chart cards, early detection rate and average lead time KPI cards, and a standard data grid with rank and rank change columns." loading="lazy"></a></figure>
+  </div>
+  <ul class="changes">
+    <li>Early detection rate and average lead time sit beside the charts as plain KPI cards.</li>
+    <li>The alert list uses the standard grid, with sortable rank and a quick add-to-watchlist action.</li>
+    <li>Filters, search and export follow the same placement as every other screen.</li>
+  </ul>
+</section>
+
+<div class="pharma-band">
+  <div class="inner">
+    <div class="section-head">
+      <h2>System-wide changes</h2>
+      <div class="lede">The biggest reduction in cognitive load came from consistency. Once a pattern was set, it was applied across all 36 screens.</div>
+    </div>
+    <div class="pharma-list">
+      <div class="item"><span class="tag">Navigation</span><h4>A quieter sidebar</h4><p>Only the active section expands, with a clear current-page marker, instead of every menu open at once.</p></div>
+      <div class="item"><span class="tag">Layout</span><h4>One page frame</h4><p>Every screen shares the Premier header, a page title with its primary action, and a content card.</p></div>
+      <div class="item"><span class="tag">Filters</span><h4>On demand</h4><p>One filter pattern with Clear and Apply replaces side panels and header range inputs.</p></div>
+      <div class="item"><span class="tag">Data</span><h4>Standard grids</h4><p>Tables share headers, row actions, pagination, rows per page and export placement.</p></div>
+      <div class="item"><span class="tag">Charts</span><h4>One palette</h4><p>Charts use the design system data colors and a consistent chart/table toggle.</p></div>
+      <div class="item"><span class="tag">Typography</span><h4>One type system</h4><p>Sentence case and a single typeface replace serif titles, all-caps labels and underlined links.</p></div>
+    </div>
+  </div>
+</div>
+
+<section>
+  <div class="section-head">
+    <h2>Where it stands</h2>
+    <div class="lede">The redesign covers every area of the product, from buy-ins and margin to preferences and support.</div>
+  </div>
+  <table class="outcome-table">
+    <tr><th>Area</th><th>Status</th></tr>
+    <tr><td>Premier Design System alignment across all modules</td><td class="result">36 screens designed</td></tr>
+    <tr><td>Before-and-after review with end users and SMEs</td><td class="result">Complete</td></tr>
+    <tr><td>Outcome metrics</td><td class="result">To be measured</td></tr>
+  </table>
+</section>
+
+<section class="tight">
+  <div class="section-head">
+    <h2>Reflection</h2>
+    <div class="lede">With AI products, the model is only half the work. The other half is making its answer easy to trust and act on.</div>
+  </div>
+  <div class="takeaways">
+    <div class="item"><h4>Less on screen, not less data</h4><p>Hiding controls until they're needed cut clutter without removing a single data point users depend on.</p></div>
+    <div class="item"><h4>SMEs know what matters</h4><p>Pharmacy experts were the fastest route to knowing which numbers lead a decision and which can wait.</p></div>
+    <div class="item"><h4>Side by side keeps everyone honest</h4><p>Placing each new screen beside its legacy version made reviews concrete and showed what had changed at a glance.</p></div>
+    <div class="item"><h4>Consistency compounds</h4><p>Each pattern settled on one screen made the next 35 faster to design and easier to learn.</p></div>
+  </div>
+</section>
+
+<footer>
+  <a class="back" href="index.html">← Back to portfolio</a>
+  <div>CognitiveRx · Principal Product Designer · Case study prepared for portfolio use</div>
+</footer>
+
+</body>
+</html>
