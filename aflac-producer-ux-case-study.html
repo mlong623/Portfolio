@@ -160,12 +160,68 @@
   .scroll-fig{overflow-x:auto; border-radius:6px; border:1px solid var(--line); background:var(--white); box-shadow: 0 24px 48px -24px rgba(0,59,73,0.35); -webkit-overflow-scrolling:touch;}
   .scroll-fig img{max-width:none; width:2200px; border:none; box-shadow:none; border-radius:0;}
 
-  .journey-grid{display:grid; grid-template-columns:repeat(2,1fr); gap:2.4rem 2rem; margin-top:2.6rem;}
-  .journey-grid figure{margin:0;}
-  .journey-grid a{display:block; text-decoration:none;}
-  .journey-grid img{aspect-ratio:4/3; object-fit:cover; object-position:top left; width:100%; transition:transform .2s;}
-  .journey-grid a:hover img{transform:translateY(-3px);}
-  .journey-grid .open{font-family:'IBM Plex Mono',monospace; font-size:0.7rem; letter-spacing:0.06em; text-transform:uppercase; color:var(--navy); border-bottom:1px solid var(--rust); padding-bottom:2px; display:inline-block; margin-top:0.6rem;}
+
+  .lines{display:flex; flex-wrap:wrap; gap:0.9rem 1.8rem; margin-top:1.8rem; padding:1.2rem 0; border-top:1px solid var(--line); border-bottom:1px solid var(--line);}
+  .lines span{display:flex; align-items:center; gap:0.6rem; font-size:0.88rem; color:#2C4C56;}
+  .lines i{display:block; width:34px; height:7px; border-radius:4px;}
+  .lines .rec{background:#7FC9A2;} .lines .opt{background:#C9E7D7;} .lines .alt{background:#EF8079;} .lines .fut{background:#E2A6F0;} .lines .chal{background:repeating-linear-gradient(90deg,#F2A11F 0 6px,#7FC9A2 6px 12px);}
+  .lines .stn{width:16px; height:16px; border-radius:50%; border:3px solid #7FC9A2; background:var(--white);}
+
+  .levels{display:grid; grid-template-columns:repeat(4,1fr); gap:1.4rem; margin-top:2.6rem;}
+  .levels figure{margin:0;}
+  .levels img{width:100%; aspect-ratio:2817/1500; object-fit:cover; border-radius:4px; border:1px solid var(--line); background:var(--white);}
+  .levels .lv{font-family:'IBM Plex Mono',monospace; font-size:0.68rem; letter-spacing:0.08em; text-transform:uppercase; color:var(--rust); display:block; margin:0.9rem 0 0.3rem;}
+  .levels h4{margin:0 0 0.3rem; font-size:1rem; color:var(--navy); font-weight:600;}
+  .levels p{margin:0; font-size:0.88rem; color:#3B5A63;}
+
+  .sv-tabs{display:flex; flex-wrap:wrap; gap:0.5rem; margin-top:2.4rem;}
+  .sv-tabs button, .sv-nav button{font-family:'IBM Plex Mono',monospace; font-size:0.7rem; letter-spacing:0.06em; text-transform:uppercase; background:transparent; color:var(--navy); border:1px solid var(--line); border-radius:100px; padding:0.6rem 1.1rem; cursor:pointer;}
+  .sv-tabs button:hover, .sv-nav button:hover{border-color:var(--teal);}
+  .sv-tabs button[aria-selected="true"]{background:var(--navy); color:var(--white); border-color:var(--navy);}
+  .sv-tabs button span{opacity:0.6; margin-right:0.4em;}
+  .sv-panel{margin-top:1.6rem;}
+  .sv-panel + .sv-panel{margin-top:4rem;}
+  .js .sv-panel + .sv-panel{margin-top:1.6rem;}
+  .sv-stage{background:var(--white); border:1px solid var(--line); border-radius:6px; overflow-x:auto; -webkit-overflow-scrolling:touch; box-shadow:0 24px 48px -24px rgba(0,59,73,0.35);}
+  .sv-stage img{width:100%; min-width:820px; aspect-ratio:2817/1500;}
+  .sv-bar{display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:0.8rem 1.4rem; margin-top:1rem;}
+  .sv-cap{display:flex; align-items:baseline; gap:0.8rem; flex-wrap:wrap; min-width:0;}
+  .sv-cap .lv{font-family:'IBM Plex Mono',monospace; font-size:0.66rem; letter-spacing:0.08em; text-transform:uppercase; color:var(--white); background:var(--rust); padding:0.25rem 0.55rem; border-radius:3px;}
+  .sv-cap .lab{font-size:1rem; color:var(--navy); font-weight:600;}
+  .sv-cap .n{font-family:'IBM Plex Mono',monospace; font-size:0.72rem; color:#5C7B84; font-variant-numeric:tabular-nums;}
+  .sv-nav{display:flex; gap:0.5rem; align-items:center;}
+  .sv-nav a{font-family:'IBM Plex Mono',monospace; font-size:0.7rem; letter-spacing:0.06em; text-transform:uppercase; color:var(--navy); text-decoration:none; border-bottom:1px solid var(--rust); padding-bottom:2px; margin-left:0.6rem;}
+  .sv-strip{display:flex; gap:0.7rem; overflow-x:auto; margin-top:1.2rem; padding-bottom:0.6rem; -webkit-overflow-scrolling:touch;}
+  .sv-strip a{flex:0 0 150px; text-decoration:none; color:inherit; display:block;}
+  .sv-strip img{width:150px; aspect-ratio:2817/1500; object-fit:cover; border:2px solid transparent; border-radius:4px; background:var(--white); outline:1px solid var(--line);}
+  .sv-strip a[aria-current="true"] img{border-color:var(--rust);}
+  .sv-strip a:focus-visible img, .sv-tabs button:focus-visible, .sv-nav button:focus-visible{outline:2px solid var(--teal); outline-offset:2px;}
+  .sv-strip small{display:block; font-family:'IBM Plex Mono',monospace; font-size:0.6rem; letter-spacing:0.05em; text-transform:uppercase; color:#5C7B84; margin-top:0.4rem; line-height:1.35;}
+  .showcase{background:var(--white); border-bottom:1px solid var(--line);}
+  .showcase .inner{max-width:1400px; margin:0 auto; padding:3.2rem 3vw 2.6rem;}
+  .showcase .eyebrow{margin:0 0 1.4rem 3vw;}
+  .showcase .scroller{overflow-x:auto; -webkit-overflow-scrolling:touch;}
+  .showcase img{width:100%; min-width:900px;}
+  .showcase figcaption{margin:1rem 0 0 3vw;}
+
+  .jv-tabs{display:flex; flex-wrap:wrap; gap:0.5rem; margin-top:2.4rem;}
+  .jv-tabs button{font-family:'IBM Plex Mono',monospace; font-size:0.7rem; letter-spacing:0.06em; text-transform:uppercase; background:transparent; color:var(--navy); border:1px solid var(--line); border-radius:100px; padding:0.6rem 1.1rem; cursor:pointer;}
+  .jv-tabs button:hover{border-color:var(--teal);}
+  .jv-tabs button[aria-selected="true"]{background:var(--navy); color:var(--white); border-color:var(--navy);}
+  .jv-tabs button span{opacity:0.6; margin-right:0.4em;}
+  .jv-panel{margin-top:1.6rem;}
+  .jv-panel + .jv-panel{margin-top:4rem;}
+  .js .jv-panel + .jv-panel{margin-top:1.6rem;}
+  .jv-panel[hidden]{display:none;}
+  .jv-panel h3{font-size:1.25rem; color:var(--navy); margin-bottom:0.3rem;}
+  .jv-panel .who{font-size:0.95rem; color:#3B5A63; max-width:70ch; margin:0 0 1.2rem;}
+  .jv-line{background:var(--white); border:1px solid var(--line); border-radius:6px; overflow-x:auto; -webkit-overflow-scrolling:touch; box-shadow:0 24px 48px -24px rgba(0,59,73,0.35);}
+  .jv-line img{width:100%; min-width:900px;}
+  .jv-full{margin-top:1.4rem; height:620px; overflow:auto; background:var(--white); border:1px solid var(--line); border-radius:6px; -webkit-overflow-scrolling:touch;}
+  .jv-full img{max-width:none; width:2000px;}
+  .jv-meta{display:flex; justify-content:space-between; flex-wrap:wrap; gap:0.6rem 1.4rem; margin-top:0.9rem;}
+  .jv-meta .label{font-family:'IBM Plex Mono',monospace; font-size:0.72rem; color:var(--teal);}
+  .jv-meta a{font-family:'IBM Plex Mono',monospace; font-size:0.72rem; letter-spacing:0.06em; text-transform:uppercase; color:var(--navy); text-decoration:none; border-bottom:1px solid var(--rust); padding-bottom:2px;}
 
   .quote cite{display:block; font-style:normal; font-family:'IBM Plex Mono',monospace; font-size:0.7rem; letter-spacing:0.08em; text-transform:uppercase; color:var(--teal); margin-top:0.8rem;}
   .quote-row{display:grid; grid-template-columns:repeat(3,1fr); gap:2rem; margin-top:2.4rem;}
@@ -177,7 +233,11 @@
     .stat-strip-inner.four .stat{border-top:none; padding-top:0;}
     .producers{grid-template-columns:1fr 1fr;}
     .anatomy{grid-template-columns:1fr 1fr;}
-    .journey-grid{grid-template-columns:1fr;}
+    .levels{grid-template-columns:1fr 1fr;}
+    .sv-stage img{min-width:680px;}
+    .jv-full{height:460px;}
+    .jv-full img{width:1500px;}
+    .jv-line img, .showcase img{min-width:760px;}
     .quote-row{grid-template-columns:1fr;}
     .phase-bar div{font-size:0.6rem; letter-spacing:0.04em; padding:0.8rem 0.25rem;}
     .tool-line{font-size:0.6rem;}
@@ -195,7 +255,7 @@
   <div class="hero-inner">
     <div class="eyebrow">Insurance · UX Research &amp; Service Design</div>
     <h1>Mapping the producer experience while Aflac rebuilt its tools</h1>
-    <p class="sub">As part of the Vision 2020 Transformation Initiative, Aflac was rolling out a new generation of CRM tools. I led an eight-week assessment of how its producers actually prospect, propose, and onboard. Through 34 interviews we found where the process was breaking down, mapped it as six visual "subway map" journeys, and set out the changes Aflac should make before building any further.</p>
+    <p class="sub">As part of the Vision 2020 Transformation Initiative, Aflac was rolling out a new generation of CRM tools. I led an eight-week assessment of how its producers actually prospect, propose, and onboard. Through 34 interviews we found where the process was breaking down, mapped it in six user journeys and six "subway map" process guides, and set out the changes Aflac should make before building any further.</p>
     <div class="meta-row">
       <div class="meta-item"><div class="label">Role</div><div class="val">UX Lead · Principal Contributor (EY)</div></div>
       <div class="meta-item"><div class="label">Duration</div><div class="val">8 weeks · Nov 2016 – Jan 2017</div></div>
@@ -209,10 +269,20 @@
   <div class="stat-strip-inner four">
     <div class="stat"><div class="num">18</div><div class="desc">internal stakeholder interviews and tool demos</div></div>
     <div class="stat"><div class="num">16</div><div class="desc">producer interviews across four roles</div></div>
-    <div class="stat"><div class="num">6</div><div class="desc">user journeys, each drawn as a "subway map"</div></div>
-    <div class="stat"><div class="num">6</div><div class="desc">layered experience assessment maps</div></div>
+    <div class="stat"><div class="num">6</div><div class="desc">user journeys charting how each producer feels</div></div>
+    <div class="stat"><div class="num">6</div><div class="desc">"subway map" process guides, four levels deep</div></div>
   </div>
 </div>
+
+<figure class="showcase" style="margin:0;">
+  <div class="inner">
+    <div class="eyebrow">Subway map · Broker pre-sales, Prospect phase</div>
+    <div class="scroller">
+      <img src="images/subway/broker-06.jpg" alt="Subway map of the Broker Prospect phase. Four steps, Relationship Development, Consult with Broker, Identify Case and Conceptualize Solution, each run as a green line with 17 numbered stations. Branches show optional paths in light green, alternate paths in red and a challenged path in orange, and each station is marked with the tools and interactions it uses.">
+    </div>
+    <figcaption>Each step of the process runs as a line. Every station is a task, marked with the tools, people and channels it depends on. Where producers leave the recommended route, the map branches.</figcaption>
+  </div>
+</figure>
 
 <section>
   <div class="section-head">
@@ -258,7 +328,7 @@
       <li>Led and mentored three junior designers</li>
       <li>Planned the stakeholder and producer research</li>
       <li>Directed synthesis of all 34 interviews</li>
-      <li>Developed the "subway map" journey format</li>
+      <li>Developed the "subway map" format for the process guides</li>
       <li>Led production of every deliverable, including the executive summary</li>
     </ul>
   </div>
@@ -367,13 +437,13 @@
 <section>
   <div class="section-head">
     <h2>Making the journey visible</h2>
-    <div class="lede">A finding in a slide deck is easy to agree with and then forget. We drew each producer's journey as a "subway map," a route you can follow stop by stop.</div>
+    <div class="lede">A finding in a slide deck is easy to agree with and then forget. So we made two kinds of map: user journeys that show how each producer feels, and subway maps that show how the work actually moves.</div>
   </div>
-  <div class="prose">Each map follows one producer through the phases of a process. Each stage is a stop, and an emotional line runs across the top showing how they feel at each one. Callouts mark the <strong>moments of truth</strong>, where Aflac either earns the producer's confidence or loses it. Below the line, each stop is broken into a consistent set of layers, so the maps can be compared side by side.</div>
+  <div class="prose">Each journey follows one producer through the phases of a process. An emotional line runs across the top, showing how they feel at each stage. Callouts mark the <strong>moments of truth</strong>, where Aflac either earns the producer's confidence or loses it. Below the line, each stop is broken into a consistent set of layers, so the maps can be compared side by side.</div>
 
   <figure>
     <img src="images/aflac-puxa-journey-broker-detail-emotion-curve.jpg" alt="Close-up of the Broker pre-sales journey. A persona header sits above Prospect phase stages. Below them an emotional curve moves through Cautiously Optimistic, Hopeful, Excited, and Encouraged, with Moment of Truth callouts and a Doing row underneath.">
-    <figcaption>02 — Broker pre-sales journey, detail. The emotional line and moments of truth sit on top of the layers that explain them.</figcaption>
+    <figcaption>02 — Broker pre-sales user journey, detail. The emotional line and moments of truth sit on top of the layers that explain them.</figcaption>
   </figure>
 
   <div class="anatomy">
@@ -391,17 +461,140 @@
 <section class="tight">
   <div class="section-head">
     <h2>Six journeys</h2>
-    <div class="lede">Four pre-sales journeys, one per producer role, and two onboarding journeys showing recruitment from both sides: the new agent and the coordinator bringing them in.</div>
+    <div class="lede">Four pre-sales journeys, one per producer role, and two onboarding journeys showing recruitment from both sides: the new agent and the coordinator bringing them in. Pick a journey to see its emotional line, then scroll the full map below it.</div>
   </div>
-  <div class="journey-grid">
-    <figure><a href="images/aflac-puxa-journey-broker-presales.jpg" target="_blank" rel="noopener"><img src="images/aflac-puxa-journey-broker-presales.jpg" alt="Full Broker pre-sales user journey map across Prospect, Propose, and Commit." loading="lazy"><span class="open">Open full map →</span></a><figcaption>03 — Pre-sales · Broker</figcaption></figure>
-    <figure><a href="images/aflac-puxa-journey-bsp-presales.jpg" target="_blank" rel="noopener"><img src="images/aflac-puxa-journey-bsp-presales.jpg" alt="Full Broker Sales Professional pre-sales user journey map across Prospect, Propose, and Commit." loading="lazy"><span class="open">Open full map →</span></a><figcaption>04 — Pre-sales · Broker Sales Professional</figcaption></figure>
-    <figure><a href="images/aflac-puxa-journey-career-agent-presales.jpg" target="_blank" rel="noopener"><img src="images/aflac-puxa-journey-career-agent-presales.jpg" alt="Full Career Agent pre-sales user journey map across Prospect, Propose, and Commit." loading="lazy"><span class="open">Open full map →</span></a><figcaption>05 — Pre-sales · Career Agent</figcaption></figure>
-    <figure><a href="images/aflac-puxa-journey-rsc-dsc-presales.jpg" target="_blank" rel="noopener"><img src="images/aflac-puxa-journey-rsc-dsc-presales.jpg" alt="Full RSC/DSC pre-sales user journey map across Prospect, Propose, and Commit." loading="lazy"><span class="open">Open full map →</span></a><figcaption>06 — Pre-sales · RSC / DSC</figcaption></figure>
-    <figure><a href="images/aflac-puxa-journey-career-agent-onboarding.jpg" target="_blank" rel="noopener"><img src="images/aflac-puxa-journey-career-agent-onboarding.jpg" alt="Full Career Agent onboarding user journey map across Recruiting, Local Onboarding, and Aflac Onboarding." loading="lazy"><span class="open">Open full map →</span></a><figcaption>07 — Onboarding · Career Agent</figcaption></figure>
-    <figure><a href="images/aflac-puxa-journey-rsc-dsc-onboarding.jpg" target="_blank" rel="noopener"><img src="images/aflac-puxa-journey-rsc-dsc-onboarding.jpg" alt="Full RSC/DSC onboarding user journey map across Recruiting, Local Onboarding, and Aflac Onboarding." loading="lazy"><span class="open">Open full map →</span></a><figcaption>08 — Onboarding · RSC / DSC</figcaption></figure>
+  <div class="jv-tabs" role="tablist" aria-label="Choose a journey" hidden><button type="button" role="tab" id="jv-tab-0" aria-controls="jv-0" aria-selected="true"><span>Pre-sales</span>Broker</button><button type="button" role="tab" id="jv-tab-1" aria-controls="jv-1" aria-selected="false"><span>Pre-sales</span>Broker Sales Pro</button><button type="button" role="tab" id="jv-tab-2" aria-controls="jv-2" aria-selected="false"><span>Pre-sales</span>Career Agent</button><button type="button" role="tab" id="jv-tab-3" aria-controls="jv-3" aria-selected="false"><span>Pre-sales</span>RSC / DSC</button><button type="button" role="tab" id="jv-tab-4" aria-controls="jv-4" aria-selected="false"><span>Onboarding</span>Career Agent</button><button type="button" role="tab" id="jv-tab-5" aria-controls="jv-5" aria-selected="false"><span>Onboarding</span>RSC / DSC</button></div>
+
+  <div class="jv-panel" id="jv-0" role="tabpanel" aria-labelledby="jv-tab-0">
+    <h3>Pre-sales · Broker</h3>
+    <p class="who">A broker leading a growing regional firm, who relies on his Aflac BSP to sell Individual and Group voluntary benefits.</p>
+    <div class="jv-line"><img src="images/aflac-puxa-emotion-broker-presales.jpg" alt="Emotional line of the pre-sales journey for the Broker, through Prospect → Propose → Commit, with moments of truth called out." loading="lazy"></div>
+    <div class="jv-full" tabindex="0" aria-label="Full Broker pre-sales journey map, scrollable"><img src="images/aflac-puxa-journey-broker-presales.jpg" alt="Full Broker pre-sales journey map with emotions, doing, thinking, feeling, touchpoints, pain points, opportunities and KPIs for every stop." loading="lazy"></div>
+    <div class="jv-meta"><span class="label">Prospect → Propose → Commit · scroll the map to explore every layer</span><a href="images/aflac-puxa-journey-broker-presales.jpg" target="_blank" rel="noopener">Open full size →</a></div>
   </div>
-  <div class="prose" style="margin-top:2.8rem;">Alongside the journeys, we produced six <strong>experience assessment maps</strong>, each four levels deep. They go from an overview of purpose, to major steps, to step-level activities, and finally to detailed breakouts of the interactions, tools, people, and processes in the areas with the most pain or the most opportunity.</div>
+  <div class="jv-panel" id="jv-1" role="tabpanel" aria-labelledby="jv-tab-1">
+    <h3>Pre-sales · Broker Sales Pro</h3>
+    <p class="who">A BSP, assigned to a regional brokerage within the past year, building an Individual and Group solution with his broker.</p>
+    <div class="jv-line"><img src="images/aflac-puxa-emotion-bsp-presales.jpg" alt="Emotional line of the pre-sales journey for the Broker Sales Pro, through Prospect → Propose → Commit, with moments of truth called out." loading="lazy"></div>
+    <div class="jv-full" tabindex="0" aria-label="Full Broker Sales Pro pre-sales journey map, scrollable"><img src="images/aflac-puxa-journey-bsp-presales.jpg" alt="Full Broker Sales Pro pre-sales journey map with emotions, doing, thinking, feeling, touchpoints, pain points, opportunities and KPIs for every stop." loading="lazy"></div>
+    <div class="jv-meta"><span class="label">Prospect → Propose → Commit · scroll the map to explore every layer</span><a href="images/aflac-puxa-journey-bsp-presales.jpg" target="_blank" rel="noopener">Open full size →</a></div>
+  </div>
+  <div class="jv-panel" id="jv-2" role="tabpanel" aria-labelledby="jv-tab-2">
+    <h3>Pre-sales · Career Agent</h3>
+    <p class="who">An experienced career agent selling Aflac Individual and Group products on his own.</p>
+    <div class="jv-line"><img src="images/aflac-puxa-emotion-career-agent-presales.jpg" alt="Emotional line of the pre-sales journey for the Career Agent, through Prospect → Propose → Commit, with moments of truth called out." loading="lazy"></div>
+    <div class="jv-full" tabindex="0" aria-label="Full Career Agent pre-sales journey map, scrollable"><img src="images/aflac-puxa-journey-career-agent-presales.jpg" alt="Full Career Agent pre-sales journey map with emotions, doing, thinking, feeling, touchpoints, pain points, opportunities and KPIs for every stop." loading="lazy"></div>
+    <div class="jv-meta"><span class="label">Prospect → Propose → Commit · scroll the map to explore every layer</span><a href="images/aflac-puxa-journey-career-agent-presales.jpg" target="_blank" rel="noopener">Open full size →</a></div>
+  </div>
+  <div class="jv-panel" id="jv-3" role="tabpanel" aria-labelledby="jv-tab-3">
+    <h3>Pre-sales · RSC / DSC</h3>
+    <p class="who">A sales coordinator writing their own business while mentoring career agents through the sale.</p>
+    <div class="jv-line"><img src="images/aflac-puxa-emotion-rsc-dsc-presales.jpg" alt="Emotional line of the pre-sales journey for the RSC / DSC, through Prospect → Propose → Commit, with moments of truth called out." loading="lazy"></div>
+    <div class="jv-full" tabindex="0" aria-label="Full RSC / DSC pre-sales journey map, scrollable"><img src="images/aflac-puxa-journey-rsc-dsc-presales.jpg" alt="Full RSC / DSC pre-sales journey map with emotions, doing, thinking, feeling, touchpoints, pain points, opportunities and KPIs for every stop." loading="lazy"></div>
+    <div class="jv-meta"><span class="label">Prospect → Propose → Commit · scroll the map to explore every layer</span><a href="images/aflac-puxa-journey-rsc-dsc-presales.jpg" target="_blank" rel="noopener">Open full size →</a></div>
+  </div>
+  <div class="jv-panel" id="jv-4" role="tabpanel" aria-labelledby="jv-tab-4">
+    <h3>Onboarding · Career Agent</h3>
+    <p class="who">A new career agent, from first contact with a recruiter through to writing business as a veteran agent.</p>
+    <div class="jv-line"><img src="images/aflac-puxa-emotion-career-agent-onboarding.jpg" alt="Emotional line of the onboarding journey for the Career Agent, through Recruiting → Local onboarding → Aflac onboarding, with moments of truth called out." loading="lazy"></div>
+    <div class="jv-full" tabindex="0" aria-label="Full Career Agent onboarding journey map, scrollable"><img src="images/aflac-puxa-journey-career-agent-onboarding.jpg" alt="Full Career Agent onboarding journey map with emotions, doing, thinking, feeling, touchpoints, pain points, opportunities and KPIs for every stop." loading="lazy"></div>
+    <div class="jv-meta"><span class="label">Recruiting → Local onboarding → Aflac onboarding · scroll the map to explore every layer</span><a href="images/aflac-puxa-journey-career-agent-onboarding.jpg" target="_blank" rel="noopener">Open full size →</a></div>
+  </div>
+  <div class="jv-panel" id="jv-5" role="tabpanel" aria-labelledby="jv-tab-5">
+    <h3>Onboarding · RSC / DSC</h3>
+    <p class="who">A coordinator recruiting, licensing, training, and mentoring new agents until they sell independently.</p>
+    <div class="jv-line"><img src="images/aflac-puxa-emotion-rsc-dsc-onboarding.jpg" alt="Emotional line of the onboarding journey for the RSC / DSC, through Recruiting → Local onboarding → Aflac onboarding, with moments of truth called out." loading="lazy"></div>
+    <div class="jv-full" tabindex="0" aria-label="Full RSC / DSC onboarding journey map, scrollable"><img src="images/aflac-puxa-journey-rsc-dsc-onboarding.jpg" alt="Full RSC / DSC onboarding journey map with emotions, doing, thinking, feeling, touchpoints, pain points, opportunities and KPIs for every stop." loading="lazy"></div>
+    <div class="jv-meta"><span class="label">Recruiting → Local onboarding → Aflac onboarding · scroll the map to explore every layer</span><a href="images/aflac-puxa-journey-rsc-dsc-onboarding.jpg" target="_blank" rel="noopener">Open full size →</a></div>
+  </div>
+</section>
+
+<div class="stripe"></div>
+
+<section>
+  <div class="section-head">
+    <h2>The subway maps</h2>
+    <div class="lede">The journeys show how producers feel. The subway maps show how the work moves: every task, tool and handoff, and every place producers leave the official route.</div>
+  </div>
+  <div class="prose">Each process step is drawn as a transit line, and each task along it is a station. Every station shows who is involved and which tools and channels it depends on, such as BCLM, YouGotNet, lead sheets, the Do Not Call list, phone or email. Where producers go their own way, the line branches, colored by what kind of route it is.</div>
+  <div class="lines" aria-label="Map legend">
+    <span><i class="rec"></i>Recommended path</span>
+    <span><i class="opt"></i>Optional path</span>
+    <span><i class="alt"></i>Alternate path</span>
+    <span><i class="fut"></i>Future path</span>
+    <span><i class="chal"></i>Challenged path</span>
+    <span><i class="stn"></i>Station: a task, with its tools and roles</span>
+  </div>
+  <div class="prose" style="margin-top:1.8rem;">That made the stakeholder findings concrete. "Proposals get made seven different ways" stopped being a sentence in a findings deck. It became a set of routes you could see, each with its pros, cons and producer quotes.</div>
+
+  <div class="levels">
+    <figure><img src="images/subway/broker-03.jpg" alt="Level 1 of the Broker subway map: Prospect, Propose and Commit described in three columns." loading="lazy"><span class="lv">Level 1</span><h4>Major steps</h4><p>A broad overview of the phases and the critical activities in each.</p></figure>
+    <figure><img src="images/subway/broker-05.jpg" alt="Level 2 of the Broker subway map: the Prospect phase as four lines with numbered steps." loading="lazy"><span class="lv">Level 2</span><h4>Steps and activities</h4><p>Each phase laid out as lines of numbered steps, with the challenges at each.</p></figure>
+    <figure><img src="images/subway/broker-06.jpg" alt="Level 3 of the Broker subway map: the same lines with branching paths, tools and roles at every station." loading="lazy"><span class="lv">Level 3</span><h4>Stations and tools</h4><p>The routes producers actually take, with the tools, platforms and roles at every station.</p></figure>
+    <figure><img src="images/subway/broker-07.jpg" alt="Level 4 of the Broker subway map: a deep dive on sharing the book of business, comparing alternate, optional and recommended routes." loading="lazy"><span class="lv">Level 4</span><h4>Deep dives</h4><p>Close-ups of high-pain stations, comparing each route's pros, cons and opportunities, with quotes from interviews.</p></figure>
+  </div>
+
+  <figure>
+    <div class="scroll-fig"><img src="images/subway/bsp-11.jpg" alt="Level 4 deep dive for a BSP creating a large group proposal. Five routes are compared side by side: a future path through the Proposal Tool, two alternate paths through APT and self-generated proposals, an optional formal request, and the recommended informal request, each with pros and cons, plus BSP quotes and opportunities." style="width:100%; min-width:1000px;"></div>
+    <figcaption>03 — Level 4 deep dive: a BSP creating a large group proposal. Five routes, each with its trade-offs, side by side.</figcaption>
+  </figure>
+</section>
+
+<section class="tight">
+  <div class="section-head">
+    <h2>All six subway maps</h2>
+    <div class="lede">One guide per journey, from Level 1 overview down to Level 4 deep dives. Pick a producer, then step through the pages.</div>
+  </div>
+  <div class="sv-tabs" role="tablist" aria-label="Choose a subway map" hidden><button type="button" role="tab" id="sv-tab-0" aria-controls="sv-0" aria-selected="true"><span>Pre-sales</span>Broker</button><button type="button" role="tab" id="sv-tab-1" aria-controls="sv-1" aria-selected="false"><span>Pre-sales</span>Broker Sales Pro</button><button type="button" role="tab" id="sv-tab-2" aria-controls="sv-2" aria-selected="false"><span>Pre-sales</span>Career Agent</button><button type="button" role="tab" id="sv-tab-3" aria-controls="sv-3" aria-selected="false"><span>Pre-sales</span>RSC / DSC</button><button type="button" role="tab" id="sv-tab-4" aria-controls="sv-4" aria-selected="false"><span>Onboarding</span>Career Agent</button><button type="button" role="tab" id="sv-tab-5" aria-controls="sv-5" aria-selected="false"><span>Onboarding</span>RSC / DSC</button></div>
+
+  <div class="sv-panel" id="sv-0" role="tabpanel" aria-labelledby="sv-tab-0">
+    <div class="sv-stage"><img src="images/subway/broker-03.jpg" alt="Pre-sales subway map for the Broker: Level 1, Major steps." loading="lazy"></div>
+    <div class="sv-bar">
+      <div class="sv-cap"><span class="lv">Level 1</span><span class="lab">Major steps</span><span class="n">1 / 10</span></div>
+      <div class="sv-nav"><button type="button" data-step="-1" aria-label="Previous page">← Prev</button><button type="button" data-step="1" aria-label="Next page">Next →</button><a href="images/subway/broker-03.jpg" target="_blank" rel="noopener">Full size</a></div>
+    </div>
+    <div class="sv-strip" aria-label="Pre-sales Broker pages"><a href="images/subway/broker-03.jpg" data-lv="Level 1" data-lab="Major steps" aria-current="true" target="_blank" rel="noopener"><img src="images/subway/broker-03-thumb.jpg" alt="" loading="lazy"><small>Level 1 · Major steps</small></a><a href="images/subway/broker-04.jpg" data-lv="Level 1" data-lab="Critical activities" aria-current="false" target="_blank" rel="noopener"><img src="images/subway/broker-04-thumb.jpg" alt="" loading="lazy"><small>Level 1 · Critical activities</small></a><a href="images/subway/broker-05.jpg" data-lv="Level 2" data-lab="Prospect · steps" aria-current="false" target="_blank" rel="noopener"><img src="images/subway/broker-05-thumb.jpg" alt="" loading="lazy"><small>Level 2 · Prospect · steps</small></a><a href="images/subway/broker-06.jpg" data-lv="Level 3" data-lab="Prospect · stations and tools" aria-current="false" target="_blank" rel="noopener"><img src="images/subway/broker-06-thumb.jpg" alt="" loading="lazy"><small>Level 3 · Prospect · stations and tools</small></a><a href="images/subway/broker-07.jpg" data-lv="Level 4" data-lab="Share book of business" aria-current="false" target="_blank" rel="noopener"><img src="images/subway/broker-07-thumb.jpg" alt="" loading="lazy"><small>Level 4 · Share book of business</small></a><a href="images/subway/broker-08.jpg" data-lv="Level 4" data-lab="Supply leads to BSP" aria-current="false" target="_blank" rel="noopener"><img src="images/subway/broker-08-thumb.jpg" alt="" loading="lazy"><small>Level 4 · Supply leads to BSP</small></a><a href="images/subway/broker-09.jpg" data-lv="Level 2" data-lab="Propose · steps" aria-current="false" target="_blank" rel="noopener"><img src="images/subway/broker-09-thumb.jpg" alt="" loading="lazy"><small>Level 2 · Propose · steps</small></a><a href="images/subway/broker-10.jpg" data-lv="Level 3" data-lab="Propose · stations and tools" aria-current="false" target="_blank" rel="noopener"><img src="images/subway/broker-10-thumb.jpg" alt="" loading="lazy"><small>Level 3 · Propose · stations and tools</small></a><a href="images/subway/broker-11.jpg" data-lv="Level 2" data-lab="Commit · steps" aria-current="false" target="_blank" rel="noopener"><img src="images/subway/broker-11-thumb.jpg" alt="" loading="lazy"><small>Level 2 · Commit · steps</small></a><a href="images/subway/broker-12.jpg" data-lv="Level 3" data-lab="Commit · stations and tools" aria-current="false" target="_blank" rel="noopener"><img src="images/subway/broker-12-thumb.jpg" alt="" loading="lazy"><small>Level 3 · Commit · stations and tools</small></a></div>
+  </div>
+  <div class="sv-panel" id="sv-1" role="tabpanel" aria-labelledby="sv-tab-1">
+    <div class="sv-stage"><img src="images/subway/bsp-03.jpg" alt="Pre-sales subway map for the Broker Sales Pro: Level 1, Major steps." loading="lazy"></div>
+    <div class="sv-bar">
+      <div class="sv-cap"><span class="lv">Level 1</span><span class="lab">Major steps</span><span class="n">1 / 13</span></div>
+      <div class="sv-nav"><button type="button" data-step="-1" aria-label="Previous page">← Prev</button><button type="button" data-step="1" aria-label="Next page">Next →</button><a href="images/subway/bsp-03.jpg" target="_blank" rel="noopener">Full size</a></div>
+    </div>
+    <div class="sv-strip" aria-label="Pre-sales Broker Sales Pro pages"><a href="images/subway/bsp-03.jpg" data-lv="Level 1" data-lab="Major steps" aria-current="true" target="_blank" rel="noopener"><img src="images/subway/bsp-03-thumb.jpg" alt="" loading="lazy"><small>Level 1 · Major steps</small></a><a href="images/subway/bsp-04.jpg" data-lv="Level 1" data-lab="Critical activities" aria-current="false" target="_blank" rel="noopener"><img src="images/subway/bsp-04-thumb.jpg" alt="" loading="lazy"><small>Level 1 · Critical activities</small></a><a href="images/subway/bsp-05.jpg" data-lv="Level 2" data-lab="Prospect · steps" aria-current="false" target="_blank" rel="noopener"><img src="images/subway/bsp-05-thumb.jpg" alt="" loading="lazy"><small>Level 2 · Prospect · steps</small></a><a href="images/subway/bsp-06.jpg" data-lv="Level 3" data-lab="Prospect · stations and tools" aria-current="false" target="_blank" rel="noopener"><img src="images/subway/bsp-06-thumb.jpg" alt="" loading="lazy"><small>Level 3 · Prospect · stations and tools</small></a><a href="images/subway/bsp-07.jpg" data-lv="Level 4" data-lab="Review book of business" aria-current="false" target="_blank" rel="noopener"><img src="images/subway/bsp-07-thumb.jpg" alt="" loading="lazy"><small>Level 4 · Review book of business</small></a><a href="images/subway/bsp-08.jpg" data-lv="Level 4" data-lab="Procure marketing materials" aria-current="false" target="_blank" rel="noopener"><img src="images/subway/bsp-08-thumb.jpg" alt="" loading="lazy"><small>Level 4 · Procure marketing materials</small></a><a href="images/subway/bsp-09.jpg" data-lv="Level 2" data-lab="Propose · steps" aria-current="false" target="_blank" rel="noopener"><img src="images/subway/bsp-09-thumb.jpg" alt="" loading="lazy"><small>Level 2 · Propose · steps</small></a><a href="images/subway/bsp-10.jpg" data-lv="Level 3" data-lab="Propose · stations and tools" aria-current="false" target="_blank" rel="noopener"><img src="images/subway/bsp-10-thumb.jpg" alt="" loading="lazy"><small>Level 3 · Propose · stations and tools</small></a><a href="images/subway/bsp-11.jpg" data-lv="Level 4" data-lab="Proposal · large group" aria-current="false" target="_blank" rel="noopener"><img src="images/subway/bsp-11-thumb.jpg" alt="" loading="lazy"><small>Level 4 · Proposal · large group</small></a><a href="images/subway/bsp-12.jpg" data-lv="Level 4" data-lab="Proposal · small group" aria-current="false" target="_blank" rel="noopener"><img src="images/subway/bsp-12-thumb.jpg" alt="" loading="lazy"><small>Level 4 · Proposal · small group</small></a><a href="images/subway/bsp-13.jpg" data-lv="Level 4" data-lab="Proposal · individual" aria-current="false" target="_blank" rel="noopener"><img src="images/subway/bsp-13-thumb.jpg" alt="" loading="lazy"><small>Level 4 · Proposal · individual</small></a><a href="images/subway/bsp-14.jpg" data-lv="Level 2" data-lab="Commit · steps" aria-current="false" target="_blank" rel="noopener"><img src="images/subway/bsp-14-thumb.jpg" alt="" loading="lazy"><small>Level 2 · Commit · steps</small></a><a href="images/subway/bsp-15.jpg" data-lv="Level 3" data-lab="Commit · stations and tools" aria-current="false" target="_blank" rel="noopener"><img src="images/subway/bsp-15-thumb.jpg" alt="" loading="lazy"><small>Level 3 · Commit · stations and tools</small></a></div>
+  </div>
+  <div class="sv-panel" id="sv-2" role="tabpanel" aria-labelledby="sv-tab-2">
+    <div class="sv-stage"><img src="images/subway/career-agent-presales-03.jpg" alt="Pre-sales subway map for the Career Agent: Level 1, Major steps." loading="lazy"></div>
+    <div class="sv-bar">
+      <div class="sv-cap"><span class="lv">Level 1</span><span class="lab">Major steps</span><span class="n">1 / 15</span></div>
+      <div class="sv-nav"><button type="button" data-step="-1" aria-label="Previous page">← Prev</button><button type="button" data-step="1" aria-label="Next page">Next →</button><a href="images/subway/career-agent-presales-03.jpg" target="_blank" rel="noopener">Full size</a></div>
+    </div>
+    <div class="sv-strip" aria-label="Pre-sales Career Agent pages"><a href="images/subway/career-agent-presales-03.jpg" data-lv="Level 1" data-lab="Major steps" aria-current="true" target="_blank" rel="noopener"><img src="images/subway/career-agent-presales-03-thumb.jpg" alt="" loading="lazy"><small>Level 1 · Major steps</small></a><a href="images/subway/career-agent-presales-04.jpg" data-lv="Level 1" data-lab="Critical activities" aria-current="false" target="_blank" rel="noopener"><img src="images/subway/career-agent-presales-04-thumb.jpg" alt="" loading="lazy"><small>Level 1 · Critical activities</small></a><a href="images/subway/career-agent-presales-05.jpg" data-lv="Level 2" data-lab="Prospect · steps" aria-current="false" target="_blank" rel="noopener"><img src="images/subway/career-agent-presales-05-thumb.jpg" alt="" loading="lazy"><small>Level 2 · Prospect · steps</small></a><a href="images/subway/career-agent-presales-06.jpg" data-lv="Level 3" data-lab="Prospect · stations and tools" aria-current="false" target="_blank" rel="noopener"><img src="images/subway/career-agent-presales-06-thumb.jpg" alt="" loading="lazy"><small>Level 3 · Prospect · stations and tools</small></a><a href="images/subway/career-agent-presales-07.jpg" data-lv="Level 4" data-lab="Check Do Not Call list" aria-current="false" target="_blank" rel="noopener"><img src="images/subway/career-agent-presales-07-thumb.jpg" alt="" loading="lazy"><small>Level 4 · Check Do Not Call list</small></a><a href="images/subway/career-agent-presales-08.jpg" data-lv="Level 4" data-lab="Update lead sheets, part 1" aria-current="false" target="_blank" rel="noopener"><img src="images/subway/career-agent-presales-08-thumb.jpg" alt="" loading="lazy"><small>Level 4 · Update lead sheets, part 1</small></a><a href="images/subway/career-agent-presales-09.jpg" data-lv="Level 4" data-lab="Update lead sheets, part 2" aria-current="false" target="_blank" rel="noopener"><img src="images/subway/career-agent-presales-09-thumb.jpg" alt="" loading="lazy"><small>Level 4 · Update lead sheets, part 2</small></a><a href="images/subway/career-agent-presales-10.jpg" data-lv="Level 4" data-lab="Track client interactions" aria-current="false" target="_blank" rel="noopener"><img src="images/subway/career-agent-presales-10-thumb.jpg" alt="" loading="lazy"><small>Level 4 · Track client interactions</small></a><a href="images/subway/career-agent-presales-11.jpg" data-lv="Level 2" data-lab="Propose · steps" aria-current="false" target="_blank" rel="noopener"><img src="images/subway/career-agent-presales-11-thumb.jpg" alt="" loading="lazy"><small>Level 2 · Propose · steps</small></a><a href="images/subway/career-agent-presales-12.jpg" data-lv="Level 3" data-lab="Propose · stations and tools" aria-current="false" target="_blank" rel="noopener"><img src="images/subway/career-agent-presales-12-thumb.jpg" alt="" loading="lazy"><small>Level 3 · Propose · stations and tools</small></a><a href="images/subway/career-agent-presales-13.jpg" data-lv="Level 4" data-lab="Proposal · large group" aria-current="false" target="_blank" rel="noopener"><img src="images/subway/career-agent-presales-13-thumb.jpg" alt="" loading="lazy"><small>Level 4 · Proposal · large group</small></a><a href="images/subway/career-agent-presales-14.jpg" data-lv="Level 4" data-lab="Proposal · small group" aria-current="false" target="_blank" rel="noopener"><img src="images/subway/career-agent-presales-14-thumb.jpg" alt="" loading="lazy"><small>Level 4 · Proposal · small group</small></a><a href="images/subway/career-agent-presales-15.jpg" data-lv="Level 4" data-lab="Proposal · individual" aria-current="false" target="_blank" rel="noopener"><img src="images/subway/career-agent-presales-15-thumb.jpg" alt="" loading="lazy"><small>Level 4 · Proposal · individual</small></a><a href="images/subway/career-agent-presales-16.jpg" data-lv="Level 2" data-lab="Commit · steps" aria-current="false" target="_blank" rel="noopener"><img src="images/subway/career-agent-presales-16-thumb.jpg" alt="" loading="lazy"><small>Level 2 · Commit · steps</small></a><a href="images/subway/career-agent-presales-17.jpg" data-lv="Level 3" data-lab="Commit · stations and tools" aria-current="false" target="_blank" rel="noopener"><img src="images/subway/career-agent-presales-17-thumb.jpg" alt="" loading="lazy"><small>Level 3 · Commit · stations and tools</small></a></div>
+  </div>
+  <div class="sv-panel" id="sv-3" role="tabpanel" aria-labelledby="sv-tab-3">
+    <div class="sv-stage"><img src="images/subway/rsc-dsc-presales-03.jpg" alt="Pre-sales subway map for the RSC / DSC: Level 1, Major steps." loading="lazy"></div>
+    <div class="sv-bar">
+      <div class="sv-cap"><span class="lv">Level 1</span><span class="lab">Major steps</span><span class="n">1 / 12</span></div>
+      <div class="sv-nav"><button type="button" data-step="-1" aria-label="Previous page">← Prev</button><button type="button" data-step="1" aria-label="Next page">Next →</button><a href="images/subway/rsc-dsc-presales-03.jpg" target="_blank" rel="noopener">Full size</a></div>
+    </div>
+    <div class="sv-strip" aria-label="Pre-sales RSC / DSC pages"><a href="images/subway/rsc-dsc-presales-03.jpg" data-lv="Level 1" data-lab="Major steps" aria-current="true" target="_blank" rel="noopener"><img src="images/subway/rsc-dsc-presales-03-thumb.jpg" alt="" loading="lazy"><small>Level 1 · Major steps</small></a><a href="images/subway/rsc-dsc-presales-04.jpg" data-lv="Level 1" data-lab="Critical activities" aria-current="false" target="_blank" rel="noopener"><img src="images/subway/rsc-dsc-presales-04-thumb.jpg" alt="" loading="lazy"><small>Level 1 · Critical activities</small></a><a href="images/subway/rsc-dsc-presales-05.jpg" data-lv="Level 2" data-lab="Prospect · steps" aria-current="false" target="_blank" rel="noopener"><img src="images/subway/rsc-dsc-presales-05-thumb.jpg" alt="" loading="lazy"><small>Level 2 · Prospect · steps</small></a><a href="images/subway/rsc-dsc-presales-06.jpg" data-lv="Level 3" data-lab="Prospect · stations and tools" aria-current="false" target="_blank" rel="noopener"><img src="images/subway/rsc-dsc-presales-06-thumb.jpg" alt="" loading="lazy"><small>Level 3 · Prospect · stations and tools</small></a><a href="images/subway/rsc-dsc-presales-07.jpg" data-lv="Level 4" data-lab="Monitor client interactions" aria-current="false" target="_blank" rel="noopener"><img src="images/subway/rsc-dsc-presales-07-thumb.jpg" alt="" loading="lazy"><small>Level 4 · Monitor client interactions</small></a><a href="images/subway/rsc-dsc-presales-08.jpg" data-lv="Level 2" data-lab="Propose · steps" aria-current="false" target="_blank" rel="noopener"><img src="images/subway/rsc-dsc-presales-08-thumb.jpg" alt="" loading="lazy"><small>Level 2 · Propose · steps</small></a><a href="images/subway/rsc-dsc-presales-09.jpg" data-lv="Level 3" data-lab="Propose · stations and tools" aria-current="false" target="_blank" rel="noopener"><img src="images/subway/rsc-dsc-presales-09-thumb.jpg" alt="" loading="lazy"><small>Level 3 · Propose · stations and tools</small></a><a href="images/subway/rsc-dsc-presales-10.jpg" data-lv="Level 4" data-lab="Proposal · large group" aria-current="false" target="_blank" rel="noopener"><img src="images/subway/rsc-dsc-presales-10-thumb.jpg" alt="" loading="lazy"><small>Level 4 · Proposal · large group</small></a><a href="images/subway/rsc-dsc-presales-11.jpg" data-lv="Level 4" data-lab="Proposal · small group" aria-current="false" target="_blank" rel="noopener"><img src="images/subway/rsc-dsc-presales-11-thumb.jpg" alt="" loading="lazy"><small>Level 4 · Proposal · small group</small></a><a href="images/subway/rsc-dsc-presales-12.jpg" data-lv="Level 4" data-lab="Proposal · individual" aria-current="false" target="_blank" rel="noopener"><img src="images/subway/rsc-dsc-presales-12-thumb.jpg" alt="" loading="lazy"><small>Level 4 · Proposal · individual</small></a><a href="images/subway/rsc-dsc-presales-13.jpg" data-lv="Level 2" data-lab="Commit · steps" aria-current="false" target="_blank" rel="noopener"><img src="images/subway/rsc-dsc-presales-13-thumb.jpg" alt="" loading="lazy"><small>Level 2 · Commit · steps</small></a><a href="images/subway/rsc-dsc-presales-14.jpg" data-lv="Level 3" data-lab="Commit · stations and tools" aria-current="false" target="_blank" rel="noopener"><img src="images/subway/rsc-dsc-presales-14-thumb.jpg" alt="" loading="lazy"><small>Level 3 · Commit · stations and tools</small></a></div>
+  </div>
+  <div class="sv-panel" id="sv-4" role="tabpanel" aria-labelledby="sv-tab-4">
+    <div class="sv-stage"><img src="images/subway/career-agent-onboarding-03.jpg" alt="Onboarding subway map for the Career Agent: Level 1, Major steps." loading="lazy"></div>
+    <div class="sv-bar">
+      <div class="sv-cap"><span class="lv">Level 1</span><span class="lab">Major steps</span><span class="n">1 / 11</span></div>
+      <div class="sv-nav"><button type="button" data-step="-1" aria-label="Previous page">← Prev</button><button type="button" data-step="1" aria-label="Next page">Next →</button><a href="images/subway/career-agent-onboarding-03.jpg" target="_blank" rel="noopener">Full size</a></div>
+    </div>
+    <div class="sv-strip" aria-label="Onboarding Career Agent pages"><a href="images/subway/career-agent-onboarding-03.jpg" data-lv="Level 1" data-lab="Major steps" aria-current="true" target="_blank" rel="noopener"><img src="images/subway/career-agent-onboarding-03-thumb.jpg" alt="" loading="lazy"><small>Level 1 · Major steps</small></a><a href="images/subway/career-agent-onboarding-04.jpg" data-lv="Level 1" data-lab="Critical activities" aria-current="false" target="_blank" rel="noopener"><img src="images/subway/career-agent-onboarding-04-thumb.jpg" alt="" loading="lazy"><small>Level 1 · Critical activities</small></a><a href="images/subway/career-agent-onboarding-05.jpg" data-lv="Level 2" data-lab="Recruiting · steps" aria-current="false" target="_blank" rel="noopener"><img src="images/subway/career-agent-onboarding-05-thumb.jpg" alt="" loading="lazy"><small>Level 2 · Recruiting · steps</small></a><a href="images/subway/career-agent-onboarding-06.jpg" data-lv="Level 3" data-lab="Recruiting · stations and tools" aria-current="false" target="_blank" rel="noopener"><img src="images/subway/career-agent-onboarding-06-thumb.jpg" alt="" loading="lazy"><small>Level 3 · Recruiting · stations and tools</small></a><a href="images/subway/career-agent-onboarding-07.jpg" data-lv="Level 2" data-lab="Local onboarding · steps" aria-current="false" target="_blank" rel="noopener"><img src="images/subway/career-agent-onboarding-07-thumb.jpg" alt="" loading="lazy"><small>Level 2 · Local onboarding · steps</small></a><a href="images/subway/career-agent-onboarding-08.jpg" data-lv="Level 3" data-lab="Local onboarding · stations and tools" aria-current="false" target="_blank" rel="noopener"><img src="images/subway/career-agent-onboarding-08-thumb.jpg" alt="" loading="lazy"><small>Level 3 · Local onboarding · stations and tools</small></a><a href="images/subway/career-agent-onboarding-09.jpg" data-lv="Level 2" data-lab="Aflac onboarding · steps" aria-current="false" target="_blank" rel="noopener"><img src="images/subway/career-agent-onboarding-09-thumb.jpg" alt="" loading="lazy"><small>Level 2 · Aflac onboarding · steps</small></a><a href="images/subway/career-agent-onboarding-10.jpg" data-lv="Level 3" data-lab="Aflac onboarding · stations and tools" aria-current="false" target="_blank" rel="noopener"><img src="images/subway/career-agent-onboarding-10-thumb.jpg" alt="" loading="lazy"><small>Level 3 · Aflac onboarding · stations and tools</small></a><a href="images/subway/career-agent-onboarding-11.jpg" data-lv="Level 4" data-lab="Encourage training" aria-current="false" target="_blank" rel="noopener"><img src="images/subway/career-agent-onboarding-11-thumb.jpg" alt="" loading="lazy"><small>Level 4 · Encourage training</small></a><a href="images/subway/career-agent-onboarding-12.jpg" data-lv="Level 2" data-lab="Independent operation · steps" aria-current="false" target="_blank" rel="noopener"><img src="images/subway/career-agent-onboarding-12-thumb.jpg" alt="" loading="lazy"><small>Level 2 · Independent operation · steps</small></a><a href="images/subway/career-agent-onboarding-13.jpg" data-lv="Level 3" data-lab="Independent operation · stations and tools" aria-current="false" target="_blank" rel="noopener"><img src="images/subway/career-agent-onboarding-13-thumb.jpg" alt="" loading="lazy"><small>Level 3 · Independent operation · stations and tools</small></a></div>
+  </div>
+  <div class="sv-panel" id="sv-5" role="tabpanel" aria-labelledby="sv-tab-5">
+    <div class="sv-stage"><img src="images/subway/rsc-dsc-onboarding-03.jpg" alt="Onboarding subway map for the RSC / DSC: Level 1, Major steps." loading="lazy"></div>
+    <div class="sv-bar">
+      <div class="sv-cap"><span class="lv">Level 1</span><span class="lab">Major steps</span><span class="n">1 / 10</span></div>
+      <div class="sv-nav"><button type="button" data-step="-1" aria-label="Previous page">← Prev</button><button type="button" data-step="1" aria-label="Next page">Next →</button><a href="images/subway/rsc-dsc-onboarding-03.jpg" target="_blank" rel="noopener">Full size</a></div>
+    </div>
+    <div class="sv-strip" aria-label="Onboarding RSC / DSC pages"><a href="images/subway/rsc-dsc-onboarding-03.jpg" data-lv="Level 1" data-lab="Major steps" aria-current="true" target="_blank" rel="noopener"><img src="images/subway/rsc-dsc-onboarding-03-thumb.jpg" alt="" loading="lazy"><small>Level 1 · Major steps</small></a><a href="images/subway/rsc-dsc-onboarding-04.jpg" data-lv="Level 1" data-lab="Critical activities" aria-current="false" target="_blank" rel="noopener"><img src="images/subway/rsc-dsc-onboarding-04-thumb.jpg" alt="" loading="lazy"><small>Level 1 · Critical activities</small></a><a href="images/subway/rsc-dsc-onboarding-05.jpg" data-lv="Level 2" data-lab="Recruiting · steps" aria-current="false" target="_blank" rel="noopener"><img src="images/subway/rsc-dsc-onboarding-05-thumb.jpg" alt="" loading="lazy"><small>Level 2 · Recruiting · steps</small></a><a href="images/subway/rsc-dsc-onboarding-06.jpg" data-lv="Level 3" data-lab="Recruiting · stations and tools" aria-current="false" target="_blank" rel="noopener"><img src="images/subway/rsc-dsc-onboarding-06-thumb.jpg" alt="" loading="lazy"><small>Level 3 · Recruiting · stations and tools</small></a><a href="images/subway/rsc-dsc-onboarding-07.jpg" data-lv="Level 4" data-lab="Generate candidate leads" aria-current="false" target="_blank" rel="noopener"><img src="images/subway/rsc-dsc-onboarding-07-thumb.jpg" alt="" loading="lazy"><small>Level 4 · Generate candidate leads</small></a><a href="images/subway/rsc-dsc-onboarding-08.jpg" data-lv="Level 2" data-lab="Local onboarding · steps" aria-current="false" target="_blank" rel="noopener"><img src="images/subway/rsc-dsc-onboarding-08-thumb.jpg" alt="" loading="lazy"><small>Level 2 · Local onboarding · steps</small></a><a href="images/subway/rsc-dsc-onboarding-09.jpg" data-lv="Level 3" data-lab="Local onboarding · stations and tools" aria-current="false" target="_blank" rel="noopener"><img src="images/subway/rsc-dsc-onboarding-09-thumb.jpg" alt="" loading="lazy"><small>Level 3 · Local onboarding · stations and tools</small></a><a href="images/subway/rsc-dsc-onboarding-10.jpg" data-lv="Level 4" data-lab="Develop training materials" aria-current="false" target="_blank" rel="noopener"><img src="images/subway/rsc-dsc-onboarding-10-thumb.jpg" alt="" loading="lazy"><small>Level 4 · Develop training materials</small></a><a href="images/subway/rsc-dsc-onboarding-11.jpg" data-lv="Level 2" data-lab="Aflac onboarding · steps" aria-current="false" target="_blank" rel="noopener"><img src="images/subway/rsc-dsc-onboarding-11-thumb.jpg" alt="" loading="lazy"><small>Level 2 · Aflac onboarding · steps</small></a><a href="images/subway/rsc-dsc-onboarding-12.jpg" data-lv="Level 3" data-lab="Aflac onboarding · stations and tools" aria-current="false" target="_blank" rel="noopener"><img src="images/subway/rsc-dsc-onboarding-12-thumb.jpg" alt="" loading="lazy"><small>Level 3 · Aflac onboarding · stations and tools</small></a></div>
+  </div>
 </section>
 
 <div class="stripe"></div>
@@ -445,8 +638,9 @@
     <tr><th>Deliverable</th><th>Result</th></tr>
     <tr><td>Stakeholder research findings</td><td class="result">18 interviews synthesized</td></tr>
     <tr><td>Producer research findings</td><td class="result">16 interviews, 4 roles</td></tr>
-    <tr><td>User journeys ("subway maps")</td><td class="result">6 journeys</td></tr>
-    <tr><td>Experience assessment maps and process flows</td><td class="result">6 maps, 4 levels deep</td></tr>
+    <tr><td>User journeys</td><td class="result">6 journeys</td></tr>
+    <tr><td>"Subway map" process guides</td><td class="result">6 guides, 4 levels deep</td></tr>
+    <tr><td>Detailed process flows</td><td class="result">5 flows</td></tr>
     <tr><td>Executive summary and recommendations</td><td class="result">Prioritized roadmap</td></tr>
   </table>
 </section>
@@ -472,5 +666,47 @@
   <div>Aflac Producer UX Assessment · UX Lead, EY · Case study prepared for portfolio use</div>
 </footer>
 
+<script>
+(function(){
+  var tabs=document.querySelector('.jv-tabs'); if(!tabs) return;
+  document.documentElement.classList.add('js');
+  var btns=[].slice.call(tabs.querySelectorAll('button'));
+  var panels=btns.map(function(b){return document.getElementById(b.getAttribute('aria-controls'));});
+  function show(i){btns.forEach(function(b,j){b.setAttribute('aria-selected',j===i?'true':'false'); b.tabIndex=j===i?0:-1; panels[j].hidden=j!==i;});}
+  tabs.hidden=false; show(0);
+  btns.forEach(function(b,i){
+    b.addEventListener('click',function(){show(i);});
+    b.addEventListener('keydown',function(e){var k=e.key==='ArrowRight'?1:e.key==='ArrowLeft'?-1:0; if(!k) return; var n=(i+k+btns.length)%btns.length; show(n); btns[n].focus();});
+  });
+})();
+</script>
+<script>
+(function(){
+  var tabs=document.querySelector('.sv-tabs'); if(!tabs) return;
+  document.documentElement.classList.add('js');
+  var btns=[].slice.call(tabs.querySelectorAll('button'));
+  var panels=btns.map(function(b){return document.getElementById(b.getAttribute('aria-controls'));});
+  function showTab(i){btns.forEach(function(b,j){b.setAttribute('aria-selected',j===i?'true':'false'); b.tabIndex=j===i?0:-1; panels[j].hidden=j!==i;});}
+  tabs.hidden=false; showTab(0);
+  btns.forEach(function(b,i){
+    b.addEventListener('click',function(){showTab(i);});
+    b.addEventListener('keydown',function(e){var k=e.key==='ArrowRight'?1:e.key==='ArrowLeft'?-1:0; if(!k) return; var n=(i+k+btns.length)%btns.length; showTab(n); btns[n].focus();});
+  });
+  panels.forEach(function(p){
+    var links=[].slice.call(p.querySelectorAll('.sv-strip a')), img=p.querySelector('.sv-stage img'),
+        lv=p.querySelector('.sv-cap .lv'), lab=p.querySelector('.sv-cap .lab'), n=p.querySelector('.sv-cap .n'),
+        full=p.querySelector('.sv-nav a'), cur=0, who=img.alt.split(':')[0];
+    function go(i){
+      cur=(i+links.length)%links.length; var a=links[cur];
+      img.src=a.getAttribute('href'); img.alt=who+': '+a.dataset.lv+', '+a.dataset.lab+'.';
+      lv.textContent=a.dataset.lv; lab.textContent=a.dataset.lab; n.textContent=(cur+1)+' / '+links.length; full.href=a.getAttribute('href');
+      links.forEach(function(l,j){l.setAttribute('aria-current',j===cur?'true':'false');});
+      a.scrollIntoView({block:'nearest',inline:'nearest'});
+    }
+    links.forEach(function(a,i){a.addEventListener('click',function(e){e.preventDefault(); go(i);});});
+    [].forEach.call(p.querySelectorAll('.sv-nav button'),function(b){b.addEventListener('click',function(){go(cur+Number(b.dataset.step));});});
+  });
+})();
+</script>
 </body>
 </html>
