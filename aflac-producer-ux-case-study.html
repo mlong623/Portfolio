@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Aflac Producer UX Assessment — Case Study</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#0B2530;
+    --navy:#003B49;
+    --teal:#007994;
+    --teal-light:#8DC7D8;
+    --sky:#D3E8EF;
+    --rust:#E24301;
+    --rust-light:#FEA682;
+    --paper:#F7F5F0;
+    --paper-dim:#EFECE4;
+    --white:#FFFFFF;
+    --line: rgba(11,37,48,0.12);
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{margin:0; background:var(--paper); color:var(--ink); font-family:'Inter',sans-serif; line-height:1.6; -webkit-font-smoothing:antialiased;}
+  h1,h2,h3{font-family:'Inter',sans-serif; font-weight:500; margin:0; letter-spacing:-0.01em;}
+  .eyebrow{font-family:'IBM Plex Mono',monospace; font-size:0.72rem; letter-spacing:0.14em; text-transform:uppercase; color:var(--teal); display:flex; align-items:center; gap:0.6em;}
+  .eyebrow::before{content:""; width:22px; height:1px; background:var(--teal);}
+  a{color:inherit;}
+  img{max-width:100%; display:block;}
+
+  .hero{background: linear-gradient(180deg, var(--navy) 0%, #052A34 100%); color:var(--white); padding: 5.5rem 6vw 4.5rem; position:relative; overflow:hidden;}
+  .hero::after{content:""; position:absolute; right:-8%; top:-20%; width:520px; height:520px; background: radial-gradient(circle, rgba(0,121,148,0.55) 0%, rgba(0,121,148,0) 70%);}
+  .hero-inner{max-width:1180px; margin:0 auto; position:relative;}
+  .hero .eyebrow{color:var(--rust-light); margin-bottom:1.6rem;}
+  .hero .eyebrow::before{background:var(--rust-light);}
+  .hero h1{font-size:clamp(2.4rem, 5vw, 4rem); max-width:16ch; line-height:1.04; color:var(--white);}
+  .hero .sub{max-width:48ch; font-size:1.15rem; color:var(--sky); margin-top:1.4rem; font-weight:400;}
+  .meta-row{display:flex; flex-wrap:wrap; gap:2.6rem; margin-top:3rem; padding-top:2rem; border-top:1px solid rgba(255,255,255,0.16);}
+  .meta-item .label{font-family:'IBM Plex Mono',monospace; font-size:0.68rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--teal-light); margin-bottom:0.4rem;}
+  .meta-item .val{font-size:0.98rem; color:var(--white); max-width:26ch;}
+
+  .stat-strip{background:var(--rust); color:var(--white);}
+  .stat-strip-inner{max-width:1180px; margin:0 auto; display:grid; grid-template-columns:repeat(3,1fr); padding: 2.6rem 6vw; gap:1.5rem;}
+  .stat{border-left:1px solid rgba(255,255,255,0.35); padding-left:1.6rem;}
+  .stat:first-child{border-left:none; padding-left:0;}
+  .stat .num{font-family:'Inter',sans-serif; font-size:2.6rem; font-weight:500; line-height:1;}
+  .stat .desc{font-size:0.88rem; margin-top:0.5rem; color:#FFE3D6; max-width:22ch;}
+
+  section{max-width:1180px; margin:0 auto; padding: 5.5rem 6vw;}
+  section.tight{padding-top:0;}
+  .section-head{display:grid; grid-template-columns: 1fr 2fr; gap:3rem; margin-bottom:2.6rem;}
+  .section-head h2{font-size:clamp(1.7rem,2.6vw,2.3rem); max-width:13ch;}
+  .lede{font-size:1.05rem; color:#2C4C56; max-width:56ch;}
+  .prose{font-size:1.02rem; color:#28444D; max-width:68ch;}
+  .prose + .prose{margin-top:1.1rem;}
+
+  .quote{border-left:3px solid var(--rust); padding: 0.3rem 0 0.3rem 1.6rem; margin: 2.4rem 0; max-width:60ch;}
+  .quote p{font-family:'Inter',sans-serif; font-style:italic; font-weight:400; font-size:1.3rem; color:var(--navy); line-height:1.45; margin:0;}
+
+  figure{margin:2.6rem 0 0;}
+  figure img{border-radius:6px; border:1px solid var(--line); box-shadow: 0 24px 48px -24px rgba(0,59,73,0.35);}
+  figcaption{font-family:'IBM Plex Mono',monospace; font-size:0.75rem; color:var(--teal); margin-top:0.9rem; letter-spacing:0.02em;}
+
+  .stripe{height:8px; width:100%; background: repeating-linear-gradient(90deg, var(--navy) 0 8%, var(--teal) 8% 16%, var(--teal-light) 16% 24%, var(--sky) 24% 32%, var(--rust) 32% 40%, var(--rust-light) 40% 48%, #FFDB96 48% 56%, var(--paper-dim) 56% 64%, var(--navy) 64% 72%, var(--teal) 72% 80%, var(--rust) 80% 88%, var(--rust-light) 88% 100%);}
+
+  .constraint-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:var(--line); margin-top:2.6rem; border:1px solid var(--line);}
+  .constraint-grid .c{background:var(--white); padding:2rem 1.8rem;}
+  .constraint-grid .c .tag{font-family:'IBM Plex Mono',monospace; font-size:0.68rem; letter-spacing:0.08em; text-transform:uppercase; color:var(--rust); display:block; margin-bottom:0.9rem;}
+  .constraint-grid .c p{font-size:0.95rem; color:#2C4C56; margin:0;}
+
+  .role-grid{display:grid; grid-template-columns:repeat(2,1fr); gap:0; border-top:1px solid var(--line); margin-top:2.6rem;}
+  .role-grid li{list-style:none; padding:1.1rem 0; border-bottom:1px solid var(--line); font-size:0.96rem; color:#2C4C56; position:relative; padding-left:1.4rem;}
+  .role-grid li::before{content:"—"; position:absolute; left:0; color:var(--rust);}
+  .role-grid li:nth-child(odd){padding-right:2rem;}
+
+  .insight{display:grid; grid-template-columns: 0.5fr 1fr 1fr; gap:2.4rem; padding:2.6rem 0; border-top:1px solid var(--line); align-items:start;}
+  .insight:last-child{border-bottom:1px solid var(--line);}
+  .insight .n{font-family:'Inter',sans-serif; font-size:2.6rem; color:var(--sky); font-weight:500; line-height:1;}
+  .insight h3{font-size:1.15rem; color:var(--navy); margin-bottom:0.6rem;}
+  .insight p{font-size:0.95rem; color:#3B5A63; margin:0;}
+  .insight .tag{font-family:'IBM Plex Mono',monospace; font-size:0.68rem; letter-spacing:0.08em; text-transform:uppercase; color:var(--rust); margin-bottom:0.5rem; display:block;}
+
+  .people-band{background:var(--navy); color:var(--white);}
+  .people-band .inner{max-width:1180px; margin:0 auto; padding:4.5rem 6vw;}
+  .people-band .section-head h2{color:var(--white);}
+  .people-band .lede{color:var(--sky);}
+  .people-band .role-grid{border-top-color:rgba(255,255,255,0.2);}
+  .people-band .role-grid li{color:var(--sky); border-bottom-color:rgba(255,255,255,0.2);}
+
+  .strategy-table{width:100%; border-collapse:collapse; margin-top:2.6rem; font-size:0.92rem;}
+  .strategy-table th{text-align:left; font-family:'IBM Plex Mono',monospace; font-size:0.65rem; letter-spacing:0.06em; text-transform:uppercase; color:var(--teal); padding:0.9rem 1rem 0.9rem 0; border-bottom:1px solid var(--line); vertical-align:bottom;}
+  .strategy-table td{padding:1.2rem 1rem 1.2rem 0; border-bottom:1px solid var(--line); color:#2C4C56; vertical-align:top;}
+  .strategy-table td:first-child, .strategy-table th:first-child{color:#8A9DA3;}
+  .strategy-table td:last-child{font-family:'Inter',sans-serif; color:var(--rust); font-weight:500;}
+
+  .principles{display:grid; grid-template-columns:repeat(2,1fr); gap:2px; background:var(--line); margin-top:2.6rem; border:1px solid var(--line);}
+  .principles .p{background:var(--white); padding:2.2rem;}
+  .principles .p .idx{font-family:'Inter',sans-serif; font-size:1.6rem; color:var(--sky); margin-bottom:0.6rem;}
+  .principles .p h4{font-family:'Inter',sans-serif; font-size:1.1rem; color:var(--navy); margin:0 0 0.5rem; font-weight:600;}
+  .principles .p p{font-size:0.92rem; color:#3B5A63; margin:0;}
+
+  .device-row{display:grid; grid-template-columns: 1fr 1fr; gap:2rem; margin-top:2.6rem; align-items:start;}
+  .device-row figure{margin-top:0;}
+
+  .takeaways{display:grid; grid-template-columns:repeat(2,1fr); gap:2.2rem 3rem; margin-top:2.6rem;}
+  .takeaways .item{padding-top:1.4rem; border-top:2px solid var(--rust);}
+  .takeaways .item h4{font-family:'Inter',sans-serif; font-size:1.05rem; color:var(--navy); font-weight:600; margin:0 0 0.5rem;}
+  .takeaways .item p{font-size:0.93rem; color:#3B5A63; margin:0;}
+
+  .outcome-table{width:100%; border-collapse:collapse; margin-top:2.4rem;}
+  .outcome-table th{text-align:left; font-family:'IBM Plex Mono',monospace; font-size:0.68rem; letter-spacing:0.08em; text-transform:uppercase; color:var(--teal); padding:0.8rem 0; border-bottom:1px solid var(--line);}
+  .outcome-table td{padding:1.1rem 0; border-bottom:1px solid var(--line); font-size:0.98rem; color:#2C4C56;}
+  .outcome-table td.result{font-family:'Inter',sans-serif; font-weight:500; color:var(--rust); font-size:1.2rem;}
+
+  footer{background:var(--ink); color:var(--sky); text-align:center; padding:3.5rem 6vw; font-size:0.85rem;}
+  footer .back{font-family:'IBM Plex Mono',monospace; font-size:0.75rem; letter-spacing:0.08em; text-transform:uppercase; color:var(--white); text-decoration:none; border:1px solid rgba(255,255,255,0.3); padding:0.7rem 1.4rem; border-radius:100px; display:inline-block; margin-bottom:1.6rem;}
+
+  @media (max-width:820px){
+    .section-head{grid-template-columns:1fr; gap:1rem;}
+    .stat-strip-inner{grid-template-columns:1fr; gap:2rem;}
+    .stat{border-left:none; padding-left:0; border-top:1px solid rgba(255,255,255,0.35); padding-top:1.5rem;}
+    .stat:first-child{border-top:none; padding-top:0;}
+    .role-grid{grid-template-columns:1fr;}
+    .insight{grid-template-columns:1fr; gap:0.8rem;}
+    .takeaways{grid-template-columns:1fr;}
+    .constraint-grid{grid-template-columns:1fr;}
+    .principles{grid-template-columns:1fr;}
+    .device-row{grid-template-columns:1fr;}
+    .meta-row{gap:1.6rem;}
+    .strategy-table{font-size:0.82rem;}
+  }
+
+  .stat-strip-inner.four{grid-template-columns:repeat(4,1fr);}
+
+  .phase-block{margin-top:2.6rem;}
+  .phase-block + .phase-block{margin-top:2.2rem;}
+  .phase-block h3{font-size:1.05rem; color:var(--navy); margin-bottom:0.9rem; font-weight:600;}
+  .phase-bar{display:grid; grid-template-columns:repeat(3,1fr); gap:3px;}
+  .phase-bar div{background:var(--navy); color:var(--white); font-family:'IBM Plex Mono',monospace; font-size:0.72rem; letter-spacing:0.1em; text-transform:uppercase; text-align:center; padding:0.9rem 0.5rem;}
+  .tool-line{margin-top:3px; font-family:'IBM Plex Mono',monospace; font-size:0.68rem; letter-spacing:0.06em; text-transform:uppercase; padding:0.45rem 0.8rem; color:var(--white);}
+  .tool-line.rust{background:var(--rust);}
+  .tool-line.teal{background:var(--teal);}
+  .tool-line.light{background:var(--teal-light); color:var(--navy);}
+  .tool-line.s2{margin-left:33.33%;}
+  .tool-line.s3{margin-left:66.66%;}
+  .phase-note{font-size:0.88rem; color:#5C7B84; margin-top:0.8rem; max-width:70ch;}
+
+  .producers{display:grid; grid-template-columns:repeat(4,1fr); gap:1px; background:var(--line); border:1px solid var(--line); margin-top:2.6rem;}
+  .producers .c{background:var(--white); padding:1.8rem 1.5rem;}
+  .producers .c .tag{font-family:'IBM Plex Mono',monospace; font-size:0.68rem; letter-spacing:0.08em; text-transform:uppercase; color:var(--rust); display:block; margin-bottom:0.7rem;}
+  .producers .c h4{margin:0 0 0.5rem; font-size:1.05rem; color:var(--navy); font-weight:600;}
+  .producers .c p{margin:0; font-size:0.9rem; color:#3B5A63;}
+
+  .anatomy{display:grid; grid-template-columns:repeat(4,1fr); gap:1.6rem 2rem; margin-top:2.4rem;}
+  .anatomy div{border-top:1px solid var(--line); padding-top:1rem;}
+  .anatomy .k{font-family:'IBM Plex Mono',monospace; font-size:0.68rem; letter-spacing:0.08em; text-transform:uppercase; color:var(--teal); display:block; margin-bottom:0.35rem;}
+  .anatomy p{margin:0; font-size:0.9rem; color:#3B5A63;}
+
+  .scroll-fig{overflow-x:auto; border-radius:6px; border:1px solid var(--line); background:var(--white); box-shadow: 0 24px 48px -24px rgba(0,59,73,0.35); -webkit-overflow-scrolling:touch;}
+  .scroll-fig img{max-width:none; width:2200px; border:none; box-shadow:none; border-radius:0;}
+
+  .journey-grid{display:grid; grid-template-columns:repeat(2,1fr); gap:2.4rem 2rem; margin-top:2.6rem;}
+  .journey-grid figure{margin:0;}
+  .journey-grid a{display:block; text-decoration:none;}
+  .journey-grid img{aspect-ratio:4/3; object-fit:cover; object-position:top left; width:100%; transition:transform .2s;}
+  .journey-grid a:hover img{transform:translateY(-3px);}
+  .journey-grid .open{font-family:'IBM Plex Mono',monospace; font-size:0.7rem; letter-spacing:0.06em; text-transform:uppercase; color:var(--navy); border-bottom:1px solid var(--rust); padding-bottom:2px; display:inline-block; margin-top:0.6rem;}
+
+  .quote cite{display:block; font-style:normal; font-family:'IBM Plex Mono',monospace; font-size:0.7rem; letter-spacing:0.08em; text-transform:uppercase; color:var(--teal); margin-top:0.8rem;}
+  .quote-row{display:grid; grid-template-columns:repeat(3,1fr); gap:2rem; margin-top:2.4rem;}
+  .quote-row .quote{margin:0;}
+  .quote-row .quote p{font-size:1.08rem;}
+
+  @media (max-width:820px){
+    .stat-strip-inner.four{grid-template-columns:1fr 1fr;}
+    .stat-strip-inner.four .stat{border-top:none; padding-top:0;}
+    .producers{grid-template-columns:1fr 1fr;}
+    .anatomy{grid-template-columns:1fr 1fr;}
+    .journey-grid{grid-template-columns:1fr;}
+    .quote-row{grid-template-columns:1fr;}
+    .phase-bar div{font-size:0.6rem; letter-spacing:0.04em; padding:0.8rem 0.25rem;}
+    .tool-line{font-size:0.6rem;}
+    .scroll-fig img{width:1500px;}
+  }
+  @media (max-width:480px){
+    .producers{grid-template-columns:1fr;}
+    .anatomy{grid-template-columns:1fr;}
+  }
+</style>
+
+<body>
+
+<header class="hero">
+  <div class="hero-inner">
+    <div class="eyebrow">Insurance · UX Research &amp; Service Design</div>
+    <h1>Mapping the producer experience while Aflac rebuilt its tools</h1>
+    <p class="sub">As part of the Vision 2020 Transformation Initiative, Aflac was rolling out a new generation of CRM tools. I led an eight-week assessment of how its producers actually prospect, propose, and onboard. Through 34 interviews we found where the process was breaking down, mapped it as six visual "subway map" journeys, and set out the changes Aflac should make before building any further.</p>
+    <div class="meta-row">
+      <div class="meta-item"><div class="label">Role</div><div class="val">UX Lead · Principal Contributor (EY)</div></div>
+      <div class="meta-item"><div class="label">Duration</div><div class="val">8 weeks · Nov 2016 – Jan 2017</div></div>
+      <div class="meta-item"><div class="label">Client</div><div class="val">Aflac, Customer Experience team</div></div>
+      <div class="meta-item"><div class="label">Team</div><div class="val">Me + three junior designers · Aflac CX partners</div></div>
+    </div>
+  </div>
+</header>
+
+<div class="stat-strip">
+  <div class="stat-strip-inner four">
+    <div class="stat"><div class="num">18</div><div class="desc">internal stakeholder interviews and tool demos</div></div>
+    <div class="stat"><div class="num">16</div><div class="desc">producer interviews across four roles</div></div>
+    <div class="stat"><div class="num">6</div><div class="desc">user journeys, each drawn as a "subway map"</div></div>
+    <div class="stat"><div class="num">6</div><div class="desc">layered experience assessment maps</div></div>
+  </div>
+</div>
+
+<section>
+  <div class="section-head">
+    <h2>Context</h2>
+    <div class="lede">Aflac's Transformation Initiative was replacing a patchwork of sales tools with new CRM platforms: BCLM for the broker channel, CCLM for career agents, a new Proposal Tool, and STM v2.0 for recruiting.</div>
+  </div>
+  <div class="prose">The tools were already being designed and built. What nobody had mapped end to end was the experience of the people expected to use them. Aflac sells through producers, a field force of independent agents, sales coordinators, and outside brokers. Most of them are 1099 contractors who can't be told which tools to use.</div>
+  <div class="prose">Aflac's Customer Experience team engaged EY to assess that experience across two processes: <strong>pre-sales</strong>, which runs from first prospect through acceptance of Aflac products, and <strong>career agent onboarding</strong>, which runs from a recruit's verbal commitment until they write business independently. The goal was to document pain points, gaps, and opportunities while the transformation could still be steered.</div>
+
+  <div class="producers">
+    <div class="c"><span class="tag">Producer 01</span><h4>Career Agent</h4><p>An independent business owner who sells Aflac Individual and Group products directly.</p></div>
+    <div class="c"><span class="tag">Producer 02</span><h4>RSC / DSC</h4><p>Regional and District Sales Coordinators. They sell, and they also recruit, train, and mentor new agents.</p></div>
+    <div class="c"><span class="tag">Producer 03</span><h4>Broker</h4><p>Leads an outside brokerage. Voluntary benefits are a small part of what a broker sells.</p></div>
+    <div class="c"><span class="tag">Producer 04</span><h4>Broker Sales Pro</h4><p>An Aflac employee (BSP) who supports brokers and handles Aflac's side of each case.</p></div>
+  </div>
+</section>
+
+<section class="tight">
+  <div class="section-head">
+    <h2>The challenge</h2>
+    <div class="lede">The brief covered four producer roles, two processes, and both current and future state. We had eight weeks to do it, and the calendar worked against us.</div>
+  </div>
+  <div class="constraint-grid">
+    <div class="c"><span class="tag">Constraint 01</span><p>The engagement ran through Q4 and the holidays. Brokers were closing out the quarter, agents and coordinators were in January enrollment, and a sales leadership conference took up much of the field's time.</p></div>
+    <div class="c"><span class="tag">Constraint 02</span><p>Field gatekeepers were slow to supply contacts, so producer interviews slipped three weeks. We had to run research and synthesis at the same time.</p></div>
+    <div class="c"><span class="tag">Constraint 03</span><p>There was little written down about the future-state CRM tools and few demos to look at. Wireframes and prototypes were explicitly out of scope, so the deliverables had to persuade without screens.</p></div>
+  </div>
+  <div class="quote" style="margin-top:2.8rem;"><p>How might we give Aflac a single, shared picture of what producers go through, while the tools meant to support them are still being built?</p></div>
+</section>
+
+<div class="stripe"></div>
+
+<div class="people-band">
+  <div class="inner">
+    <div class="section-head">
+      <h2>My role</h2>
+      <div class="lede">I owned the engagement from pitch to final readout. I won the work, defined what we would deliver, and led a team of three junior designers through research and production.</div>
+    </div>
+    <ul class="role-grid">
+      <li>Pitched and won the engagement</li>
+      <li>Set the scope and the deliverables</li>
+      <li>Managed the timeline, including the three-week slip</li>
+      <li>Led and mentored three junior designers</li>
+      <li>Planned the stakeholder and producer research</li>
+      <li>Directed synthesis of all 34 interviews</li>
+      <li>Developed the "subway map" journey format</li>
+      <li>Led production of every deliverable, including the executive summary</li>
+    </ul>
+  </div>
+</div>
+
+<section>
+  <div class="section-head">
+    <h2>Framing two processes</h2>
+    <div class="lede">Before mapping anything in detail, we reduced each process to three phases that everyone at Aflac could agree on. Then we placed the new tools against those phases.</div>
+  </div>
+
+  <div class="phase-block">
+    <h3>Pre-sales process</h3>
+    <div class="phase-bar"><div>Prospect</div><div>Propose</div><div>Commit</div></div>
+    <div class="tool-line rust">Aflac BCLM — broker channel CRM</div>
+    <div class="tool-line teal">Aflac CCLM — career channel CRM</div>
+    <div class="tool-line light s2">Aflac Proposal Tool</div>
+  </div>
+
+  <div class="phase-block">
+    <h3>Onboarding process</h3>
+    <div class="phase-bar"><div>Recruiting</div><div>Local onboarding</div><div>Aflac onboarding</div></div>
+    <div class="tool-line rust">Aflac STM v2.0 — talent management</div>
+    <div class="tool-line teal s3">Aflac CCLM</div>
+  </div>
+  <p class="phase-note">This simple frame became the spine of every deliverable. Journeys, process flows, and recommendations all hang from the same phases, so stakeholders could move between them without getting lost.</p>
+</section>
+
+<section class="tight">
+  <div class="section-head">
+    <h2>Research approach</h2>
+    <div class="lede">We worked in four phases: plan, assess, design, and deliver. The research was deliberately tool-agnostic. We studied the work, not any one system.</div>
+  </div>
+  <div class="prose"><strong>Stakeholders first.</strong> Eighteen interviews with vice presidents, senior managers, functional owners, and project leads, plus demos of the transformation tools, gave us the official version of each process and the goals for the future state.</div>
+  <div class="prose"><strong>Then the field.</strong> Sixteen one-hour interviews, mostly by phone, with BSPs, brokers, DSCs, RSCs, and a career agent showed how the work really happens: the workarounds, the side tools, and the moments where trust in Aflac is won or lost.</div>
+  <div class="prose"><strong>Then the system.</strong> Piecing the current state together meant a lot of detective work across Aflac.com, Field Force Services, and separate systems. We modeled every path in detailed process flows covering recommended, alternate, optional, and future routes, and marked where Aflac team processes and sub-processes take over.</div>
+
+  <figure>
+    <div class="scroll-fig">
+      <img src="images/aflac-puxa-process-flow-career-agent-presales.jpg" alt="Detailed swimlane process flow for the Aflac Career Agent pre-sales process, moving from prospect through propose and commit. It shows decision points for individual versus group products, multiple proposal paths (APT, self-generated, informal, and formal RFP), and highlighted Aflac team sub-processes.">
+    </div>
+    <figcaption>01 — Career Agent pre-sales process flow, one of five. It shows seven different ways to get a proposal made. Scroll to follow the full flow.</figcaption>
+  </figure>
+</section>
+
+<div class="stripe"></div>
+
+<section>
+  <div class="section-head">
+    <h2>The turning point</h2>
+    <div class="lede">Leadership described pre-sales as a process. Producers described it as a series of milestones, where getting from one to the next was up to them.</div>
+  </div>
+  <div class="quote"><p>Aflac's new tools were focused on access to capabilities. Nobody was designing the end-to-end experience of moving between them.</p></div>
+  <div class="prose">The same proposal could be produced seven different ways. Activity was tracked in YouGotNet, lead sheets, Google Docs, or weekly timesheets, depending on the region. Each new platform solved a piece of the problem, but producers would still be switching between apps, signing in several times, and dealing with overlapping features.</div>
+  <div class="prose">That changed what we were there to deliver. The most valuable thing we could give Aflac wasn't a list of tool fixes. It was a picture of the whole journey, shared across the organization, that showed where producers lose time, confidence, and business.</div>
+
+  <div class="quote-row">
+    <div class="quote"><p>"We have so many tools, tools that do similar things differently."</p><cite>Internal stakeholder</cite></div>
+    <div class="quote"><p>"I have no idea who is working on my proposal and if it will come out of the pipe correctly."</p><cite>Producer</cite></div>
+    <div class="quote"><p>"I spend time and resources on someone who leaves, and takes my paycheck with them."</p><cite>Producer, onboarding</cite></div>
+  </div>
+</section>
+
+<div class="stripe"></div>
+
+<section>
+  <div class="section-head">
+    <h2>Research insights</h2>
+    <div class="lede">Six findings came up again and again across roles. Each one led to a specific recommendation.</div>
+  </div>
+
+  <div class="insight">
+    <div class="n">01</div>
+    <div><span class="tag">Insight — "What is going on?"</span><h3>Proposals vanished into a black box</h3><p>After submitting a group proposal, producers couldn't see its status or who owned it. Calls and emails went unanswered, and errors turned up only at the end, under deadline.</p></div>
+    <div><span class="tag">Recommendation</span><p>Add a proposal workflow tool with visible status and escalation, and back it with service level agreements for standard, exception, and RFP proposals.</p></div>
+  </div>
+  <div class="insight">
+    <div class="n">02</div>
+    <div><span class="tag">Insight — "Why is it always wrong?"</span><h3>Errors were found too late to fix gracefully</h3><p>Data was entered and re-entered by hand across disconnected systems, so a wrong product or rate often surfaced just before enrollment, in front of the client.</p></div>
+    <div><span class="tag">Recommendation</span><p>Build in early data checks and automate case setup, and add traceable revision control for group proposals.</p></div>
+  </div>
+  <div class="insight">
+    <div class="n">03</div>
+    <div><span class="tag">Insight — "How can I do this?"</span><h3>Producers took the path of least resistance</h3><p>Producers couldn't get approved materials or simple tools, so they reprinted outdated collateral and picked whatever was fastest. That created brand inconsistency and liability.</p></div>
+    <div><span class="tag">Recommendation</span><p>Benchmark YouGotNet, the tool the field liked best, and carry its ease of use into BCLM and CCLM. Make self-service the default.</p></div>
+  </div>
+  <div class="insight">
+    <div class="n">04</div>
+    <div><span class="tag">Insight</span><h3>Clients were being contacted by too many agents</h3><p>The Do Not Call list was out of date and unavailable on mobile, so existing Aflac clients kept hearing from different agents. This also fed conflict between the broker and career channels.</p></div>
+    <div><span class="tag">Recommendation</span><p>Integrate the list into CRM as a mandatory step before adding an account, make it mobile, and push alerts to producers by territory.</p></div>
+  </div>
+  <div class="insight">
+    <div class="n">05</div>
+    <div><span class="tag">Insight</span><h3>Every region onboarded agents its own way</h3><p>Coordinators built their own binders, checklists, and training because Aflac's formal training started late. Only about 1 in 10 interviewed candidates reached an offer, and many new agents didn't last.</p></div>
+    <div><span class="tag">Recommendation</span><p>Standardize the onboarding curriculum and materials, and start Aflac training earlier so new agents get the same foundation everywhere.</p></div>
+  </div>
+  <div class="insight">
+    <div class="n">06</div>
+    <div><span class="tag">Insight — "How can I know if any of this is working?"</span><h3>Success was measured too late to act on</h3><p>Districts defined conversion differently and tracked lagging numbers. Agents weren't told about incentives that would have motivated them early on.</p></div>
+    <div><span class="tag">Recommendation</span><p>Track leading indicators, connect STM v2.0 to the learning system, and give coordinators dashboards that flag agents at risk.</p></div>
+  </div>
+</section>
+
+<div class="stripe"></div>
+
+<section>
+  <div class="section-head">
+    <h2>Making the journey visible</h2>
+    <div class="lede">A finding in a slide deck is easy to agree with and then forget. We drew each producer's journey as a "subway map," a route you can follow stop by stop.</div>
+  </div>
+  <div class="prose">Each map follows one producer through the phases of a process. Each stage is a stop, and an emotional line runs across the top showing how they feel at each one. Callouts mark the <strong>moments of truth</strong>, where Aflac either earns the producer's confidence or loses it. Below the line, each stop is broken into a consistent set of layers, so the maps can be compared side by side.</div>
+
+  <figure>
+    <img src="images/aflac-puxa-journey-broker-detail-emotion-curve.jpg" alt="Close-up of the Broker pre-sales journey. A persona header sits above Prospect phase stages. Below them an emotional curve moves through Cautiously Optimistic, Hopeful, Excited, and Encouraged, with Moment of Truth callouts and a Doing row underneath.">
+    <figcaption>02 — Broker pre-sales journey, detail. The emotional line and moments of truth sit on top of the layers that explain them.</figcaption>
+  </figure>
+
+  <div class="anatomy">
+    <div><span class="k">Emotions</span><p>How the producer feels at each stop, plotted as a continuous line.</p></div>
+    <div><span class="k">Doing</span><p>What they are actually doing, or trying to do.</p></div>
+    <div><span class="k">Thinking</span><p>Their questions and worries, quoted in their own words.</p></div>
+    <div><span class="k">Feeling</span><p>The reasons behind each high and low on the line.</p></div>
+    <div><span class="k">Touchpoints</span><p>The people, tools, and channels they rely on, both Aflac and external.</p></div>
+    <div><span class="k">Pain points</span><p>Where the experience breaks down.</p></div>
+    <div><span class="k">Opportunities</span><p>What Aflac could change at that stop.</p></div>
+    <div><span class="k">KPIs</span><p>How Aflac would know the change worked.</p></div>
+  </div>
+</section>
+
+<section class="tight">
+  <div class="section-head">
+    <h2>Six journeys</h2>
+    <div class="lede">Four pre-sales journeys, one per producer role, and two onboarding journeys showing recruitment from both sides: the new agent and the coordinator bringing them in.</div>
+  </div>
+  <div class="journey-grid">
+    <figure><a href="images/aflac-puxa-journey-broker-presales.jpg" target="_blank" rel="noopener"><img src="images/aflac-puxa-journey-broker-presales.jpg" alt="Full Broker pre-sales user journey map across Prospect, Propose, and Commit." loading="lazy"><span class="open">Open full map →</span></a><figcaption>03 — Pre-sales · Broker</figcaption></figure>
+    <figure><a href="images/aflac-puxa-journey-bsp-presales.jpg" target="_blank" rel="noopener"><img src="images/aflac-puxa-journey-bsp-presales.jpg" alt="Full Broker Sales Professional pre-sales user journey map across Prospect, Propose, and Commit." loading="lazy"><span class="open">Open full map →</span></a><figcaption>04 — Pre-sales · Broker Sales Professional</figcaption></figure>
+    <figure><a href="images/aflac-puxa-journey-career-agent-presales.jpg" target="_blank" rel="noopener"><img src="images/aflac-puxa-journey-career-agent-presales.jpg" alt="Full Career Agent pre-sales user journey map across Prospect, Propose, and Commit." loading="lazy"><span class="open">Open full map →</span></a><figcaption>05 — Pre-sales · Career Agent</figcaption></figure>
+    <figure><a href="images/aflac-puxa-journey-rsc-dsc-presales.jpg" target="_blank" rel="noopener"><img src="images/aflac-puxa-journey-rsc-dsc-presales.jpg" alt="Full RSC/DSC pre-sales user journey map across Prospect, Propose, and Commit." loading="lazy"><span class="open">Open full map →</span></a><figcaption>06 — Pre-sales · RSC / DSC</figcaption></figure>
+    <figure><a href="images/aflac-puxa-journey-career-agent-onboarding.jpg" target="_blank" rel="noopener"><img src="images/aflac-puxa-journey-career-agent-onboarding.jpg" alt="Full Career Agent onboarding user journey map across Recruiting, Local Onboarding, and Aflac Onboarding." loading="lazy"><span class="open">Open full map →</span></a><figcaption>07 — Onboarding · Career Agent</figcaption></figure>
+    <figure><a href="images/aflac-puxa-journey-rsc-dsc-onboarding.jpg" target="_blank" rel="noopener"><img src="images/aflac-puxa-journey-rsc-dsc-onboarding.jpg" alt="Full RSC/DSC onboarding user journey map across Recruiting, Local Onboarding, and Aflac Onboarding." loading="lazy"><span class="open">Open full map →</span></a><figcaption>08 — Onboarding · RSC / DSC</figcaption></figure>
+  </div>
+  <div class="prose" style="margin-top:2.8rem;">Alongside the journeys, we produced six <strong>experience assessment maps</strong>, each four levels deep. They go from an overview of purpose, to major steps, to step-level activities, and finally to detailed breakouts of the interactions, tools, people, and processes in the areas with the most pain or the most opportunity.</div>
+</section>
+
+<div class="stripe"></div>
+
+<section>
+  <div class="section-head">
+    <h2>Stakeholders vs. the field</h2>
+    <div class="lede">Putting both sets of interviews side by side showed where headquarters and the field saw the same problem from opposite ends.</div>
+  </div>
+  <table class="strategy-table">
+    <tr><th>What headquarters saw</th><th>What producers lived</th><th>Recommendation</th></tr>
+    <tr><td>Producers don't follow the process</td><td>There's no single process to follow, and the official one is slow</td><td>Define and publish best practices, and retire the informal routes</td></tr>
+    <tr><td>Regions go off on their own</td><td>Local workarounds fill gaps Aflac leaves open</td><td>Find the field's best practices and scale them</td></tr>
+    <tr><td>We can't tell if anything is working</td><td>"Our reporting is terrible"</td><td>A balanced scorecard of leading and lagging indicators</td></tr>
+    <tr><td>New agents turn over too quickly</td><td>Expectations and incentives are never explained</td><td>Share metrics and incentives from the first week</td></tr>
+    <tr><td>Group business is underperforming</td><td>"I wish Aflac could make Group like Aflac Traditional"</td><td>Give Group proposals the same speed and visibility as Individual</td></tr>
+  </table>
+</section>
+
+<section class="tight">
+  <div class="section-head">
+    <h2>Recommendations</h2>
+    <div class="lede">The executive summary closed with a prioritized set of recommendations. The first was about how Aflac builds software, not about any single tool.</div>
+  </div>
+  <div class="principles">
+    <div class="p"><div class="idx">01</div><h4>Design before you build</h4><p>Base every system on user research, and validate with low-fidelity prototypes before committing development. Start the next program, CCLM or Case Setup Manager, with an innovation workshop to define the MVP.</p></div>
+    <div class="p"><div class="idx">02</div><h4>Go deeper on tools now shipping</h4><p>Gather producer feedback on BCLM, the Proposal Tool, and STM v2.0 while the backlog can still change. Plan for the gap between the BCLM and CCLM launches.</p></div>
+    <div class="p"><div class="idx">03</div><h4>Fix the highest-pain moments</h4><p>Do Not Call accuracy, proposal revisions and case setup errors, group proposal turnaround, activity tracking, onboarding curriculum, and retention metrics.</p></div>
+    <div class="p"><div class="idx">04</div><h4>Keep following the journey</h4><p>Apply the same method to the next stages, case setup and enrollment, until the whole producer experience is mapped.</p></div>
+  </div>
+</section>
+
+<div class="stripe"></div>
+
+<section>
+  <div class="section-head">
+    <h2>What we delivered</h2>
+    <div class="lede">Five work products, brought together in an executive summary and recommendations in January 2017.</div>
+  </div>
+  <table class="outcome-table">
+    <tr><th>Deliverable</th><th>Result</th></tr>
+    <tr><td>Stakeholder research findings</td><td class="result">18 interviews synthesized</td></tr>
+    <tr><td>Producer research findings</td><td class="result">16 interviews, 4 roles</td></tr>
+    <tr><td>User journeys ("subway maps")</td><td class="result">6 journeys</td></tr>
+    <tr><td>Experience assessment maps and process flows</td><td class="result">6 maps, 4 levels deep</td></tr>
+    <tr><td>Executive summary and recommendations</td><td class="result">Prioritized roadmap</td></tr>
+  </table>
+</section>
+
+<section class="tight">
+  <div class="section-head">
+    <h2>Reflection</h2>
+    <div class="lede">This was an assessment brought in after development had already started. That was the most important lesson of the project.</div>
+  </div>
+  <div class="prose">Much of what producers told us could have been learned before a line of code was written. The work was useful because it made that cost visible to leadership. Laying the journeys out side by side made the case for research up front more clearly than any argument could.</div>
+  <div class="quote"><p>If you keep building without user-centered design, you'll keep commissioning assessments like this one, after the fact.</p></div>
+
+  <div class="takeaways">
+    <div class="item"><h4>A shared picture beats a long list</h4><p>The journeys gave executives, CX, and IT one artifact to point at, so the conversation could be about moments in the journey instead of individual tools.</p></div>
+    <div class="item"><h4>Interview both sides of every handoff</h4><p>The most useful insights came from comparing what headquarters believed with what the field experienced.</p></div>
+    <div class="item"><h4>Plan for the calendar you have</h4><p>Running research and synthesis in parallel after a three-week slip only works when the framing is settled early, so the team always knows where a new finding belongs.</p></div>
+    <div class="item"><h4>Grow the team while doing the work</h4><p>I brought three junior designers into interviews, synthesis, and production, so they learned the method by doing it, not just the visual craft.</p></div>
+  </div>
+</section>
+
+<footer>
+  <a class="back" href="index.html">← Back to portfolio</a>
+  <div>Aflac Producer UX Assessment · UX Lead, EY · Case study prepared for portfolio use</div>
+</footer>
+
+</body>
+</html>
