@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Design Slam — Case Study</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Design Slam: after-hours, hands-on design thinking events that taught EY consultants with no design background how to sketch, present and critique concepts.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500&display=swap" rel="stylesheet">
+<style>  :root{
+    --ink:#0B2530;
+    --navy:#003B49;
+    --teal:#007994;
+    --teal-light:#8DC7D8;
+    --sky:#D3E8EF;
+    --rust:#E24301;
+    --rust-light:#FEA682;
+    --paper:#F7F5F0;
+    --paper-dim:#EFECE4;
+    --white:#FFFFFF;
+    --line: rgba(11,37,48,0.12);
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{margin:0; background:var(--paper); color:var(--ink); font-family:'Inter',sans-serif; line-height:1.6; -webkit-font-smoothing:antialiased;}
+  h1,h2,h3{font-family:'Inter',sans-serif; font-weight:500; margin:0; letter-spacing:-0.01em;}
+  .eyebrow{font-family:'IBM Plex Mono',monospace; font-size:0.72rem; letter-spacing:0.14em; text-transform:uppercase; color:var(--teal); display:flex; align-items:center; gap:0.6em;}
+  .eyebrow::before{content:""; width:22px; height:1px; background:var(--teal);}
+  a{color:inherit;}
+  img{max-width:100%; display:block;}
+
+  .hero{background: linear-gradient(180deg, var(--navy) 0%, #052A34 100%); color:var(--white); padding: 5.5rem max(16px, 6vw) 4.5rem; position:relative; overflow:hidden;}
+  .hero::after{content:""; position:absolute; right:-8%; top:-20%; width:520px; height:520px; background: radial-gradient(circle, rgba(0,121,148,0.55) 0%, rgba(0,121,148,0) 70%);}
+  .hero-inner{max-width:1180px; margin:0 auto; position:relative;}
+  .hero .eyebrow{color:var(--rust-light); margin-bottom:1.6rem;}
+  .hero .eyebrow::before{background:var(--rust-light);}
+  .hero h1{font-size:clamp(2.4rem, 5vw, 4rem); max-width:17ch; line-height:1.04; color:var(--white);}
+  .hero .sub{max-width:52ch; font-size:1.15rem; color:var(--sky); margin-top:1.4rem; font-weight:400;}
+  .status-pill{display:inline-flex; align-items:center; gap:0.5rem; margin-top:1.8rem; font-family:'IBM Plex Mono',monospace; font-size:0.7rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--white); border:1px solid rgba(255,255,255,0.3); padding:0.45rem 0.9rem; border-radius:100px;}
+  .status-pill::before{content:""; width:8px; height:8px; border-radius:50%; background:var(--rust-light);}
+  .meta-row{display:flex; flex-wrap:wrap; gap:2.6rem; margin-top:3rem; padding-top:2rem; border-top:1px solid rgba(255,255,255,0.16);}
+  .meta-item .label{font-family:'IBM Plex Mono',monospace; font-size:0.68rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--teal-light); margin-bottom:0.4rem;}
+  .meta-item .val{font-size:0.98rem; color:var(--white); max-width:28ch;}
+
+  .stat-strip{background:var(--rust); color:var(--white);}
+  .stat-strip-inner{max-width:1180px; margin:0 auto; display:grid; grid-template-columns:repeat(3,1fr); padding: 2.6rem max(16px, 6vw); gap:1.5rem;}
+  .stat{border-left:1px solid rgba(255,255,255,0.35); padding-left:1.6rem;}
+  .stat:first-child{border-left:none; padding-left:0;}
+  .stat .num{font-family:'Inter',sans-serif; font-size:2.6rem; font-weight:500; line-height:1;}
+  .stat .desc{font-size:0.88rem; margin-top:0.5rem; color:#FFE3D6; max-width:24ch;}
+
+  section{max-width:1180px; margin:0 auto; padding: 5.5rem max(16px, 6vw);}
+  section.tight{padding-top:0;}
+  .section-head{display:grid; grid-template-columns: 1fr 2fr; gap:3rem; margin-bottom:2.6rem;}
+  .section-head h2{font-size:clamp(1.7rem,2.6vw,2.3rem); max-width:13ch;}
+  .lede{font-size:1.05rem; color:#2C4C56; max-width:56ch;}
+  .prose{font-size:1.02rem; color:#28444D; max-width:68ch;}
+  .prose + .prose{margin-top:1.1rem;}
+
+  .quote{border-left:3px solid var(--rust); padding: 0.3rem 0 0.3rem 1.6rem; margin: 2.4rem 0; max-width:60ch;}
+  .quote p{font-family:'Inter',sans-serif; font-style:italic; font-weight:400; font-size:1.3rem; color:var(--navy); line-height:1.45; margin:0;}
+
+  figure{margin:2.6rem 0 0;}
+  figure img{border-radius:6px; border:1px solid var(--line); box-shadow: 0 24px 48px -24px rgba(0,59,73,0.35); width:100%; height:auto;}
+  figcaption{font-family:'IBM Plex Mono',monospace; font-size:0.75rem; color:var(--teal); margin-top:0.9rem; letter-spacing:0.02em; max-width:80ch;}
+
+  .stripe{height:8px; width:100%; background: repeating-linear-gradient(90deg, var(--navy) 0 8%, var(--teal) 8% 16%, var(--teal-light) 16% 24%, var(--sky) 24% 32%, var(--rust) 32% 40%, var(--rust-light) 40% 48%, #FFDB96 48% 56%, var(--paper-dim) 56% 64%, var(--navy) 64% 72%, var(--teal) 72% 80%, var(--rust) 80% 88%, var(--rust-light) 88% 100%);}
+
+  .constraint-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:var(--line); margin-top:2.6rem; border:1px solid var(--line);}
+  .constraint-grid .c{background:var(--white); padding:2rem 1.8rem;}
+  .constraint-grid .c .tag{font-family:'IBM Plex Mono',monospace; font-size:0.68rem; letter-spacing:0.08em; text-transform:uppercase; color:var(--rust); display:block; margin-bottom:0.9rem;}
+  .constraint-grid .c h3{font-size:1.05rem; color:var(--navy); margin-bottom:0.5rem; font-weight:600;}
+  .constraint-grid .c p{font-size:0.95rem; color:#2C4C56; margin:0;}
+
+  .people-band{background:var(--navy); color:var(--white);}
+  .people-band .inner{max-width:1180px; margin:0 auto; padding:4.5rem max(16px, 6vw);}
+  .people-band .section-head h2{color:var(--white);}
+  .people-band .lede{color:var(--sky);}
+
+  .process{display:grid; grid-template-columns:repeat(3,1fr); gap:2rem; margin-top:1rem;}
+  .process .step{border-top:2px solid var(--rust-light); padding-top:1.4rem;}
+  .process .step .n{font-family:'IBM Plex Mono',monospace; font-size:0.7rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--teal-light); margin-bottom:0.6rem;}
+  .process .step h3{font-size:1.15rem; color:var(--white); margin-bottom:0.5rem;}
+  .process .step p{font-size:0.94rem; color:var(--sky); margin:0;}
+
+  .principles{display:grid; grid-template-columns:repeat(2,1fr); gap:2px; background:var(--line); margin-top:2.6rem; border:1px solid var(--line);}
+  .principles .p{background:var(--white); padding:2.2rem;}
+  .principles .p .idx{font-family:'Inter',sans-serif; font-size:1.6rem; color:var(--sky); margin-bottom:0.6rem;}
+  .principles .p h4{font-family:'Inter',sans-serif; font-size:1.1rem; color:var(--navy); margin:0 0 0.5rem; font-weight:600;}
+  .principles .p p{font-size:0.92rem; color:#3B5A63; margin:0;}
+
+  .workflow-head{display:flex; align-items:baseline; gap:1rem; margin-top:4rem; padding-top:2rem; border-top:1px solid var(--line);}
+  .workflow-head:first-of-type{margin-top:1rem;}
+  .workflow-head .tag{font-family:'IBM Plex Mono',monospace; font-size:0.7rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--rust);}
+  .workflow-head h3{font-size:1.4rem; color:var(--navy);}
+  .workflow-copy{font-size:0.98rem; color:#3B5A63; max-width:66ch; margin-top:0.8rem;}
+
+  .pair{display:grid; grid-template-columns:1fr 1fr; gap:2rem; margin-top:2.6rem; align-items:start;}
+  .pair figure{margin-top:0;}
+
+  .pharma-band{background:var(--sky);}
+  .pharma-band .inner{max-width:1180px; margin:0 auto; padding:5.5rem max(16px, 6vw);}
+  .pharma-list{display:grid; grid-template-columns:repeat(3,1fr); gap:2rem; margin-top:2.4rem;}
+  .pharma-list .item{background:var(--white); border-radius:6px; padding:1.8rem; border:1px solid var(--line);}
+  .pharma-list .item .tag{font-family:'IBM Plex Mono',monospace; font-size:0.68rem; letter-spacing:0.08em; text-transform:uppercase; color:var(--teal); display:block; margin-bottom:0.7rem;}
+  .pharma-list .item h4{font-size:1.05rem; color:var(--navy); margin:0 0 0.4rem; font-weight:600;}
+  .pharma-list .item p{font-size:0.92rem; color:#3B5A63; margin:0;}
+
+  .takeaways{display:grid; grid-template-columns:repeat(2,1fr); gap:2.2rem 3rem; margin-top:2.6rem;}
+  .takeaways .item{padding-top:1.4rem; border-top:2px solid var(--rust);}
+  .takeaways .item h4{font-family:'Inter',sans-serif; font-size:1.05rem; color:var(--navy); font-weight:600; margin:0 0 0.5rem;}
+  .takeaways .item p{font-size:0.93rem; color:#3B5A63; margin:0;}
+
+  .outcome-table{width:100%; border-collapse:collapse; margin-top:2.4rem;}
+  .outcome-table th{text-align:left; font-family:'IBM Plex Mono',monospace; font-size:0.68rem; letter-spacing:0.08em; text-transform:uppercase; color:var(--teal); padding:0.8rem 1rem 0.8rem 0; border-bottom:1px solid var(--line);}
+  .outcome-table td{padding:1.1rem 1rem 1.1rem 0; border-bottom:1px solid var(--line); font-size:0.98rem; color:#2C4C56; vertical-align:top;}
+  .outcome-table td.result{font-family:'Inter',sans-serif; font-weight:500; color:var(--rust);}
+
+  footer{background:var(--ink); color:var(--sky); text-align:center; padding:3.5rem max(16px, 6vw); font-size:0.85rem;}
+  footer .back{font-family:'IBM Plex Mono',monospace; font-size:0.75rem; letter-spacing:0.08em; text-transform:uppercase; color:var(--white); text-decoration:none; border:1px solid rgba(255,255,255,0.3); padding:0.7rem 1.4rem; border-radius:100px; display:inline-block; margin-bottom:1.6rem;}
+
+  
+  .hero a, .prose a{color:inherit; text-decoration-color:var(--teal); text-underline-offset:3px;}
+  .prose a{color:var(--teal);}
+  .ba{display:grid; grid-template-columns:1fr 1fr; gap:2rem; margin-top:2.2rem; align-items:start;}
+  .ba figure{margin:0; position:relative; min-width:0;}
+  .ba a{display:block;}
+  .ba-label{position:absolute; top:12px; left:12px; z-index:1; font-family:'IBM Plex Mono',monospace; font-size:0.66rem; letter-spacing:0.12em; text-transform:uppercase; background:var(--ink); color:var(--white); padding:0.3rem 0.65rem; border-radius:100px;}
+  .ba-label.after{background:var(--rust);}
+  .ba img{transition:transform .2s ease;}
+  .ba a:hover img{transform:translateY(-2px);}
+  .changes{list-style:none; padding:0; margin:1.8rem 0 0; display:grid; grid-template-columns:repeat(3,1fr); gap:1.6rem;}
+  .changes li{border-top:2px solid var(--teal-light); padding-top:1rem; font-size:0.93rem; color:#3B5A63;}
+  .changes b{color:var(--navy); font-weight:600;}
+  a:focus-visible{outline:2px solid var(--rust); outline-offset:3px;}
+  @media (prefers-reduced-motion: reduce){ .ba img{transition:none;} html{scroll-behavior:auto;} }
+  @media (max-width:820px){ .ba, .changes{grid-template-columns:1fr;} }
+
+  @media (max-width:820px){
+    .section-head{grid-template-columns:1fr; gap:1rem;}
+    .stat-strip-inner{grid-template-columns:1fr; gap:2rem;}
+    .stat{border-left:none; padding-left:0; border-top:1px solid rgba(255,255,255,0.35); padding-top:1.5rem;}
+    .stat:first-child{border-top:none; padding-top:0;}
+    .constraint-grid, .principles, .process, .pair, .pharma-list, .takeaways{grid-template-columns:1fr;}
+    .meta-row{gap:1.6rem;}
+    .workflow-head{flex-direction:column; gap:0.3rem;}
+    .outcome-table{font-size:0.88rem;}
+  }
+
+  .process.stages{grid-template-columns:repeat(5,1fr); gap:1.6rem;}
+  .prose.on-dark{color:var(--sky); margin-top:2.6rem;}
+  .steps{list-style:none; padding:0; margin:0; display:grid; grid-template-columns:repeat(5,1fr); gap:1px; background:var(--line); border:1px solid var(--line);}
+  .steps li{background:var(--white); padding:1.6rem 1.4rem;}
+  .steps .n{font-family:'IBM Plex Mono',monospace; font-size:0.7rem; letter-spacing:0.1em; color:var(--rust); display:block; margin-bottom:0.8rem;}
+  .steps h4{font-size:1rem; color:var(--navy); margin:0 0 0.4rem; font-weight:600;}
+  .steps p{font-size:0.9rem; color:#3B5A63; margin:0;}
+  .critique{display:grid; grid-template-columns:repeat(5,1fr); gap:1rem; margin-top:1.8rem;}
+  .critique .q{background:var(--sky); border-radius:6px; padding:1.3rem 1.2rem; font-size:0.98rem; color:var(--navy); font-weight:500; line-height:1.4;}
+  .samples img{height:340px; object-fit:contain; background:var(--white); padding:1rem;}
+  @media (max-width:1000px){ .process.stages, .steps{grid-template-columns:repeat(2,1fr);} .critique{grid-template-columns:repeat(2,1fr);} }
+  @media (max-width:600px){ .process.stages, .steps, .critique{grid-template-columns:1fr;} }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="hero-inner">
+    <div class="eyebrow">Design Education · Experiential Learning at EY</div>
+    <h1>Teaching consultants to think like designers, one evening at a time</h1>
+    <p class="sub">EY hired brilliant consultants straight out of college, but very few had ever designed anything. With my colleagues Racine Davis and Kelcie Wilderman, I co-founded the Design Slam: a hands-on, after-hours design event built on Stanford d.school design thinking, open to anyone at EY who was curious.</p>
+    <div class="meta-row">
+      <div class="meta-item"><div class="label">Role</div><div class="val">Co-founder · Design Manager · Facilitator &amp; judge</div></div>
+      <div class="meta-item"><div class="label">Founding team</div><div class="val">Mike Long, Design Manager<br>Racine Davis, Product Designer<br>Kelcie Wilderman, Staff Designer</div></div>
+      <div class="meta-item"><div class="label">Format</div><div class="val">In person in Charlotte and Manhattan, linked by video</div></div>
+      <div class="meta-item"><div class="label">Run</div><div class="val">Six monthly sessions, starting November 2016</div></div>
+    </div>
+  </div>
+</header>
+
+<div class="stat-strip">
+  <div class="stat-strip-inner">
+    <div class="stat"><div class="num">6</div><div class="desc">monthly sessions, each built around a new design prompt</div></div>
+    <div class="stat"><div class="num">2</div><div class="desc">offices, Charlotte and New York, working as one room</div></div>
+    <div class="stat"><div class="num">1 hr</div><div class="desc">to go from a prompt to a concept ready for critique</div></div>
+  </div>
+</div>
+
+<section>
+  <div class="section-head">
+    <h2>Context</h2>
+    <div class="lede">EY's new hires were highly educated and quick to learn. What most of them lacked was any experience of the design process.</div>
+  </div>
+  <div class="prose">Consultants joined EY directly from top universities and went straight onto client work, where they were increasingly expected to take part in design conversations. Few had sketched an interface, framed a user problem or had their work critiqued by a designer.</div>
+  <div class="prose">There are plenty of ways to learn about design: books, courses, lectures and case studies. Racine, Kelcie and I believed design is best learned by doing it. So instead of another training deck, we built an event where people would design something, show it and talk about it, all in one evening.</div>
+  <figure>
+    <img src="images/design-slam/design-slam-design-is-a-verb.jpg" alt="A hand sketching wireframes on a notepad, next to sticky notes, a phone and a cup of coffee." loading="lazy">
+    <figcaption>"Design is a verb." The idea behind the program, from the original pitch deck.</figcaption>
+  </figure>
+</section>
+
+<section class="tight">
+  <div class="section-head">
+    <h2>The challenge</h2>
+    <div class="lede">We needed a format that would teach real design skills to busy consultants, outside working hours, across two cities.</div>
+  </div>
+  <div class="constraint-grid">
+    <div class="c"><span class="tag">Goal 01</span><h3>Hands-on</h3><p>Participants should leave having designed something, not just having heard about design.</p></div>
+    <div class="c"><span class="tag">Goal 02</span><h3>Open to everyone</h3><p>No prior experience required. Anyone at EY with an interest in design was welcome.</p></div>
+    <div class="c"><span class="tag">Goal 03</span><h3>One team, two offices</h3><p>Charlotte and Manhattan had to feel like a single event, sharing the same prompt, timer and critique.</p></div>
+  </div>
+  <div class="quote" style="margin-top:2.8rem;"><p>How might we give people with no design background a real taste of the design process, in a single evening?</p></div>
+</section>
+
+<div class="stripe"></div>
+
+<div class="people-band">
+  <div class="inner">
+    <div class="section-head">
+      <h2>Grounded in design thinking</h2>
+      <div class="lede">We based the curriculum on the Stanford d.school's five-stage design thinking model, giving participants a process they could reuse on client work the next morning.</div>
+    </div>
+    <div class="process stages">
+      <div class="step"><div class="n">Stage 01</div><h3>Empathize</h3><p>Understand who you're designing for, their motivations and their problems.</p></div>
+      <div class="step"><div class="n">Stage 02</div><h3>Define</h3><p>Frame the user's need as a clear problem worth solving.</p></div>
+      <div class="step"><div class="n">Stage 03</div><h3>Ideate</h3><p>Generate many possible solutions quickly, before settling on one.</p></div>
+      <div class="step"><div class="n">Stage 04</div><h3>Prototype</h3><p>Make ideas tangible through sketching and wireframing.</p></div>
+      <div class="step"><div class="n">Stage 05</div><h3>Test</h3><p>Put the concept in front of others and learn from their reactions.</p></div>
+    </div>
+    <div class="prose on-dark">The program focused on three things participants would learn: rapid iteration, how to articulate a design concept, and a base knowledge of concept design.</div>
+  </div>
+</div>
+
+<section>
+  <div class="section-head">
+    <h2>Anatomy of a slam</h2>
+    <div class="lede">Every session followed the same five-step rhythm. Keeping the structure fixed let us change the prompt each month without re-teaching the format.</div>
+  </div>
+  <ol class="steps">
+    <li><span class="n">01</span><h4>Provide background</h4><p>We introduced the problem space and the pain points we wanted people to consider, then opened the floor for questions about audience and context.</p></li>
+    <li><span class="n">02</span><h4>Distribute the prompt</h4><p>A single "How might we…" question, given to both offices at the same moment.</p></li>
+    <li><span class="n">03</span><h4>Design</h4><p>One hour to sketch and wireframe a concept. The time limit forced people to form ideas quickly and commit to them.</p></li>
+    <li><span class="n">04</span><h4>Share the concept</h4><p>Each participant presented their work to the group, in the room and over video.</p></li>
+    <li><span class="n">05</span><h4>Receive feedback</h4><p>Senior designers critiqued each concept in real time, and the group discussed what worked.</p></li>
+  </ol>
+
+  <div class="workflow-head"><span class="tag">Primer</span><h3>Sketching for non-designers</h3></div>
+  <p class="workflow-copy">Most participants hadn't drawn since school, so each session opened with a short sketching primer. We explained why designers sketch (to record ideas quickly, make mistakes sooner, communicate better and produce lots of ideas) and broke it down to three building blocks: line, shape and copy.</p>
+  <figure>
+    <img src="images/design-slam/design-slam-why-we-sketch-slide.jpg" alt="Slide titled Why we sketch, listing records ideas quickly, make more mistakes soon, communicate better and lots of ideas, with a sketch, discuss, iterate illustration." loading="lazy">
+    <figcaption>The sketching primer: sketch, discuss, iterate.</figcaption>
+  </figure>
+</section>
+
+<section class="tight">
+  <div class="section-head">
+    <h2>Session one: notifications</h2>
+    <div class="lede">The first slam, held on November 11, 2016, took on a problem everyone with a phone has felt.</div>
+  </div>
+  <div class="prose">We opened with the background: users are bombarded with notifications that distract them from their day, and annoying notifications are the top reason people uninstall mobile apps. Yet well-designed notifications are one of the most powerful ways for a business to reach the right person at the right time. Then we handed out the prompt.</div>
+  <div class="pair">
+    <figure>
+      <img src="images/design-slam/design-slam-background-slide.jpg" alt="Background slide: annoying notifications is the number one reason people uninstall mobile apps, 71 percent of respondents, illustrated with a sketched dinosaur covering its ears." loading="lazy">
+      <figcaption>The background: why notifications matter.</figcaption>
+    </figure>
+    <figure>
+      <img src="images/design-slam/design-slam-prompt-slide.jpg" alt="Blue prompt slide reading: How might we notify a user?" loading="lazy">
+      <figcaption>The prompt: "How might we notify a user?"</figcaption>
+    </figure>
+  </div>
+
+  <div class="workflow-head"><span class="tag">Critique</span><h3>Teaching people how to talk about design</h3></div>
+  <p class="workflow-copy">The critique was where most of the learning happened. Senior designers served as guest judges, and we gave everyone the same five questions to frame their presentation and their feedback. The questions moved the conversation away from "do I like it?" and toward the user and the problem.</p>
+  <div class="critique">
+    <div class="q">Who is this for?</div>
+    <div class="q">What need does this fill?</div>
+    <div class="q">What assumptions did you make about platform and context?</div>
+    <div class="q">What problems does this solve?</div>
+    <div class="q">How will this impact your users?</div>
+  </div>
+
+  <div class="workflow-head"><span class="tag">Closing</span><h3>Participants chose what came next</h3></div>
+  <p class="workflow-copy">Each session ended with a vote on the next month's prompt. After session one, the group chose between registration and onboarding, account information, and list management. Letting participants pick the problem kept them invested and brought them back the following month.</p>
+</section>
+
+<section class="tight">
+  <div class="section-head">
+    <h2>What a concept looks like</h2>
+    <div class="lede">We set expectations with sample concepts: low-fidelity wireframes that show the thinking, not polish.</div>
+  </div>
+  <div class="pair samples">
+    <figure>
+      <img src="images/design-slam/design-slam-sample-news-widget-wireframe.jpg" alt="Wireframe of a news widget showing headline cards with source and timestamp, and a swipe-to-delete action." loading="lazy">
+      <figcaption>Sample concept: a news widget.</figcaption>
+    </figure>
+    <figure>
+      <img src="images/design-slam/design-slam-sample-file-upload-wireframe.jpg" alt="Wireframe of a file upload screen showing thumbnails of images and audio files and an upload progress bar at 41 percent." loading="lazy">
+      <figcaption>Sample concept: a file upload flow.</figcaption>
+    </figure>
+  </div>
+</section>
+
+<section class="tight">
+  <div class="section-head">
+    <h2>From pitch to program</h2>
+    <div class="lede">We pitched the idea as an internal learning initiative, then shaped it as we ran it.</div>
+  </div>
+  <div class="prose">The original pitch proposed a weekly event over three months. In practice, the Design Slam ran as six monthly sessions, each about three hours with one hour of focused design time. Every session ran in person in our Charlotte and Manhattan offices at the same time, linked by teleconference so both groups worked on the same prompt and heard the same critique.</div>
+  <table class="outcome-table">
+    <tr><th>Program</th><th>Detail</th></tr>
+    <tr><td>Sessions delivered</td><td class="result">6, monthly</td></tr>
+    <tr><td>Locations</td><td class="result">Charlotte, NC and Manhattan, NY, teleconferenced</td></tr>
+    <tr><td>Audience</td><td class="result">Open to anyone at EY</td></tr>
+    <tr><td>Method</td><td class="result">Stanford d.school design thinking</td></tr>
+    <tr><td>Feedback</td><td class="result">Live critique from senior designers</td></tr>
+  </table>
+  <figure>
+    <img src="images/design-slam/design-slam-brand-slide.jpg" alt="Design Slam logo, a fist holding a pencil, over a blurred photo of a desk covered in sketches and markers." loading="lazy">
+    <figcaption>We gave the program its own name and identity, so it felt like an event rather than a training requirement.</figcaption>
+  </figure>
+</section>
+
+<section class="tight">
+  <div class="section-head">
+    <h2>Reflection</h2>
+    <div class="lede">The Design Slam showed that you don't need a design degree to start thinking like a designer. You need a prompt, a deadline and honest feedback.</div>
+  </div>
+  <div class="takeaways">
+    <div class="item"><h4>Design is a verb</h4><p>People learned more from one hour of sketching than from any amount of explanation. Doing came first, and theory made sense afterward.</p></div>
+    <div class="item"><h4>Constraints build confidence</h4><p>The one-hour limit removed the pressure to be perfect. Nobody expected polish, so everybody shipped something.</p></div>
+    <div class="item"><h4>Critique is the curriculum</h4><p>Giving everyone the same five questions taught them a shared vocabulary for talking about design that they took back to client work.</p></div>
+    <div class="item"><h4>Let the room steer</h4><p>Voting on the next prompt gave participants ownership and kept the program relevant to the problems they cared about.</p></div>
+  </div>
+</section>
+
+<footer>
+  <a class="back" href="index.html">← Back to portfolio</a>
+  <div>Design Slam · EY · Co-founded with Racine Davis and Kelcie Wilderman · Case study prepared for portfolio use</div>
+</footer>
+
+</body>
+</html>
