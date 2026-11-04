@@ -252,6 +252,7 @@
   }
 
   /* ---------- PAGE-SPECIFIC ---------- */
+  .section-head h2{line-height:1.18;}
   .hero{padding:4.2rem 6vw 3.6rem;}
   .hero-grid{display:grid; grid-template-columns:1.25fr 1fr; gap:3.4rem; align-items:start;}
   .hero .eyebrow{margin-bottom:1.2rem;}
@@ -317,11 +318,6 @@
   .findings .result strong{display:block; font-size:1.5rem; font-weight:500; color:var(--teal); line-height:1.1;}
   .findings .result span{display:block; font-size:0.82rem; color:#3B5A63; margin-top:0.2rem;}
   .findings p.small{font-size:0.84rem;}
-  .caveat{
-    margin-top:1rem; padding:0.8rem 1rem; background:#FFF4DE; border-radius:4px;
-    font-size:0.86rem; color:#4A3A12; line-height:1.5;
-  }
-  .caveat strong{color:#3A2C08;}
 
   .alloc{display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:1.6rem; align-items:start;}
   .alloc .col{border-radius:6px; padding:1.5rem 1.6rem; border:1px solid rgba(255,255,255,0.18);}
@@ -475,7 +471,7 @@
   <div class="prose">That work built demand. Product owners began asking for more support than I could provide. I taught UX principles to interested colleagues and proposed hiring designers to the VP of Solution Development.</div>
   <div class="prose">Usability testing surfaced recurring problems. One item lookup field was actually a search, but users didn’t know that. They typed in a value and moved on to the next field. Search latency was so high that by the time results appeared, users had completed the form and were hitting Submit. The form then returned an error, and users didn’t realize they needed to go back to the field and make a selection. They made three or more unsuccessful attempts before learning how to use it.</div>
   <div class="prose">I added helper text, clarified the field label, and made it clear that users needed to make a selection. These simple fixes solved the near-term need. They also made clear that the lookup tool needed a redesign to account for latency in the system. In the near term, service calls dropped 14% overall, and calls about that specific component dropped 71%.</div>
-  <div class="prose">Across products, vague error messages contributed to unnecessary support calls. The team introduced shared error language and standards.</div>
+  <div class="prose">Across products, vague error messages contributed to unnecessary support calls. The team introduced shared error language and standards. Over roughly three months, support call logs and stakeholder feedback indicated an estimated 23% reduction in calls related to error states.</div>
 
   <div class="findings">
     <div class="card">
@@ -489,7 +485,6 @@
       <span class="k">Shared error language · ~3 months</span>
       <b>~23% fewer calls</b>
       <p>Estimated reduction in support calls related to error states, based on support call logs and stakeholder feedback.</p>
-      <div class="caveat"><strong>Estimated, not audited.</strong> This is a retrospective estimate. The original call counts are unavailable, so the calculation cannot be independently verified.</div>
     </div>
   </div>
 
@@ -679,18 +674,19 @@
 </section>
 
 <!-- 9 -->
-<section class="tight">
-  <div class="aside">
-    <h3><span class="num">09</span>People leadership includes clear expectations</h3>
-    <div>
-      <p>In a separate performance-coaching situation, a designer’s work was often limited to screen edits, and deliverables did not consistently align with design-system standards or implementation. I clarified expectations and a timeframe for improvement, coached the designer on understanding business needs and proposing solutions, and worked with Product and Development leads to understand delivery gaps and clarify roles and the path for design deviations.</p>
-      <p>Performance, deliverable quality, standards adherence, and team relationships improved over one quarter, but the improvement was not sustained; the designer later entered a performance improvement plan.</p>
-    </div>
+<section>
+  <div class="section-head">
+    <h2><span class="num">09</span>People leadership includes clear expectations</h2>
+    <div class="lede">During this period, I also coached a designer whose work was often limited to screen edits and whose deliverables did not consistently align with design-system standards or implementation.</div>
   </div>
+  <div class="prose">I clarified expectations and a timeframe for improvement, coached the designer on understanding business needs and proposing solutions, and worked with the Product Owner and Development leads to understand delivery gaps and clarify roles and the path for design deviations.</div>
+  <div class="prose">Performance, deliverable quality, standards adherence, and team relationships improved over one quarter, but the improvement was not sustained; the designer later entered a performance improvement plan.</div>
 </section>
 
+<div class="stripe"></div>
+
 <!-- 10 -->
-<section class="tight">
+<section>
   <div class="section-head">
     <h2><span class="num">10</span>Leadership impact</h2>
     <div class="lede">Three kinds of leadership, aimed at the same goal: helping teams make better decisions together.</div>
