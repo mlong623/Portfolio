@@ -2,9 +2,9 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Building an Enterprise UX Practice — Case Study</title>
+<title>Building and Scaling an Enterprise UX Practice — Case Study</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="How I built UX from an individual role into an enterprise practice at Premier, and later helped connect portfolio strategy, design standards, and product modernization.">
+<meta name="description" content="From a single UX role to an enterprise practice at Premier: building design capability across a 40+ product healthcare portfolio, developing designers into strategic partners, and helping turn modernization priorities into funded work.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500&display=swap" rel="stylesheet">
 <style>
@@ -252,299 +252,445 @@
   }
 
   /* ---------- PAGE-SPECIFIC ---------- */
-  .timeline{background:var(--paper-dim); border-bottom:1px solid var(--line);}
-  .timeline ol{
-    max-width:1180px; margin:0 auto; padding:2.4rem 6vw; list-style:none;
-    display:grid; grid-template-columns:repeat(5,1fr); gap:1.6rem;
+  .hero{padding:4.2rem 6vw 3.6rem;}
+  .hero-grid{display:grid; grid-template-columns:1.25fr 1fr; gap:3.4rem; align-items:start;}
+  .hero .eyebrow{margin-bottom:1.2rem;}
+  .hero h1{font-size:clamp(2.2rem,4.2vw,3.4rem); max-width:18ch;}
+  .hero .sub{font-size:1.06rem; margin-top:1.1rem;}
+  .meta-row{margin-top:2rem; padding-top:1.5rem; gap:1.4rem 2.2rem; display:grid; grid-template-columns:repeat(2,minmax(0,1fr));}
+  .meta-item .val{max-width:none; font-size:0.93rem;}
+  .snapshot{
+    background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.16);
+    border-radius:8px; padding:1.6rem 1.7rem;
   }
-  .timeline li{border-top:3px solid var(--teal); padding-top:0.9rem;}
-  .timeline li.away{border-top-color:var(--teal-light);}
-  .timeline .yr{display:block; font-size:1.35rem; font-weight:600; color:var(--navy); line-height:1.2;}
-  .timeline .what{display:block; font-size:0.86rem; color:#3B5A63; margin-top:0.3rem;}
-
-  .hub{margin-top:2.6rem; max-width:760px;}
-  .hub .center{
-    background:var(--navy); color:var(--white); border-radius:6px;
-    padding:1.1rem 1.4rem; text-align:center; font-weight:600;
+  .snapshot .label{
+    font-family:'IBM Plex Mono',monospace; font-size:0.68rem; letter-spacing:0.1em;
+    text-transform:uppercase; color:var(--rust-light); margin-bottom:0.9rem;
   }
-  .hub .center small{
-    display:block; font-family:'IBM Plex Mono',monospace; font-weight:500; font-size:0.68rem;
-    letter-spacing:0.1em; text-transform:uppercase; color:var(--teal-light); margin-bottom:0.3rem;
+  .snapshot ul{list-style:none; margin:0; padding:0;}
+  .snapshot li{
+    position:relative; padding:0.62rem 0 0.62rem 1.4rem; font-size:0.94rem; line-height:1.45;
+    color:var(--white); border-top:1px solid rgba(255,255,255,0.12);
   }
-  .hub .spokes{display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:var(--line); border:1px solid var(--line); margin-top:0.8rem;}
-  .hub .spokes div{background:var(--white); padding:1.2rem 1.3rem;}
-  .hub .spokes h4{margin:0 0 0.3rem; font-size:1rem; color:var(--navy); font-weight:600;}
-  .hub .spokes p{margin:0; font-size:0.9rem; color:#3B5A63;}
+  .snapshot li:first-child{border-top:0; padding-top:0;}
+  .snapshot li::before{content:"—"; position:absolute; left:0; color:var(--rust-light);}
+  .snapshot li:first-child::before{top:0;}
 
-  .shift{display:grid; grid-template-columns:1fr auto 1fr; gap:1.2rem; align-items:center; margin:2.4rem 0; max-width:760px;}
-  .shift .box{border:1px solid var(--line); background:var(--white); border-radius:6px; padding:1.3rem 1.4rem;}
-  .shift .box.after{background:var(--sky); border-color:transparent;}
-  .shift .box .k{font-family:'IBM Plex Mono',monospace; font-size:0.68rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--rust); display:block; margin-bottom:0.4rem;}
-  .shift .box h4{margin:0 0 0.3rem; font-size:1.05rem; color:var(--navy); font-weight:600;}
-  .shift .box p{margin:0; font-size:0.9rem; color:#3B5A63;}
-  .shift .arrow{color:var(--teal); font-size:1.6rem; line-height:1;}
+  .title-note{background:var(--paper-dim); border-bottom:1px solid var(--line);}
+  .title-note .inner{max-width:1180px; margin:0 auto; padding:1.4rem 6vw; display:grid; grid-template-columns:auto 1fr; gap:1.4rem; align-items:baseline;}
+  .title-note .k{font-family:'IBM Plex Mono',monospace; font-size:0.68rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--teal); white-space:nowrap;}
+  .title-note p{margin:0; font-size:0.93rem; color:#2C4C56; max-width:90ch;}
 
-  .adoption{display:grid; grid-template-columns:repeat(2,1fr); gap:1.6rem; margin-top:2.6rem;}
-  .adoption .card{background:var(--white); border:1px solid var(--line); border-radius:6px; padding:1.8rem;}
-  .adoption .k{font-family:'IBM Plex Mono',monospace; font-size:0.68rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--rust); display:block; margin-bottom:0.5rem;}
-  .adoption h4{margin:0 0 1rem; font-size:1.2rem; color:var(--navy); font-weight:600;}
-  .adoption .bar{height:8px; background:var(--paper-dim); border-radius:4px; overflow:hidden;}
+  .num{font-family:'IBM Plex Mono',monospace; font-size:0.72rem; letter-spacing:0.1em; color:var(--rust); display:block; margin-bottom:0.7rem;}
+
+  /* who-did-what */
+  .contrib{display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:1px; background:var(--line); border:1px solid var(--line); margin-top:2.4rem;}
+  .contrib > div{background:var(--white); padding:1.4rem 1.5rem;}
+  .contrib > div.team{background:var(--paper);}
+  .contrib .k{font-family:'IBM Plex Mono',monospace; font-size:0.66rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--rust); display:block; margin-bottom:0.6rem;}
+  .contrib .team .k{color:var(--teal);}
+  .contrib ul{margin:0; padding:0; list-style:none;}
+  .contrib li{font-size:0.9rem; color:#3B5A63; padding:0.3rem 0 0.3rem 1.1rem; position:relative;}
+  .contrib li::before{content:"·"; position:absolute; left:0.2rem; color:var(--navy); font-weight:700;}
+
+  /* diagrams */
+  .diagram{margin-top:2.6rem;}
+  .diagram .cap{font-family:'IBM Plex Mono',monospace; font-size:0.72rem; letter-spacing:0.06em; color:var(--teal); margin-top:0.9rem;}
+  .before-after{display:grid; grid-template-columns:1fr auto 1fr; gap:1.6rem; align-items:center;}
+  .silos{display:grid; grid-template-columns:repeat(3,1fr); gap:0.7rem;}
+  .silo{border:1px solid var(--line); background:var(--white); border-radius:6px; padding:0.8rem; display:flex; flex-direction:column; gap:0.45rem;}
+  .silo .t{font-size:0.74rem; font-weight:600; color:var(--navy);}
+  .silo i{display:block; height:7px; border-radius:2px;}
+  .arrow{color:var(--teal); font-size:1.6rem; line-height:1;}
+  .hub .center{background:var(--navy); color:var(--white); border-radius:6px; padding:0.9rem 1.2rem; text-align:center; font-weight:600;}
+  .hub .spokes{display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:var(--line); border:1px solid var(--line); margin-top:0.7rem;}
+  .hub .spokes div{background:var(--white); padding:0.9rem 1rem;}
+  .hub h4{margin:0 0 0.2rem; font-size:0.92rem; color:var(--navy); font-weight:600;}
+  .hub p{margin:0; font-size:0.8rem; color:#3B5A63; line-height:1.4;}
+
+  .findings{display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:1.6rem; margin-top:2.4rem;}
+  .findings .card{background:var(--white); border:1px solid var(--line); border-radius:6px; padding:1.6rem 1.7rem;}
+  .findings .k{font-family:'IBM Plex Mono',monospace; font-size:0.66rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--rust); display:block; margin-bottom:0.6rem;}
+  .findings b{display:block; font-size:2.1rem; font-weight:500; color:var(--navy); line-height:1.1;}
+  .findings p{margin:0.6rem 0 0; font-size:0.92rem; color:#3B5A63;}
+  .caveat{
+    margin-top:1rem; padding:0.8rem 1rem; background:#FFF4DE; border-radius:4px;
+    font-size:0.86rem; color:#4A3A12; line-height:1.5;
+  }
+  .caveat strong{color:#3A2C08;}
+
+  .alloc{display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:1.6rem; align-items:start;}
+  .alloc .col{border-radius:6px; padding:1.5rem 1.6rem; border:1px solid rgba(255,255,255,0.18);}
+  .alloc .col.embedded{background:rgba(141,199,216,0.14);}
+  .alloc .k{font-family:'IBM Plex Mono',monospace; font-size:0.66rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--rust-light); display:block; margin-bottom:0.5rem;}
+  .alloc h4{margin:0 0 0.5rem; font-size:1.1rem; color:var(--white); font-weight:600;}
+  .alloc p{margin:0; font-size:0.9rem; color:var(--sky);}
+  .alloc .ex{margin-top:0.9rem; padding-top:0.9rem; border-top:1px solid rgba(255,255,255,0.16); font-size:0.86rem; color:var(--sky);}
+  .alloc .ex em{font-style:normal; color:var(--white); font-weight:600;}
+
+  .feature{
+    display:grid; grid-template-columns:1fr 1.3fr; gap:2.6rem; margin-top:2.6rem;
+    background:var(--white); border:1px solid var(--line); border-radius:8px; padding:2.2rem;
+  }
+  .feature .from-to{display:flex; flex-direction:column; gap:0.8rem;}
+  .feature .step{border-left:3px solid var(--teal-light); padding:0.2rem 0 0.2rem 1rem;}
+  .feature .step.to{border-left-color:var(--rust);}
+  .feature .step .k{font-family:'IBM Plex Mono',monospace; font-size:0.66rem; letter-spacing:0.1em; text-transform:uppercase; color:#5C7B84; display:block;}
+  .feature .step p{margin:0.2rem 0 0; font-size:1.05rem; color:var(--navy); font-weight:500; line-height:1.35;}
+  .feature h3{font-size:1.25rem; color:var(--navy); margin-bottom:0.7rem; font-weight:600;}
+  .feature .body p{margin:0 0 0.8rem; font-size:0.95rem; color:#3B5A63;}
+  .outputs{display:flex; flex-wrap:wrap; gap:0.5rem; margin-top:0.4rem;}
+  .outputs span{font-size:0.8rem; padding:0.3rem 0.75rem; border-radius:100px; background:var(--sky); color:var(--navy);}
+
+  .adoption{display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:1.6rem; margin-top:2.6rem;}
+  .adoption .card{background:var(--white); border:1px solid var(--line); border-radius:6px; padding:1.7rem;}
+  .adoption .k{font-family:'IBM Plex Mono',monospace; font-size:0.66rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--rust); display:block; margin-bottom:0.4rem;}
+  .adoption h4{margin:0 0 1rem; font-size:1.15rem; color:var(--navy); font-weight:600;}
+  .adoption .figure{font-size:1.8rem; font-weight:500; color:var(--navy); line-height:1.1;}
+  .adoption .figure small{display:block; font-size:0.85rem; color:#3B5A63; font-weight:400; margin-top:0.25rem;}
+  .adoption .bar{height:8px; background:var(--paper-dim); border-radius:4px; overflow:hidden; margin:0.9rem 0;}
   .adoption .bar span{display:block; height:100%; background:var(--teal);}
-  .adoption .pct{font-size:0.82rem; color:#5C7B84; margin:0.5rem 0 0.9rem; font-family:'IBM Plex Mono',monospace;}
-  .adoption p{margin:0; font-size:0.92rem; color:#3B5A63;}
+  .adoption p{margin:0; font-size:0.9rem; color:#3B5A63;}
+  .note{font-size:0.86rem; color:#3B5A63; margin-top:1rem;}
 
-  .flow{display:grid; grid-template-columns:repeat(4,1fr); gap:1px; background:var(--line); border:1px solid var(--line); margin-top:2.6rem;}
-  .flow .step{background:var(--paper); padding:1.6rem 1.4rem;}
-  .flow .step:last-child{background:var(--sky);}
-  .flow .idx{font-family:'IBM Plex Mono',monospace; font-size:0.68rem; letter-spacing:0.08em; text-transform:uppercase; color:var(--rust); display:block; margin-bottom:0.6rem;}
-  .flow h4{margin:0 0 0.4rem; font-size:1.05rem; color:var(--navy); font-weight:600;}
-  .flow p{margin:0; font-size:0.88rem; color:#3B5A63;}
-  .chips{display:flex; flex-wrap:wrap; gap:0.4rem; margin-top:0.6rem;}
-  .chips span{font-size:0.75rem; padding:0.2rem 0.6rem; border:1px solid var(--line); border-radius:100px; background:var(--white); color:var(--navy);}
-
-  .stat{display:grid; grid-template-columns:repeat(2,1fr); gap:1.6rem; margin-top:2.4rem;}
-  .stat div{border-top:2px solid var(--rust); padding-top:1.2rem;}
-  .stat b{display:block; font-size:2rem; font-weight:500; color:var(--navy); line-height:1.1;}
-  .stat span{display:block; font-size:0.9rem; color:#3B5A63; margin-top:0.4rem;}
+  .flow{display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:1px; background:var(--line); border:1px solid var(--line);}
+  .flow .step{background:var(--paper); padding:1.4rem 1.3rem;}
+  .flow .step.end{background:var(--sky);}
+  .flow .idx{font-family:'IBM Plex Mono',monospace; font-size:0.66rem; letter-spacing:0.08em; text-transform:uppercase; color:var(--rust); display:block; margin-bottom:0.5rem;}
+  .flow h4{margin:0 0 0.35rem; font-size:1rem; color:var(--navy); font-weight:600;}
+  .flow p{margin:0; font-size:0.86rem; color:#3B5A63;}
+  .chips{display:flex; flex-wrap:wrap; gap:0.35rem; margin-top:0.5rem;}
+  .chips span{font-size:0.74rem; padding:0.18rem 0.6rem; border:1px solid var(--line); border-radius:100px; background:var(--white); color:var(--navy);}
 
   .status{
     display:inline-block; font-family:'IBM Plex Mono',monospace; font-size:0.7rem; letter-spacing:0.08em;
-    text-transform:uppercase; color:var(--navy); background:#FFDB96; padding:0.35rem 0.8rem; border-radius:100px;
+    text-transform:uppercase; color:#3A2C08; background:#FFDB96; padding:0.4rem 0.85rem; border-radius:100px;
   }
-  .shots{display:grid; grid-template-columns:repeat(2,1fr); gap:2rem; margin-top:2rem;}
+  .shots{display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:1.8rem; margin-top:1.6rem;}
   .shots figure{margin:0;}
   .shots figure img{max-width:100%; aspect-ratio:16/11; object-fit:cover; object-position:top; background:var(--white);}
   .related{
-    display:inline-block; margin-top:2rem; font-family:'IBM Plex Mono',monospace; font-size:0.78rem;
+    display:inline-block; margin-top:1.8rem; font-family:'IBM Plex Mono',monospace; font-size:0.76rem;
     letter-spacing:0.06em; text-transform:uppercase; color:var(--navy); text-decoration:none;
     border-bottom:1px solid var(--rust); padding-bottom:2px;
   }
-  .takeaways.three{grid-template-columns:repeat(3,1fr);}
-  .principles.roadmap{grid-template-columns:repeat(4,1fr);}
+  .aside{border-top:1px solid var(--line); border-bottom:1px solid var(--line); padding:2rem 0; display:grid; grid-template-columns:1fr 2fr; gap:3rem;}
+  .aside h3{font-size:1.15rem; color:var(--navy); font-weight:600;}
+  .aside p{margin:0 0 0.8rem; font-size:0.95rem; color:#3B5A63; max-width:68ch;}
+  .aside p:last-child{margin-bottom:0;}
+  .takeaways.three{grid-template-columns:repeat(3,minmax(0,1fr));}
 
+  @media (max-width:980px){
+    .hero-grid{grid-template-columns:1fr; gap:2.2rem;}
+  }
   @media (max-width:820px){
-    .timeline ol{grid-template-columns:repeat(2,1fr);}
-    .hub .spokes, .principles.roadmap, .adoption, .flow, .stat, .shots, .takeaways.three{grid-template-columns:1fr;}
-    .shift{grid-template-columns:1fr;}
-    .shift .arrow{transform:rotate(90deg); justify-self:center;}
+    .meta-row{grid-template-columns:1fr;}
+    .title-note .inner{grid-template-columns:1fr; gap:0.4rem;}
+    .contrib, .findings, .alloc, .adoption, .flow, .shots, .takeaways.three, .hub .spokes, .feature, .aside{grid-template-columns:1fr;}
+    .before-after{grid-template-columns:1fr;}
+    .arrow{transform:rotate(90deg); justify-self:center;}
+    .feature{padding:1.6rem;}
   }
 </style>
 </head>
 <body>
 
 <header class="hero">
-  <div class="hero-inner">
-    <div class="eyebrow">UX Leadership · Practice Building</div>
-    <h1>Building and scaling an enterprise UX practice at Premier</h1>
-    <p class="sub">How I built UX from an individual role into an enterprise practice—and later helped connect portfolio strategy, design standards, and product modernization.</p>
-    <div class="meta-row">
-      <div class="meta-item"><div class="label">Roles</div><div class="val">Senior Java Developer → Lead UX Designer, Design Principal, Principal Product Designer</div></div>
-      <div class="meta-item"><div class="label">Team</div><div class="val">Grew to six designers and a dedicated researcher</div></div>
-      <div class="meta-item"><div class="label">Scope</div><div class="val">40+ product portfolio · Design system · Supply chain and ERP modernization</div></div>
-      <div class="meta-item"><div class="label">Timeframe</div><div class="val">2009–2014 · 2017–2026</div></div>
+  <div class="hero-inner hero-grid">
+    <div>
+      <div class="eyebrow">UX Leadership · Practice Building</div>
+      <h1>Building and Scaling an Enterprise UX Practice at Premier</h1>
+      <p class="sub">From a single UX role to an enterprise practice: building design capability across a 40+ product healthcare portfolio, developing designers into strategic partners, and helping turn modernization priorities into funded work.</p>
+      <div class="meta-row">
+        <div class="meta-item"><div class="label">Role</div><div class="val">UX Manager / UX Practice Lead; later Design Principal and UX Manager</div></div>
+        <div class="meta-item"><div class="label">Company</div><div class="val">Premier</div></div>
+        <div class="meta-item"><div class="label">Period</div><div class="val">2009–2014; returned 2017–March 2026</div></div>
+        <div class="meta-item"><div class="label">Scope</div><div class="val">40+ healthcare products; capability grew to six designers and one dedicated researcher</div></div>
+      </div>
     </div>
+    <aside class="snapshot" aria-labelledby="snapshot-label">
+      <div class="label" id="snapshot-label">Leadership snapshot</div>
+      <ul>
+        <li>Built UX from an individual contributor role into an enterprise practice.</li>
+        <li>Grew the capability to six designers and a dedicated researcher.</li>
+        <li>Established resource allocation across product teams.</li>
+        <li>Led UX governance for a shared design system, partnering with UI Development on code components.</li>
+        <li>Helped shape the supply chain modernization roadmap that received C-suite funding to begin with ERP.</li>
+      </ul>
+    </aside>
   </div>
 </header>
 
-<nav class="timeline" aria-label="Timeline">
-  <ol>
-    <li><span class="yr">2009</span><span class="what">Joined Premier; no UX capability existed</span></li>
-    <li class="away"><span class="yr">2014</span><span class="what">Left for consultancy</span></li>
-    <li><span class="yr">2017</span><span class="what">Returned as Lead UX Designer</span></li>
-    <li><span class="yr">2023</span><span class="what">Resumed leading the UX team</span></li>
-    <li class="away"><span class="yr">Mar 2026</span><span class="what">Left Premier; ERP work in progress</span></li>
-  </ol>
-</nav>
-
-<section>
-  <div class="section-head">
-    <h2>The starting point</h2>
-    <div class="lede">When I joined Premier in 2009, the company had no UX capability or UX job description. I was hired as a Senior Java Developer and placed on one product team.</div>
-  </div>
-  <div class="prose">Across the portfolio, business analysts and developers made most interface decisions. Products shared Premier branding but often looked and behaved differently.</div>
-  <div class="prose">User feedback was largely owned by Product and usually surfaced during late-stage UAT. Design decisions often reflected stakeholder opinion rather than usability evidence. Product and Development also had low trust: Product saw Development as slow and difficult to work with; Development felt Product did not account for technical realities. Teams built similar capabilities in silos, adding inconsistency and technical debt.</div>
-  <div class="quote"><p>I was told I had been hired to “win arguments with the business.” I saw the deeper need differently.</p></div>
-  <div class="prose">Teams needed an intermediary who could understand business goals, make technical constraints visible, and advocate for end users. Design could help people make better decisions together.</div>
-
-  <div class="hub" role="img" aria-label="Design as the intermediary between Business, Development, and End users">
-    <div class="center"><small>Strategy</small>Design as the intermediary</div>
-    <div class="spokes">
-      <div><h4>Business</h4><p>Understand business goals</p></div>
-      <div><h4>Development</h4><p>Make technical constraints visible</p></div>
-      <div><h4>End users</h4><p>Advocate with usability evidence</p></div>
-    </div>
-  </div>
-</section>
-
-<div class="stripe"></div>
-
-<section>
-  <div class="section-head">
-    <h2>Earning trust and establishing demand</h2>
-    <div class="lede">I started by listening and building relationships across the company.</div>
-  </div>
-  <div class="prose">I offered design reviews, heuristic evaluations, office hours, and UX guidance to any team that wanted help. On the teams I supported directly, I introduced usability testing to replace opinion-led decisions with evidence from users.</div>
-  <div class="prose">That work made UX useful before the organization had a formal practice. Product owners began asking for more support than I could provide. I taught UX principles to interested colleagues and proposed hiring designers to the VP of Solution Development.</div>
-  <div class="prose">Usability testing exposed recurring problems. In one item lookup tool, unclear labels and missing selection states led users to make three or more unsuccessful attempts before they learned how to use it. Across products, vague error messages contributed to unnecessary support calls. The team introduced shared error language and standards. Over a roughly three-month period, support call logs and stakeholder feedback showed fewer calls related to error states; the exact reduction is not available.</div>
-
-  <div class="stat">
-    <div><b>3+ attempts</b><span>before users learned the item lookup tool, caused by unclear labels and missing selection states</span></div>
-    <div><b>Fewer calls</b><span>related to error states over roughly three months after shared error language; exact reduction not available</span></div>
-  </div>
-</section>
-
-<div class="stripe"></div>
-
-<div class="people-band">
+<div class="title-note">
   <div class="inner">
-    <div class="section-head">
-      <h2>Scaling the practice around portfolio needs</h2>
-      <div class="lede">The first UX hires were funded by product teams with the need and budget to add a designer. Although designers reported through different parts of the organization, I managed their day-to-day work. The capability grew to six designers and a dedicated researcher.</div>
-    </div>
-    <div class="prose" style="color:var(--sky);">As Premier acquired companies and priorities shifted, some teams no longer needed a full-time designer while other products had greater business need. Product teams had come to think of designers as “their” resources, so reallocating support required trust and clear communication. I made the case that UX needed to be its own team, able to allocate resources across the portfolio. UX ultimately moved into Product Management.</div>
-    <div class="prose" style="color:var(--sky);">I moved designers according to business priority and the type of support each team needed. Some teams shifted from dedicated support to a consultative model. When Premier’s investment shifted away from Remitra after the product underperformed in the market, I moved its designer to another product. I continued to support Remitra as needed and directed the team to the design-system documentation.</div>
-
-    <div class="shift">
-      <div class="box"><span class="k">Before</span><h4>Product-funded designers</h4><p>Seen as “their” resources by each team</p></div>
-      <div class="arrow" aria-hidden="true">→</div>
-      <div class="box after"><span class="k">After</span><h4>An autonomous UX team</h4><p>Allocated across the portfolio by business priority</p></div>
-    </div>
+    <span class="k">A note on titles</span>
+    <p>Premier had no UX job description when I joined, so I was hired as a Senior Java Developer. I later held the formal titles Lead UX Designer and UX Manager, and served in Principal design responsibilities. The formal titles did not always reflect the scope of my work.</p>
   </div>
 </div>
 
+<!-- 1 -->
 <section>
   <div class="section-head">
-    <h2>Growing designers into partners</h2>
-    <div class="lede">My aim was for designers to be strategic partners, not order takers. I coached them to understand their product’s business priorities and its place in the portfolio.</div>
+    <h2><span class="num">01</span>The starting point</h2>
+    <div class="lede">When I joined Premier in 2009, there was no dedicated UX capability. Across the portfolio, business analysts and developers made most interface decisions. Products shared corporate branding but often looked and behaved differently.</div>
   </div>
-  <div class="quote"><p>In my shorthand, designers should be “chefs, not short-order cooks”: use judgment to turn business and user needs into thoughtful solutions.</p></div>
-  <div class="prose">I supported that growth through one-on-one coaching, design reviews, team exercises, and an internship program. One designer with strong visual skills often lacked confidence and was overruled in meetings. I coached him to present design work with evidence and helped build his confidence. He went on to lead envisioning workshops with senior leaders and partner health systems to reimagine the purchaser workflow across the supply chain suite.</div>
-  <div class="prose">Those workshops produced user journeys, a capability map, and a high-level prototype that we developed together. The future-state concept influenced the roadmap and helped make the case for supply chain modernization. Former hires and interns later moved into senior leadership roles at technology, finance, and social media companies.</div>
+  <div class="prose">User feedback was generally owned by Product and arrived late, often during UAT. Design choices frequently reflected stakeholder opinion instead of usability evidence. Product and Development also had low trust: Product saw Development as slow and difficult to work with, while Development felt Product did not account for technical realities. Teams built similar capabilities in silos, adding inconsistency and technical debt.</div>
+  <div class="quote"><p>I was told I had been hired to “win arguments with the business.” I believed the organization needed something different.</p></div>
+  <div class="prose">The organization needed an intermediary who could understand business goals, make technical constraints visible, and advocate for end users. I saw Design as a way to help teams make better decisions together.</div>
+
+  <div class="diagram">
+    <div class="before-after" role="img" aria-label="Diagram: on the left, three product teams each building their own interface in isolation; on the right, Design connecting Business, Development, and End users.">
+      <div class="silos" aria-hidden="true">
+        <div class="silo"><span class="t">Product A</span><i style="background:#007994;width:80%"></i><i style="background:#D3E8EF;width:60%"></i><i style="background:#007994;width:40%"></i></div>
+        <div class="silo"><span class="t">Product B</span><i style="background:#E24301;width:55%"></i><i style="background:#FEA682;width:85%"></i><i style="background:#E24301;width:30%"></i></div>
+        <div class="silo"><span class="t">Product C</span><i style="background:#003B49;width:70%"></i><i style="background:#8DC7D8;width:45%"></i><i style="background:#FFDB96;width:65%"></i></div>
+      </div>
+      <div class="arrow" aria-hidden="true">→</div>
+      <div class="hub" aria-hidden="true">
+        <div class="center">Design as the intermediary</div>
+        <div class="spokes">
+          <div><h4>Business</h4><p>Understand goals</p></div>
+          <div><h4>Development</h4><p>Make constraints visible</p></div>
+          <div><h4>End users</h4><p>Advocate with evidence</p></div>
+        </div>
+      </div>
+    </div>
+    <div class="cap">Separate teams solving the same problems differently → Design connecting business, development, and user needs</div>
+  </div>
 </section>
 
 <div class="stripe"></div>
 
+<!-- 2 -->
 <section>
   <div class="section-head">
-    <h2>Creating shared patterns and adapting to different teams</h2>
+    <h2><span class="num">02</span>Earning trust and establishing demand</h2>
+    <div class="lede">I started by listening and building relationships across the company.</div>
+  </div>
+  <div class="prose">I offered design reviews, heuristic evaluations, office hours, and UX guidance to any team that wanted help. On the teams I supported directly, I introduced usability testing to ground decisions in observed user behavior.</div>
+  <div class="prose">That work built demand. Product owners began asking for more support than I could provide. I taught UX principles to interested colleagues and proposed hiring designers to the VP of Solution Development.</div>
+  <div class="prose">Usability testing surfaced recurring problems. In one item lookup tool, unclear labels and missing selection states led users to make three or more unsuccessful attempts before learning how to use it. Across products, vague error messages contributed to unnecessary support calls. The team introduced shared error language and standards.</div>
+
+  <div class="findings">
+    <div class="card">
+      <span class="k">Usability finding · Item lookup</span>
+      <b>3+ attempts</b>
+      <p>Users needed three or more unsuccessful attempts before learning the tool. Causes: unclear labels and missing selection states.</p>
+    </div>
+    <div class="card">
+      <span class="k">Shared error language · ~3 months</span>
+      <b>~23% fewer calls</b>
+      <p>Estimated reduction in support calls related to error states, based on support call logs and stakeholder feedback.</p>
+      <div class="caveat"><strong>Estimated, not audited.</strong> This is a retrospective estimate. The original call counts are unavailable, so the calculation cannot be independently verified.</div>
+    </div>
+  </div>
+
+  <div class="contrib">
+    <div><span class="k">My contribution</span><ul><li>Offered reviews, heuristic evaluations, and office hours</li><li>Introduced usability testing on teams I supported</li><li>Taught UX principles; proposed hiring designers</li></ul></div>
+    <div class="team"><span class="k">Team contribution</span><ul><li>Introduced shared error language and standards</li></ul></div>
+  </div>
+</section>
+
+<div class="stripe"></div>
+
+<!-- 3 -->
+<div class="people-band">
+  <div class="inner">
+    <div class="section-head">
+      <h2><span class="num" style="color:var(--rust-light);">03</span>Scaling UX around portfolio priorities</h2>
+      <div class="lede">The first UX hires were funded by product teams with the need and budget to add a designer. Designers reported through different parts of the organization, but I managed their day-to-day work. The capability grew to six designers and a dedicated researcher.</div>
+    </div>
+    <div class="prose" style="color:var(--sky);">As Premier acquired companies and priorities shifted, not every team continued to need a full-time designer. I allocated UX support based on business priority and the capability each team needed. Teams that had reached a steady state could move from embedded support to a consultative model, freeing designers to work where they could have greater impact.</div>
+    <div class="prose" style="color:var(--sky);">That shift required trust. Teams had come to think of designers as “their” resources, so I explained the shared portfolio goal, assured teams they could still get UX help, and sometimes provided interim support myself.</div>
+
+    <div class="diagram">
+      <div class="alloc">
+        <div class="col embedded">
+          <span class="k">Embedded support</span>
+          <h4>A dedicated designer</h4>
+          <p>For high-priority or high-need work.</p>
+        </div>
+        <div class="col">
+          <span class="k">Consultative support</span>
+          <h4>UX help on request</h4>
+          <p>For teams that had reached a steady state and no longer needed a full-time designer.</p>
+          <div class="ex"><em>Example: Remitra.</em> After Premier acquired the application, the product team resisted UX input and focused on superficial changes in response to market pressure. The product underperformed, and the business chose to invest elsewhere. I moved its designer to another product, continued to provide consultative UX support to Remitra as needed, and directed the team to the design-system documentation.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="prose" style="color:var(--sky); margin-top:2.4rem;">I also made the case that UX needed to be a team with the autonomy to allocate resources across the portfolio. UX ultimately became its own team and moved into Product Management.</div>
+  </div>
+</div>
+
+<!-- 4 -->
+<section>
+  <div class="section-head">
+    <h2><span class="num">04</span>Developing designers into strategic partners</h2>
+    <div class="lede">I coached designers to understand the business priorities of their products and how those products fit into the wider portfolio.</div>
+  </div>
+  <div class="quote"><p>Designers should be “chefs, not short-order cooks”: use judgment to turn business and user needs into thoughtful solutions rather than simply fulfill interface requests.</p></div>
+  <div class="prose">I supported that growth through one-on-one coaching, design reviews, team exercises, and an internship program.</div>
+
+  <div class="feature">
+    <div class="from-to">
+      <div class="step"><span class="k">From</span><p>Being overruled in product meetings</p></div>
+      <div class="step to"><span class="k">To</span><p>Leading senior stakeholder envisioning workshops</p></div>
+    </div>
+    <div class="body">
+      <h3>Growing a designer’s influence</h3>
+      <p>One early hire had strong visual design skills but lacked confidence and was often overruled in product meetings. I coached him to present design work with evidence and helped him build confidence. He grew into leading envisioning workshops with senior leaders and partner health systems to reimagine the purchaser workflow across the supply chain suite.</p>
+      <p>The workshops produced user journeys, a capability map, and a high-level prototype that we built together. The future-state concept influenced the product roadmap and helped make the case for supply chain modernization.</p>
+      <div class="outputs" aria-label="Workshop outputs"><span>User journeys</span><span>Capability map</span><span>High-level prototype</span></div>
+    </div>
+  </div>
+
+  <div class="prose" style="margin-top:2rem;">Former hires and interns later moved into senior leadership roles in technology, finance, and social media companies.</div>
+</section>
+
+<div class="stripe"></div>
+
+<!-- 5 -->
+<section>
+  <div class="section-head">
+    <h2><span class="num">05</span>Creating shared patterns that teams could adopt</h2>
     <div class="lede">The UX team audited Premier’s 40+ product portfolio and identified common interface patterns.</div>
   </div>
   <div class="prose">We partnered with UI Development to build Fireball, an internal toolkit with reusable code components. A team member with deep accessibility expertise developed the style guide, pattern library, and accessibility standards.</div>
-  <div class="prose">Adoption differed by business area. Informatics adopted Fireball across its products. Over roughly a year, that group reported reduced UI development time; standardized components also enabled QA automation that significantly reduced QA tasks. Those improvements were reported, not quantified.</div>
-  <div class="prose">Supply Chain had more products on different technologies and codebases. Requiring teams to rewrite their applications to adopt Fireball would have been lengthy and expensive. UX and UI Development therefore created a code-free guide to shared behaviors, styles, and interactions. Supply Chain adoption reached roughly 20% of products. The broader portfolio became more visually and functionally aligned than before, though significant gaps remained when I left for consultancy in 2014.</div>
+  <div class="prose">Adoption depended on the product and its technology. Informatics adopted Fireball across its products. Over roughly a year, Informatics reported reduced UI development time; standardized components also enabled QA automation that significantly reduced QA tasks. These improvements were reported, not quantified.</div>
+  <div class="prose">Supply Chain had more products on disparate technologies and codebases. Requiring teams to rewrite applications to adopt Fireball would have been lengthy and expensive. UX and UI Development created a code-free guide to shared behaviors, styles, and interactions. Supply Chain adopted the guidance in roughly 20% of its products.</div>
 
   <div class="adoption">
     <div class="card">
-      <span class="k">Informatics</span>
-      <h4>Fireball code toolkit</h4>
-      <div class="bar"><span style="width:100%"></span></div>
-      <div class="pct">Adopted across its products</div>
-      <p>Reported faster UI development and fewer QA tasks through automation (not quantified).</p>
+      <span class="k">Informatics · Code components</span>
+      <h4>Fireball toolkit</h4>
+      <div class="figure">100%<small>of Informatics products</small></div>
+      <div class="bar" aria-hidden="true"><span style="width:100%"></span></div>
+      <p>Reported reduced UI development time and fewer QA tasks through automation (reported, not quantified).</p>
     </div>
     <div class="card">
-      <span class="k">Supply Chain</span>
-      <h4>Code-free style guide</h4>
-      <div class="bar"><span style="width:20%"></span></div>
-      <div class="pct">~20% of products</div>
-      <p>Shared behaviors, styles, and interactions without rewriting existing codebases.</p>
+      <span class="k">Supply Chain · Code-free standards</span>
+      <h4>Shared behavior and style guide</h4>
+      <div class="figure">~20%<small>of Supply Chain products</small></div>
+      <div class="bar" aria-hidden="true"><span style="width:20%"></span></div>
+      <p>Avoided costly rewrites of applications on disparate technologies and codebases.</p>
     </div>
   </div>
+  <p class="note">Adoption figures refer to products, not users.</p>
+
+  <div class="prose" style="margin-top:1.6rem;">Across Premier Technology, the portfolio became more visually and functionally aligned, although significant gaps remained when I left for consultancy in 2014.</div>
 </section>
 
 <div class="stripe"></div>
 
+<!-- 6 -->
 <section>
   <div class="section-head">
-    <h2>Returning to Premier: design system and modernization</h2>
-    <div class="lede">I returned in 2017. The organization’s titles still did not consistently reflect UX responsibilities: I returned with the formal title Lead UX Designer, while working as a Design Principal.</div>
+    <h2><span class="num">06</span>Returning to Premier: design system and modernization</h2>
+    <div class="lede">I returned in 2017. I resumed leading the UX team in 2023, after a reduction in force had reduced the group from eight designers to five. The team was less engaged in vision work, so I focused on rebuilding that capability.</div>
   </div>
-  <div class="prose">I resumed leading the UX team in 2023, after a reduction in force had reduced the group from eight designers to five. The team was less engaged in vision work, so I focused on rebuilding that capability.</div>
-  <div class="prose">The portfolio’s continuing inconsistencies were becoming visible in sales conversations with health systems. UX had moved between Technology, Product, and Marketing over time; after it moved under Marketing, its influence grew again. Technology leadership decided Premier needed a shared design-system source of truth connected to code.</div>
-  <div class="prose">I helped make that case, led the UX side of the system’s development, and established its governance. The Design System team paired a UX resource responsible for Figma documentation, components, and patterns with UI Development resources building code components in Storybook. Any contributor could request a lightweight review of a new element or variation. The team could approve it as a standard addition, a variation, or an exception—or reject it. Approved changes entered the team backlog and were prioritized by impact and need. My team did much of the day-to-day work of building the system.</div>
+  <div class="prose">The portfolio’s continuing inconsistencies were becoming visible in sales conversations with health systems. UX had moved between Technology, Product, and Marketing over time. After UX moved under Marketing, its influence increased again, and Technology leadership decided Premier needed a shared design-system source of truth connected to code.</div>
+  <div class="prose">I helped make that case, led the UX side of the system’s development, and established its governance. A UX resource maintained Figma documentation, components, and patterns; UI Development built corresponding code components in Storybook. Any contributor could request a lightweight review of a new element or variation. The team could approve it as a standard addition, a variation, or an exception—or reject it. Approved changes went into the Design System backlog and were prioritized by impact and need. My team did much of the day-to-day system building.</div>
 
-  <div class="flow" role="img" aria-label="Design-system governance: contributor request, lightweight review, decision, prioritized backlog">
-    <div class="step"><span class="idx">Step 01</span><h4>Contributor request</h4><p>A new element or variation</p></div>
-    <div class="step"><span class="idx">Step 02</span><h4>Lightweight review</h4><p>UX and UI Development</p></div>
-    <div class="step"><span class="idx">Step 03</span><h4>Decision</h4><div class="chips"><span>Standard</span><span>Variation</span><span>Exception</span><span>Reject</span></div></div>
-    <div class="step"><span class="idx">Step 04</span><h4>Prioritized backlog</h4><p>Ranked by impact and need</p></div>
+  <div class="diagram">
+    <div class="flow" role="img" aria-label="Governance path: contributor request, then UX and UI Development review, then a decision of addition, variation, exception, or rejection, then the prioritized backlog.">
+      <div class="step"><span class="idx">Step 01</span><h4>Contributor request</h4><p>A new element or variation</p></div>
+      <div class="step"><span class="idx">Step 02</span><h4>Review</h4><p>UX and UI Development</p></div>
+      <div class="step"><span class="idx">Step 03</span><h4>Decision</h4><div class="chips"><span>Addition</span><span>Variation</span><span>Exception</span><span>Rejection</span></div></div>
+      <div class="step end"><span class="idx">Step 04</span><h4>Prioritized backlog</h4><p>By impact and need</p></div>
+    </div>
+    <div class="cap">Design-system governance path</div>
+  </div>
+
+  <div class="contrib">
+    <div><span class="k">My contribution</span><ul><li>Helped make the case for the design system</li><li>Led the UX side of its development</li><li>Established its governance</li></ul></div>
+    <div class="team"><span class="k">Team contribution</span><ul><li>UX resource: Figma documentation, components, patterns</li><li>UI Development: code components in Storybook</li><li>My team: much of the day-to-day system building</li></ul></div>
   </div>
   <a class="related" href="design-system-case-study.html">Read the Enterprise Design System case study →</a>
 </section>
 
 <div class="stripe"></div>
 
+<!-- 7 -->
 <section>
   <div class="section-head">
-    <h2>Building a roadmap for supply chain modernization</h2>
-    <div class="lede">Supply chain and ERP modernization became corporate goals. I proposed to Product Design leadership that UX support or lead an envisioning effort.</div>
+    <h2><span class="num">07</span>Turning a modernization goal into funded work</h2>
+    <div class="lede">Supply Chain and ERP modernization became corporate goals. I proposed to Product Design leadership that UX support or lead an envisioning effort.</div>
   </div>
-  <div class="prose">I worked with my team to plan workshops, deliverables, and a roadmap. I co-facilitated with a team member; the team created and presented journey maps and capability roadmaps, with my support. I also assigned team members to the work and to projects that emerged from it.</div>
-  <div class="prose">Product and Technology used the deliverables to define a multi-generational roadmap—from a minimum viable product toward the desired future state. The work helped senior leaders understand which capabilities were needed at each stage and supported the funding case.</div>
+  <div class="prose">I worked with my team to plan the workshops, deliverables, and roadmap. I co-facilitated with a team member; the team created and presented journey maps and capability roadmaps with my support. I assigned team members to that work and to projects that emerged from it.</div>
+  <div class="prose">Product and Technology used the deliverables to shape a multi-generational roadmap—from a minimum viable product toward the desired future state. The work helped leaders understand what capabilities were needed at each stage and supported the funding case.</div>
+  <div class="prose">The purchaser-workflow vision helped establish ERP as the right place to begin supply chain modernization. Its antiquated interface and complex user experience were limiting sales. The C-suite approved funding to start the effort with ERP. That funding paid for revising core requisition workflows, applying the Premier Design System, and implementing its codebase. Senior leaders asked me to be hands-on with ERP.</div>
 
-  <div class="principles roadmap" role="img" aria-label="Roadmap progression: journey maps, capability roadmap, minimum viable product, desired future state">
-    <div class="p"><span class="idx">Stage 01</span><h4>Journey maps</h4></div>
-    <div class="p"><span class="idx">Stage 02</span><h4>Capability roadmap</h4></div>
-    <div class="p"><span class="idx">Stage 03</span><h4>Minimum viable product</h4></div>
-    <div class="p" style="background:var(--sky);"><span class="idx">Stage 04</span><h4>Desired future state</h4></div>
+  <div class="diagram">
+    <div class="flow" role="img" aria-label="Decision chain: envisioning workshops, then journey maps and capability roadmaps, then ERP identified as the starting point, then C-suite funding approval.">
+      <div class="step"><span class="idx">01</span><h4>Envisioning workshops</h4><p>Planned with my team; co-facilitated</p></div>
+      <div class="step"><span class="idx">02</span><h4>Journey maps and capability roadmaps</h4><p>Multi-generational: MVP → future state</p></div>
+      <div class="step"><span class="idx">03</span><h4>ERP identified as the starting point</h4><p>Antiquated interface was limiting sales</p></div>
+      <div class="step end"><span class="idx">04</span><h4>C-suite funding approval</h4><p>To begin modernization with ERP</p></div>
+    </div>
+    <div class="cap">From a corporate goal to a funded starting point</div>
   </div>
 
-  <div class="prose" style="margin-top:2rem;">The purchaser-workflow vision helped establish ERP as the right starting point for supply chain modernization. Its antiquated interface and complex experience were limiting sales. The C-suite approved funding to begin the effort with ERP. That funding paid for revising core requisition workflows, applying the Premier Design System, and implementing its codebase. Senior leaders asked me to be hands-on with ERP.</div>
+  <div class="contrib">
+    <div><span class="k">My contribution</span><ul><li>Proposed that UX support or lead the envisioning effort</li><li>Planned the workshops, deliverables, and roadmap with my team</li><li>Co-facilitated with a team member</li><li>Assigned team members to the work and resulting projects</li></ul></div>
+    <div class="team"><span class="k">Team contribution</span><ul><li>Created and presented journey maps and capability roadmaps, with my support</li><li>Product and Technology shaped the multi-generational roadmap</li></ul></div>
+  </div>
 </section>
 
 <div class="stripe"></div>
 
+<!-- 8 -->
 <section>
   <div class="section-head">
-    <h2>Leading ERP design while rebuilding the team</h2>
-    <div class="lede">As Principal Product Designer for ERP, I worked to simplify a complex interface without losing the depth of capability.</div>
+    <h2><span class="num">08</span>Leading ERP design while rebuilding the team</h2>
+    <div class="lede">As Principal Product Designer for ERP, I worked to simplify a complex interface without losing its depth of capability.</div>
   </div>
-  <div class="prose">Stakeholders were resistant to change, including adoption of the design-system patterns. I used comparative prototypes to gather feedback and support design decisions—not formal A/B tests.</div>
-  <div class="prose">The ERP case study covers four procure-to-pay workflows: dashboard, shop, requisitions, and approvals. It also includes new pharmacy purchasing capabilities designed with Optum as the pilot client. The work was still in progress when I left Premier in March 2026; outcome metrics had not yet been calculated.</div>
+  <div class="prose">Stakeholders were resistant to change, including adopting the design-system patterns. I used comparative prototypes to gather feedback and support design decisions; these were not formal A/B tests.</div>
+  <div class="prose">The ERP work covered four procure-to-pay workflows: dashboard, shop, requisitions, and approvals. It also included new pharmacy purchasing capabilities designed with Optum as the pilot client. The work was still in progress when I left Premier in March 2026, and outcome metrics had not yet been calculated.</div>
 
-  <p style="margin:2.2rem 0 0;"><span class="status">Designed and prototyped · Metrics pending</span></p>
+  <p style="margin:2rem 0 0;"><span class="status">In progress when I left · Outcome metrics pending</span></p>
   <div class="shots">
     <figure>
-      <img src="images/erp-modernization-case-study-dashboard-kpis-quick-access.png" alt="Modernized ERP dashboard with KPI tiles and quick-access links." loading="lazy">
-      <figcaption>01 — Dashboard</figcaption>
+      <img src="images/erp-modernization-case-study-dashboard-kpis-quick-access.png" alt="Redesigned ERP dashboard with quick-access links, important-number tiles, and chart cards." loading="lazy">
+      <figcaption>Dashboard</figcaption>
     </figure>
     <figure>
-      <img src="images/erp-modernization-case-study-shop-list-view-punchout-suppliers.png" alt="Modernized ERP shop screen in list view, with supplier punchout logos above an item grid." loading="lazy">
-      <figcaption>02 — Shop</figcaption>
+      <img src="images/erp-modernization-case-study-shop-list-view-punchout-suppliers.png" alt="Redesigned ERP shop screen in list view, with supplier punchout logos above an item grid with add-to-cart controls." loading="lazy">
+      <figcaption>Shop</figcaption>
     </figure>
     <figure>
-      <img src="images/erp-modernization-case-study-requisition-details-summary.png" alt="Requisition details screen with a summary of the requisition." loading="lazy">
-      <figcaption>03 — Requisitions</figcaption>
+      <img src="images/erp-modernization-case-study-requisition-details-summary.png" alt="Redesigned requisition details screen showing a requisition summary above a grid of requisition lines." loading="lazy">
+      <figcaption>Requisitions</figcaption>
     </figure>
     <figure>
-      <img src="images/erp-modernization-case-study-approvals-queue-optum.png" alt="Approvals queue screen for the Optum pharmacy purchasing pilot." loading="lazy">
-      <figcaption>04 — Approvals, including the Optum pharmacy pilot</figcaption>
+      <img src="images/erp-modernization-case-study-approvals-queue-optum.png" alt="Redesigned approvals queue listing requisitions and invoices for Optum organizations, with review status and actions." loading="lazy">
+      <figcaption>Approvals, including the Optum pharmacy pilot</figcaption>
     </figure>
   </div>
   <a class="related" href="erp-modernization-case-study.html">Read the ERP Modernization case study →</a>
-
-  <div class="prose" style="margin-top:3rem;">During this period, I also coached a designer whose work was often limited to screen edits and whose deliverables did not consistently align with design-system standards or implementation. I clarified expectations and a timeframe for improvement, coached the designer on understanding business needs and proposing solutions, and worked with the Product Owner and Development leads to understand delivery gaps and clarify roles and the path for design deviations. The designer’s performance, deliverable quality, standards adherence, and team relationships improved over one quarter, but the improvement was not sustained and the designer later entered a performance improvement plan.</div>
 </section>
 
-<div class="stripe"></div>
+<!-- 9 -->
+<section class="tight">
+  <div class="aside">
+    <h3><span class="num">09</span>People leadership includes clear expectations</h3>
+    <div>
+      <p>In a separate performance-coaching situation, a designer’s work was often limited to screen edits, and deliverables did not consistently align with design-system standards or implementation. I clarified expectations and a timeframe for improvement, coached the designer on understanding business needs and proposing solutions, and worked with Product and Development leads to understand delivery gaps and clarify roles and the path for design deviations.</p>
+      <p>Performance, deliverable quality, standards adherence, and team relationships improved over one quarter, but the improvement was not sustained; the designer later entered a performance improvement plan.</p>
+    </div>
+  </div>
+</section>
 
-<section>
+<!-- 10 -->
+<section class="tight">
   <div class="section-head">
-    <h2>What this work demonstrates</h2>
-    <div class="lede">Three kinds of leadership, connected by the same goal: helping people make better decisions together.</div>
+    <h2><span class="num">10</span>Leadership impact</h2>
+    <div class="lede">Three kinds of leadership, aimed at the same goal: helping teams make better decisions together.</div>
   </div>
   <div class="takeaways three">
-    <div class="item">
-      <h4>Strategic leadership</h4>
-      <p>I positioned UX as a way to connect business objectives, technical realities, and user evidence; advocated for an autonomous UX team; and helped shape and secure funding for modernization.</p>
-    </div>
-    <div class="item">
-      <h4>People leadership</h4>
-      <p>I coached designers, grew their influence, created an internship pipeline, and allocated talent as business priorities changed.</p>
-    </div>
-    <div class="item">
-      <h4>Organizational leadership</h4>
-      <p>I introduced research and shared practices, established design-system governance, and adapted standards to fit different product technologies and adoption constraints.</p>
-    </div>
+    <div class="item"><h4>Strategic leadership</h4><p>Connected business goals, technical realities, and user evidence; advocated for an autonomous UX practice; and helped shape and secure funding for modernization.</p></div>
+    <div class="item"><h4>People leadership</h4><p>Coached designers, created opportunities for them to lead, built an internship pipeline, and allocated talent as priorities changed.</p></div>
+    <div class="item"><h4>Organizational leadership</h4><p>Introduced research and shared practices, established design-system governance, and adapted resource and adoption models to different product needs.</p></div>
   </div>
 </section>
 
@@ -552,10 +698,11 @@
   <div class="inner">
     <div class="section-head">
       <h2>Reflection</h2>
-      <div class="lede">Trust was central to every part of this work.</div>
+      <div class="lede">Trust was central to this work.</div>
     </div>
     <div class="prose" style="color:var(--sky);">Teams had no mandate to adopt UX standards, so progress depended on listening, empathy, partnership, and evidence. That was true when introducing research, building shared patterns, and reallocating designers.</div>
-    <div class="quote" style="border-left-color:var(--rust-light);"><p style="color:var(--white);">People are more willing to change when they understand the shared goal, feel supported, and can see how the proposed approach helps them do their work.</p></div>
+    <div class="quote" style="border-left-color:var(--rust-light);"><p style="color:var(--white);">I learned that teams are more willing to change when they understand the shared goal, feel supported, and can see how the approach helps them do their work.</p></div>
+    <div class="prose" style="color:var(--sky);">The experience translates to any multi-product organization: build designers into strategic partners, create consistency without adding process for its own sake, and balance customer needs with technical and commercial priorities while staying close to the product.</div>
   </div>
 </div>
 
