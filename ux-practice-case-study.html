@@ -388,6 +388,16 @@
     .impact .tags{flex-direction:row; flex-wrap:wrap;}
   }
 
+  .impact-stats{display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:1.4rem; margin-bottom:2rem;}
+  .stat-card{background:var(--white); border:1px solid var(--line); border-radius:6px; padding:1.6rem 1.7rem; display:flex; flex-direction:column; gap:0.5rem;}
+  .stat-card b{font-size:3rem; font-weight:500; line-height:1; color:var(--teal);}
+  .stat-card h4{margin:0.3rem 0 0; font-size:1.02rem; color:var(--navy); font-weight:600; line-height:1.35;}
+  .stat-card p{margin:0; font-size:0.88rem; color:#3B5A63; flex:1;}
+  .stat-card .tags{display:flex; flex-direction:row; flex-wrap:wrap; gap:0.4rem; margin-top:0.6rem;}
+  .who.measured{background:#DFF0E6; color:#1D5134;}
+  .who.reported{background:var(--paper-dim); color:#3B5A63; border:1px solid var(--line);}
+  @media (max-width:820px){ .impact-stats{grid-template-columns:1fr;} }
+  .quote.lesson .k{display:block; font-family:'IBM Plex Mono',monospace; font-size:0.66rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--rust); margin-bottom:0.5rem; font-style:normal;}
   /* ---------- TITLE TIMELINE ---------- */
   .title-band{background:var(--paper-dim); border-bottom:1px solid var(--line);}
   .title-band .inner{max-width:1180px; margin:0 auto; padding:2rem 6vw 2.2rem;}
@@ -540,12 +550,12 @@
   <div class="inner">
     <div class="section-head">
       <h2><span class="num" style="color:var(--rust-light);">03</span>Scaling UX around portfolio priorities</h2>
-      <div class="lede">The first UX hires were funded by product teams with the need and budget to add a designer. By late 2010, the capability had grown to six designers and a dedicated researcher. Until a Director of UX role was created in 2011, designers had functional rather than direct reporting relationships to me, but I owned hiring for UX roles, assigned UX work and resources across product teams, and set direction for UX work.</div>
+      <div class="lede">The first UX hires were funded by product teams with the need and budget to add a designer. Before the Director of UX role was established in 2011, designers had functional reporting relationships rather than direct reporting relationships to me. I owned hiring for UX resources and was responsible for allocating work and directing UX efforts across product teams.</div>
     </div>
-    <div class="prose" style="color:var(--sky);">From 2011, I functioned as a principal designer: I was key in hiring, managed the UX internship program, and advised on resource allocation for junior designers. The practice evolved over several years, reaching eight designers at its peak in 2012 before a reduction in force brought the team to five in 2023.
-    </div>
-    <div class="prose" style="color:var(--sky);">Product-funded staffing tied each designer to one team’s budget, and that model stopped fitting as Premier acquired companies and priorities shifted: not every team continued to need a full-time designer, while other products had greater business need. I allocated UX support based on business priority and the capability each team needed. Teams that had reached a steady state could move from embedded support to a consultative model, freeing designers to work where they could have greater impact.</div>
+    <div class="prose" style="color:var(--sky);">The capability grew to six designers and a dedicated researcher. As Premier acquired companies and priorities shifted, not every team continued to need a full-time designer. I allocated UX support based on business priority and the capability each team needed. Teams that had reached a steady state could move from embedded support to a consultative model, freeing designers to work where they could have greater impact.</div>
     <div class="prose" style="color:var(--sky);">That shift required trust. Teams had come to think of designers as “their” resources, so I explained the shared portfolio goal, assured teams they could still get UX help, and sometimes provided interim support myself.</div>
+    <div class="prose" style="color:var(--sky);">The practice continued to grow, eventually reaching eight designers. Following a reduction in force in 2023, the team was reduced to five, and I resumed direct leadership of the practice.</div>
+    <div class="prose" style="color:var(--sky);">When I resumed leadership of the practice in 2023, the organizational structure had evolved. Designers became my direct reports, and I assumed full responsibility for people management, performance, development, workload, and resource allocation across the practice.</div>
 
     <div class="diagram">
       <div class="alloc">
@@ -627,7 +637,9 @@
   </div>
   <p class="note">Adoption figures refer to products, not users.</p>
 
-  <div class="prose" style="margin-top:1.6rem;">Across Premier Technology, the portfolio became more visually and functionally aligned, although significant gaps remained when I left for consultancy in 2014. The experience reinforced that adoption strategies must account for the maturity and technical constraints of individual product teams; a common standard alone isn’t enough to drive organizational change.</div>
+  <div class="prose" style="margin-top:1.6rem;">Across Premier Technology, the portfolio became more visually and functionally aligned, although significant gaps remained when I left for consultancy in 2014.</div>
+
+  <div class="quote lesson"><span class="k">What I learned</span><p>The experience reinforced that adoption strategies must account for the maturity and technical constraints of individual product teams; a common standard alone isn’t enough to drive organizational change.</p></div>
 </section>
 
 <div class="stripe"></div>
@@ -726,32 +738,39 @@
 <section>
   <div class="section-head">
     <h2><span class="num">09</span>Organizational and business impact</h2>
-    <div class="lede">The outcomes described above, in one place. Each is labeled by who delivered it; where results were reported but not measured, I say so.</div>
+    <div class="lede">Measured results first, then results that were reported but not quantified. Each outcome is labeled by who delivered it.</div>
   </div>
+
+  <div class="impact-stats">
+    <div class="stat-card">
+      <b>71%</b>
+      <h4>Fewer calls about the lookup component</h4>
+      <p>After I added helper text, clarified the label, and prompted users to make a selection.</p>
+      <div class="tags"><span class="who me">Delivered by me</span><span class="who measured">Measured</span></div>
+    </div>
+    <div class="stat-card">
+      <b>14%</b>
+      <h4>Fewer service calls overall</h4>
+      <p>From the same lookup changes, a near-term result across all service calls.</p>
+      <div class="tags"><span class="who me">Delivered by me</span><span class="who measured">Measured</span></div>
+    </div>
+    <div class="stat-card">
+      <b>100%</b>
+      <h4>Informatics products on Fireball</h4>
+      <p>Shared code components built by UX and UI Development. Adoption counts products, not users.</p>
+      <div class="tags"><span class="who team">Delivered by the team</span><span class="who measured">Measured</span></div>
+    </div>
+  </div>
+
   <ul class="impact">
     <li>
-      <h4>Fewer support calls tied to error states</h4>
-      <p>After my changes to the item lookup field, calls about that component fell 71% and service calls overall fell 14%. The team’s shared error language extended the same approach to vague error messages across products.</p>
-      <div class="tags"><span class="who me">Delivered by me</span><span class="who team">Error standards: the team</span></div>
+      <h4>Less UI development and QA effort</h4>
+      <p>After adopting Fireball, Informatics reported reduced UI development time, and standardized components enabled QA automation that significantly reduced QA tasks. Teams spent less effort rebuilding and retesting the same interface patterns.</p>
+      <div class="tags"><span class="who team">Delivered by the team</span><span class="who reported">Reported, not quantified</span></div>
     </li>
     <li>
-      <h4>Faster UI development</h4>
-      <p>Informatics reported reduced UI development time after adopting Fireball across its products. Reported, not quantified: teams spent less effort rebuilding the same interface patterns.</p>
-      <div class="tags"><span class="who team">Delivered by the team</span></div>
-    </li>
-    <li>
-      <h4>Less manual QA effort</h4>
-      <p>Standardized components enabled QA automation that significantly reduced QA tasks in Informatics. Reported, not quantified.</p>
-      <div class="tags"><span class="who team">Delivered by the team</span></div>
-    </li>
-    <li>
-      <h4>Executive funding for ERP modernization</h4>
-      <p>The envisioning work and purchaser-workflow vision helped establish ERP as the place to begin, and the C-suite approved funding to start there.</p>
-      <div class="tags"><span class="who lead">Influenced by my leadership</span></div>
-    </li>
-    <li>
-      <h4>A starting point for broader transformation</h4>
-      <p>ERP became the first stage of a multi-generational roadmap toward the future state for supply chain. The work was in progress when I left; outcome metrics were not yet calculated.</p>
+      <h4>C-suite funding for ERP modernization</h4>
+      <p>The envisioning work and purchaser-workflow vision helped establish ERP as the starting point for supply chain modernization, and the C-suite approved funding to begin there. The work was in progress when I left; outcome metrics were not yet calculated.</p>
       <div class="tags"><span class="who lead">Influenced by my leadership</span><span class="who status">In progress</span></div>
     </li>
   </ul>
