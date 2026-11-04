@@ -313,6 +313,10 @@
   .findings .k{font-family:'IBM Plex Mono',monospace; font-size:0.66rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--rust); display:block; margin-bottom:0.6rem;}
   .findings b{display:block; font-size:2.1rem; font-weight:500; color:var(--navy); line-height:1.1;}
   .findings p{margin:0.6rem 0 0; font-size:0.92rem; color:#3B5A63;}
+  .findings .result{display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:1rem; margin-top:1.1rem; padding-top:1rem; border-top:1px solid var(--line);}
+  .findings .result strong{display:block; font-size:1.5rem; font-weight:500; color:var(--teal); line-height:1.1;}
+  .findings .result span{display:block; font-size:0.82rem; color:#3B5A63; margin-top:0.2rem;}
+  .findings p.small{font-size:0.84rem;}
   .caveat{
     margin-top:1rem; padding:0.8rem 1rem; background:#FFF4DE; border-radius:4px;
     font-size:0.86rem; color:#4A3A12; line-height:1.5;
@@ -469,13 +473,17 @@
   </div>
   <div class="prose">I offered design reviews, heuristic evaluations, office hours, and UX guidance to any team that wanted help. On the teams I supported directly, I introduced usability testing to ground decisions in observed user behavior.</div>
   <div class="prose">That work built demand. Product owners began asking for more support than I could provide. I taught UX principles to interested colleagues and proposed hiring designers to the VP of Solution Development.</div>
-  <div class="prose">Usability testing surfaced recurring problems. In one item lookup tool, unclear labels and missing selection states led users to make three or more unsuccessful attempts before learning how to use it. Across products, vague error messages contributed to unnecessary support calls. The team introduced shared error language and standards.</div>
+  <div class="prose">Usability testing surfaced recurring problems. One item lookup field was actually a search, but users didn’t know that. They typed in a value and moved on to the next field. Search latency was so high that by the time results appeared, users had completed the form and were hitting Submit. The form then returned an error, and users didn’t realize they needed to go back to the field and make a selection. They made three or more unsuccessful attempts before learning how to use it.</div>
+  <div class="prose">I added helper text, clarified the field label, and made it clear that users needed to make a selection. These simple fixes solved the near-term need. They also made clear that the lookup tool needed a redesign to account for latency in the system. In the near term, service calls dropped 14% overall, and calls about that specific component dropped 71%.</div>
+  <div class="prose">Across products, vague error messages contributed to unnecessary support calls. The team introduced shared error language and standards.</div>
 
   <div class="findings">
     <div class="card">
       <span class="k">Usability finding · Item lookup</span>
       <b>3+ attempts</b>
-      <p>Users needed three or more unsuccessful attempts before learning the tool. Causes: unclear labels and missing selection states.</p>
+      <p>The field was a search, but users didn’t know it. They typed a value and moved on; slow results arrived after they had hit Submit, so the form errored out before they had made a selection.</p>
+      <div class="result"><div><strong>71%</strong><span>fewer calls about the component</span></div><div><strong>14%</strong><span>fewer service calls overall</span></div></div>
+      <p class="small">Near-term results after helper text, a clearer label, and a clear prompt to make a selection. The fixes also showed the tool needed a redesign for system latency.</p>
     </div>
     <div class="card">
       <span class="k">Shared error language · ~3 months</span>
@@ -486,7 +494,7 @@
   </div>
 
   <div class="contrib">
-    <div><span class="k">My contribution</span><ul><li>Offered reviews, heuristic evaluations, and office hours</li><li>Introduced usability testing on teams I supported</li><li>Taught UX principles; proposed hiring designers</li></ul></div>
+    <div><span class="k">My contribution</span><ul><li>Offered reviews, heuristic evaluations, and office hours</li><li>Fixed the item lookup field: helper text, a clearer label, a clear prompt to select</li><li>Introduced usability testing on teams I supported</li><li>Taught UX principles; proposed hiring designers</li></ul></div>
     <div class="team"><span class="k">Team contribution</span><ul><li>Introduced shared error language and standards</li></ul></div>
   </div>
 </section>
