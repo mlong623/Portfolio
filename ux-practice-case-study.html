@@ -372,13 +372,29 @@
     .feature{padding:1.6rem;}
   }
 
+  /* ---------- IMPACT LIST ---------- */
+  .impact{list-style:none; margin:0; padding:0; border-top:1px solid var(--line);}
+  .impact li{display:grid; grid-template-columns:minmax(0,1fr) minmax(0,2fr) 15rem; gap:0.6rem 2rem; align-items:start; padding:1.5rem 0; border-bottom:1px solid var(--line);}
+  .impact h4{margin:0; font-size:1.05rem; color:var(--navy); font-weight:600; line-height:1.35;}
+  .impact p{margin:0; font-size:0.93rem; color:#3B5A63; max-width:62ch;}
+  .impact .tags{display:flex; flex-direction:column; align-items:flex-start; gap:0.4rem;}
+  .who{display:inline-block; font-family:'IBM Plex Mono',monospace; font-size:0.64rem; letter-spacing:0.08em; text-transform:uppercase; padding:0.3rem 0.65rem; border-radius:100px; white-space:nowrap;}
+  .who.me{background:#FDE3D6; color:#8A2A00;}
+  .who.team{background:var(--sky); color:var(--navy);}
+  .who.lead{background:var(--navy); color:var(--white);}
+  .who.status{background:#FFDB96; color:#3A2C08;}
+  @media (max-width:820px){
+    .impact li{grid-template-columns:1fr; gap:0.6rem;}
+    .impact .tags{flex-direction:row; flex-wrap:wrap;}
+  }
+
   /* ---------- TITLE TIMELINE ---------- */
   .title-band{background:var(--paper-dim); border-bottom:1px solid var(--line);}
   .title-band .inner{max-width:1180px; margin:0 auto; padding:2rem 6vw 2.2rem;}
   .title-band .top{display:grid; grid-template-columns:auto 1fr; gap:1.4rem; align-items:baseline; margin-bottom:1.6rem;}
   .title-band .k{font-family:'IBM Plex Mono',monospace; font-size:0.68rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--teal); white-space:nowrap;}
   .title-band .top p{margin:0; font-size:0.93rem; color:#2C4C56; max-width:90ch;}
-  .ttl{list-style:none; margin:0; padding:0; display:grid; grid-template-columns:repeat(6,minmax(0,1fr)); gap:1.2rem;}
+  .ttl{list-style:none; margin:0; padding:0; display:grid; grid-template-columns:repeat(7,minmax(0,1fr)); gap:1.1rem;}
   .ttl li{border-top:3px solid var(--teal); padding-top:0.8rem;}
   .ttl li.away{border-top-color:var(--teal-light);}
   .ttl .yr{display:block; font-size:1.05rem; font-weight:600; color:var(--navy); line-height:1.2;}
@@ -401,7 +417,7 @@
   .callout .k{font-family:'IBM Plex Mono',monospace; font-size:0.66rem; letter-spacing:0.1em; text-transform:uppercase; color:#5C7B84; display:block; margin-bottom:0.5rem;}
   .callout p{margin:0; font-size:0.9rem; color:#3B5A63; line-height:1.6;}
 
-  @media (max-width:980px){ .ttl{grid-template-columns:repeat(3,minmax(0,1fr));} }
+  @media (max-width:1100px){ .ttl{grid-template-columns:repeat(4,minmax(0,1fr));} }
   @media (max-width:820px){
     .title-band .top{grid-template-columns:1fr; gap:0.4rem;}
     .ttl{grid-template-columns:repeat(2,minmax(0,1fr));}
@@ -420,10 +436,10 @@
       <p class="sub">From a single UX role to an enterprise practice: building design capability across a 40+ product healthcare portfolio, developing designers into strategic partners, and helping turn modernization priorities into funded work.</p>
       <div class="meta-row">
         <div class="meta-item"><div class="label">Formal titles</div><div class="val">Senior Java Developer → Lead UX Designer → UX Manager</div></div>
-        <div class="meta-item"><div class="label">Leadership responsibilities</div><div class="val">UX Practice Lead and Principal design responsibilities</div></div>
+        <div class="meta-item"><div class="label">Leadership responsibilities</div><div class="val">UX Practice Lead and Principal design responsibilities; functional leader for UX before 2011, people manager from 2023</div></div>
         <div class="meta-item"><div class="label">Company</div><div class="val">Premier</div></div>
         <div class="meta-item"><div class="label">Period</div><div class="val">2009–2014; returned 2017–March 2026</div></div>
-        <div class="meta-item" style="grid-column:1 / -1;"><div class="label">Scope</div><div class="val">40+ healthcare products; capability grew to six designers and one dedicated researcher</div></div>
+        <div class="meta-item" style="grid-column:1 / -1;"><div class="label">Scope</div><div class="val">40+ healthcare products; capability grew to six designers and one dedicated researcher, and the practice later peaked at eight designers</div></div>
       </div>
     </div>
     <aside class="snapshot" aria-labelledby="snapshot-label">
@@ -431,7 +447,7 @@
       <ul>
         <li>Built UX from an individual contributor role into an enterprise practice.</li>
         <li>Grew the capability to six designers and a dedicated researcher.</li>
-        <li>Established resource allocation across product teams.</li>
+        <li>Owned UX hiring and resource allocation across product teams; became the team’s direct people manager in 2023.</li>
         <li>Led UX governance for a shared design system, partnering with UI Development on code components.</li>
         <li>Helped shape the supply chain modernization roadmap that received C-suite funding to begin with ERP.</li>
       </ul>
@@ -448,9 +464,10 @@
     <ol class="ttl" aria-label="Title timeline">
       <li><span class="yr">2009</span><span class="what">Joined as <b>Senior Java Developer</b></span></li>
       <li><span class="yr">Later</span><span class="what">Held the <b>Lead UX Designer</b> title</span></li>
+      <li class="away"><span class="yr">2011</span><span class="what">Director of UX role created</span></li>
       <li class="away"><span class="yr">2014</span><span class="what">Left for consultancy</span></li>
       <li><span class="yr">2017</span><span class="what">Returned as <b>Lead UX Designer</b></span></li>
-      <li><span class="yr">2023</span><span class="what">Resumed team leadership</span></li>
+      <li><span class="yr">2023</span><span class="what">Took over the UX practice; designers became <b>direct reports</b></span></li>
       <li class="away"><span class="yr">March 2026</span><span class="what">Left as <b>UX Manager</b> after the reduction in force removed the Director of UX role</span></li>
     </ol>
   </div>
@@ -524,9 +541,9 @@
   <div class="inner">
     <div class="section-head">
       <h2><span class="num" style="color:var(--rust-light);">03</span>Scaling UX around portfolio priorities</h2>
-      <div class="lede">The first UX hires were funded by product teams with the need and budget to add a designer. Designers reported through different parts of the organization, but I managed their day-to-day work. The capability grew to six designers and a dedicated researcher.</div>
+      <div class="lede">The first UX hires were funded by product teams with the need and budget to add a designer. Until a Director of UX role was created in 2011, designers had functional rather than direct reporting relationships to me, but I owned hiring for UX roles, assigned UX work and resources across product teams, and set direction for UX work. The capability grew to six designers and a dedicated researcher. The practice evolved over several years, reaching eight designers at its peak before a reduction in force brought the team to five in 2023.</div>
     </div>
-    <div class="prose" style="color:var(--sky);">As Premier acquired companies and priorities shifted, not every team continued to need a full-time designer. I allocated UX support based on business priority and the capability each team needed. Teams that had reached a steady state could move from embedded support to a consultative model, freeing designers to work where they could have greater impact.</div>
+    <div class="prose" style="color:var(--sky);">Product-funded staffing tied each designer to one team’s budget, and that model stopped fitting as Premier acquired companies and priorities shifted: not every team continued to need a full-time designer, while other products had greater business need. I allocated UX support based on business priority and the capability each team needed. Teams that had reached a steady state could move from embedded support to a consultative model, freeing designers to work where they could have greater impact.</div>
     <div class="prose" style="color:var(--sky);">That shift required trust. Teams had come to think of designers as “their” resources, so I explained the shared portfolio goal, assured teams they could still get UX help, and sometimes provided interim support myself.</div>
 
     <div class="diagram">
@@ -540,12 +557,12 @@
           <span class="k">Consultative support</span>
           <h4>UX help on request</h4>
           <p>For teams that had reached a steady state.</p>
-          <div class="ex"><em>Example: Remitra.</em> After Premier acquired the application, the product team resisted UX input and focused on superficial changes in response to market pressure. The product underperformed, and the business chose to invest elsewhere. I moved its designer to another product, continued to provide consultative UX support to Remitra as needed, and directed the team to design-system documentation.</div>
+          <div class="ex"><em>Example: Remitra.</em> After Premier acquired the application, the product team resisted UX input and focused on superficial changes in response to market pressure. The product underperformed, and the business chose to invest elsewhere. With the business priority elsewhere and the team not acting on design input, a dedicated designer was no longer the best use of a limited capability. I moved the designer to another product and kept Remitra on consultative support: UX help as needed, plus direction to the design-system documentation.</div>
         </div>
       </div>
     </div>
 
-    <div class="prose" style="color:var(--sky); margin-top:2.4rem;">I also made the case that UX needed to be a team with the autonomy to allocate resources across the portfolio. UX ultimately became its own team and moved into Product Management.</div>
+    <div class="prose" style="color:var(--sky); margin-top:2.4rem;">Decisions like this one were the basis for my case that UX needed to be a team with the autonomy to allocate resources across the portfolio: designers managed as an enterprise capability, not as resources owned by the product team that first funded them. UX ultimately became its own team and moved into Product Management.</div>
   </div>
 </div>
 
@@ -561,12 +578,14 @@
   <div class="feature">
     <div class="from-to">
       <div class="step"><span class="k">From</span><p>Being overruled in product meetings</p></div>
+      <div class="step"><span class="k">Through</span><p>Coaching to present design work with evidence</p></div>
       <div class="step to"><span class="k">To</span><p>Leading senior stakeholder envisioning workshops</p></div>
     </div>
     <div class="body">
       <h3>Growing an early hire’s influence</h3>
-      <p>He had strong visual design skills but lacked confidence and was often overruled in product meetings. I coached him to present design work with evidence and helped him build confidence. He grew into leading envisioning workshops with senior leaders and partner health systems to reimagine the purchaser workflow across the supply chain suite.</p>
-      <p>The workshops produced user journeys, a capability map, and a high-level prototype that we built together. The future-state concept influenced the product roadmap and helped make the case for supply chain modernization.</p>
+      <p>He had strong visual design skills but lacked confidence and was often overruled in product meetings. The gap was not the quality of his work; it was his influence in the room.</p>
+      <p>I coached him to present design work with evidence and helped him build confidence. As his confidence grew, so did his ownership: he grew into leading envisioning workshops with senior leaders and partner health systems to reimagine the purchaser workflow across the supply chain suite. The workshops produced user journeys, a capability map, and a high-level prototype that we built together.</p>
+      <p>The result mattered beyond his own growth. The future-state concept influenced the product roadmap and helped make the case for supply chain modernization.</p>
       <div class="outputs" aria-label="Workshop outputs"><span>User journeys</span><span>Capability map</span><span>High-level prototype</span></div>
     </div>
   </div>
@@ -607,7 +626,7 @@
   </div>
   <p class="note">Adoption figures refer to products, not users.</p>
 
-  <div class="prose" style="margin-top:1.6rem;">Across Premier Technology, the portfolio became more visually and functionally aligned, although significant gaps remained when I left for consultancy in 2014.</div>
+  <div class="prose" style="margin-top:1.6rem;">Across Premier Technology, the portfolio became more visually and functionally aligned, although significant gaps remained when I left for consultancy in 2014. The experience reinforced that adoption strategies must account for the maturity and technical constraints of individual product teams; a common standard alone isn’t enough to drive organizational change.</div>
 </section>
 
 <div class="stripe"></div>
@@ -616,8 +635,9 @@
 <section>
   <div class="section-head">
     <h2><span class="num">06</span>Returning to Premier: design system and modernization</h2>
-    <div class="lede">I returned in 2017 as a Lead UX Designer. I resumed leading the UX team in 2023, after a reduction in force had reduced the group from eight designers to five. The team was less engaged in vision work, so I focused on rebuilding that capability.</div>
+    <div class="lede">I returned in 2017 as a Lead UX Designer. In 2023, after the reduction in force that brought the team to five designers, I took over the UX practice. The designers became my direct reports, and I took on full people- and resource-management responsibility: direct management, performance management, coaching and development, workload management, and allocation of UX resources.</div>
   </div>
+  <div class="prose">The team was less engaged in vision work, so I focused on rebuilding that capability.</div>
   <div class="prose">The portfolio’s continuing inconsistencies were becoming visible in sales conversations with health systems. UX had moved between Technology, Product, and Marketing over time. After UX moved under Marketing, its influence increased again, and Technology leadership decided Premier needed a shared design-system source of truth connected to code.</div>
   <div class="prose">I helped make that case, led the UX side of the system’s development, and established its governance. A UX resource maintained Figma documentation, components, and patterns; UI Development built corresponding code components in Storybook. Any contributor could request a lightweight review of a new element or variation. The team could approve it as a standard addition, a variation, or an exception—or reject it. Approved changes went into the Design System backlog and were prioritized by impact and need. My team did much of the day-to-day system building.</div>
 
@@ -704,7 +724,44 @@
 <!-- 09 -->
 <section>
   <div class="section-head">
-    <h2><span class="num">09</span>Leadership impact and reflection</h2>
+    <h2><span class="num">09</span>Organizational and business impact</h2>
+    <div class="lede">The outcomes described above, in one place. Each is labeled by who delivered it; where results were reported but not measured, I say so.</div>
+  </div>
+  <ul class="impact">
+    <li>
+      <h4>Fewer support calls tied to error states</h4>
+      <p>After my changes to the item lookup field, calls about that component fell 71% and service calls overall fell 14%. The team’s shared error language extended the same approach to vague error messages across products.</p>
+      <div class="tags"><span class="who me">Delivered by me</span><span class="who team">Error standards: the team</span></div>
+    </li>
+    <li>
+      <h4>Faster UI development</h4>
+      <p>Informatics reported reduced UI development time after adopting Fireball across its products. Reported, not quantified: teams spent less effort rebuilding the same interface patterns.</p>
+      <div class="tags"><span class="who team">Delivered by the team</span></div>
+    </li>
+    <li>
+      <h4>Less manual QA effort</h4>
+      <p>Standardized components enabled QA automation that significantly reduced QA tasks in Informatics. Reported, not quantified.</p>
+      <div class="tags"><span class="who team">Delivered by the team</span></div>
+    </li>
+    <li>
+      <h4>Executive funding for ERP modernization</h4>
+      <p>The envisioning work and purchaser-workflow vision helped establish ERP as the place to begin, and the C-suite approved funding to start there.</p>
+      <div class="tags"><span class="who lead">Influenced by my leadership</span></div>
+    </li>
+    <li>
+      <h4>A starting point for broader transformation</h4>
+      <p>ERP became the first stage of a multi-generational roadmap toward the future state for supply chain. The work was in progress when I left; outcome metrics were not yet calculated.</p>
+      <div class="tags"><span class="who lead">Influenced by my leadership</span><span class="who status">In progress</span></div>
+    </li>
+  </ul>
+</section>
+
+<div class="stripe"></div>
+
+<!-- 10 -->
+<section>
+  <div class="section-head">
+    <h2><span class="num">10</span>Leadership impact and reflection</h2>
     <div class="lede">Three kinds of leadership, aimed at the same goal: helping teams make better decisions together.</div>
   </div>
   <div class="takeaways three">
@@ -720,9 +777,9 @@
       <h2>Reflection</h2>
       <div class="lede">Trust was central to this work.</div>
     </div>
-    <div class="prose" style="color:var(--sky);">Teams had no mandate to adopt UX standards, so progress depended on listening, empathy, partnership, and evidence. That was true when introducing research, building shared patterns, and reallocating designers.</div>
-    <div class="quote" style="border-left-color:var(--rust-light);"><p style="color:var(--white);">I learned that teams are more willing to change when they understand the shared goal, feel supported, and can see how the approach helps them do their work.</p></div>
-    <div class="prose" style="color:var(--sky);">The experience translates to any multi-product organization: build designers into strategic partners, create consistency without adding process for its own sake, and balance customer needs with technical and commercial priorities while staying close to the product.</div>
+    <div class="prose" style="color:var(--sky);">Teams had no mandate to adopt UX standards, so progress depended on listening, empathy, partnership, and evidence, whether I was introducing research, building shared patterns, or reallocating designers. Teams were more willing to change when they understood the shared goal, felt supported, and could see how the approach helped them do their work.</div>
+    <div class="quote" style="border-left-color:var(--rust-light);"><p style="color:var(--white);">Premier hired me to win arguments with the business. Instead, I built a practice that helped the business make better decisions: designers who acted as strategic partners, standards and operating models that scaled across a portfolio, and design work that shaped where the company invested, through reorganizations and reductions in force.</p></div>
+    <div class="prose" style="color:var(--sky);">That is the leadership I bring to any multi-product organization: balance customer needs with technical and commercial priorities, create consistency without adding process for its own sake, and stay close to the product.</div>
   </div>
 </div>
 
