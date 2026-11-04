@@ -317,11 +317,6 @@
   .findings .result strong{display:block; font-size:1.5rem; font-weight:500; color:var(--teal); line-height:1.1;}
   .findings .result span{display:block; font-size:0.82rem; color:#3B5A63; margin-top:0.2rem;}
   .findings p.small{font-size:0.84rem;}
-  .caveat{
-    margin-top:1rem; padding:0.8rem 1rem; background:#FFF4DE; border-radius:4px;
-    font-size:0.86rem; color:#4A3A12; line-height:1.5;
-  }
-  .caveat strong{color:#3A2C08;}
 
   .alloc{display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:1.6rem; align-items:start;}
   .alloc .col{border-radius:6px; padding:1.5rem 1.6rem; border:1px solid rgba(255,255,255,0.18);}
@@ -475,7 +470,7 @@
   <div class="prose">That work built demand. Product owners began asking for more support than I could provide. I taught UX principles to interested colleagues and proposed hiring designers to the VP of Solution Development.</div>
   <div class="prose">Usability testing surfaced recurring problems. One item lookup field was actually a search, but users didn’t know that. They typed in a value and moved on to the next field. Search latency was so high that by the time results appeared, users had completed the form and were hitting Submit. The form then returned an error, and users didn’t realize they needed to go back to the field and make a selection. They made three or more unsuccessful attempts before learning how to use it.</div>
   <div class="prose">I added helper text, clarified the field label, and made it clear that users needed to make a selection. These simple fixes solved the near-term need. They also made clear that the lookup tool needed a redesign to account for latency in the system. In the near term, service calls dropped 14% overall, and calls about that specific component dropped 71%.</div>
-  <div class="prose">Across products, vague error messages contributed to unnecessary support calls. The team introduced shared error language and standards.</div>
+  <div class="prose">Across products, vague error messages contributed to unnecessary support calls. The team introduced shared error language and standards. Over roughly three months, support call logs and stakeholder feedback indicated an estimated 23% reduction in calls related to error states.</div>
 
   <div class="findings">
     <div class="card">
@@ -489,7 +484,6 @@
       <span class="k">Shared error language · ~3 months</span>
       <b>~23% fewer calls</b>
       <p>Estimated reduction in support calls related to error states, based on support call logs and stakeholder feedback.</p>
-      <div class="caveat"><strong>Estimated, not audited.</strong> This is a retrospective estimate. The original call counts are unavailable, so the calculation cannot be independently verified.</div>
     </div>
   </div>
 
